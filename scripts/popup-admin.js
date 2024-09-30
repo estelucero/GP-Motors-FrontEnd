@@ -10,6 +10,13 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
   const kmInput = document.querySelector("#km");
   const formElement = document.querySelector(".form-element");
   const patenteLabel = document.querySelector("label[for='patente']");
+  const guardarBtnAgregar = document.querySelector("#guardar-btn");
+  const guardarBtnModificar = document.querySelector("#guardar-btn2");
+  const cancelarBtn = document.querySelector("#cancelar-btn");
+
+
+  // Ocultar el botón de modificar al abrir el popup
+  guardarBtnModificar.style.display = "none";
 
   // Crear el label "Modificar datos del vehículo"
   let modificarLabel = document.querySelector(".modificar-label");
@@ -17,8 +24,6 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
     modificarLabel = document.createElement("span");
     modificarLabel.textContent = "Modificar datos del vehículo";
     modificarLabel.classList.add("modificar-label");
-
-    // Insertar el label antes del label de patente
     formElement.insertBefore(modificarLabel, patenteLabel);
   } else {
     modificarLabel.style.display = "block"; // Asegurarse de que el label esté visible
@@ -31,16 +36,15 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
     modificarBtn.textContent = "Modificar";
     modificarBtn.id = "modificar-btn";
     modificarBtn.classList.add("btn-form");
-
-    // Insertar el botón antes del label de patente
-    formElement.insertBefore(modificarBtn, patenteLabel);
+    modificarBtn.style.backgroundColor = "blue";
+    // Insertar el botón "Modificar" justo antes del botón "Guardar"
+    guardarBtnAgregar.parentNode.insertBefore(modificarBtn, guardarBtnAgregar);
 
     // Evento para habilitar los campos (excepto el de la patente)
     modificarBtn.addEventListener("click", function (e) {
       e.preventDefault(); // Prevenir comportamiento por defecto
 
-      // Eliminar el label "Modificar datos del vehículo"
-      modificarLabel.style.display = "none";
+      modificarLabel.style.display = "block"; // Eliminar el label "Modificar datos del vehículo"
 
       // Habilitar los campos de edición excepto el de la patente
       modeloInput.removeAttribute("disabled");
@@ -49,6 +53,9 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
       kmInput.removeAttribute("disabled");
 
       modificarBtn.style.display = "none"; // Ocultar el botón "Modificar"
+
+      // Mostrar el botón de modificar
+      guardarBtnModificar.style.display = "block";
     });
   } else {
     modificarBtn.style.display = "block"; // Asegurarse de que el botón esté visible
@@ -62,7 +69,7 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
     modeloInput.value = datosVehiculo.modelo || '';
     marcaInput.value = datosVehiculo.marca || '';
     anioFabInput.value = datosVehiculo.fechaFabricacion || '';
-    kmInput.value = datosVehiculo.cantKm ;
+    kmInput.value = datosVehiculo.cantKm;
 
     // Deshabilitar todos los campos para evitar modificaciones antes de presionar "Modificar"
     patenteInput.setAttribute("disabled", true); // Mantener deshabilitado
@@ -71,8 +78,8 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
     anioFabInput.setAttribute("disabled", true);
     kmInput.setAttribute("disabled", true);
 
-    modificarBtn.style.display = "block"; // Mostrar el botón "Modificar"
-    modificarLabel.style.display = "block"; // Mostrar el label
+    guardarBtnAgregar.style.display = "none"; // Ocultar el botón de agregar
+    modificarLabel.style.display = "block"; // Mostrar el label de modificar
   } else {
     popupTitulo.textContent = "Cargar Vehículo";
 
@@ -90,18 +97,26 @@ function abrirPopup(noEdicion, datosVehiculo = {}) {
     anioFabInput.removeAttribute("disabled");
     kmInput.removeAttribute("disabled");
 
+    guardarBtnAgregar.style.display = "block"; // Mostrar el botón de agregar
+    guardarBtnModificar.style.display = "none"; // Ocultar el botón de modificar
     modificarBtn.style.display = "none"; // Ocultar el botón "Modificar" en modo agregar
     modificarLabel.style.display = "none"; // Ocultar el label en modo agregar
   }
 }
 
-// Evento para cerrar el popup
+// Función para cerrar el popup
 function cerrarPopup() {
   document.querySelector(".popup").classList.remove("active");
   document.querySelector(".popup-container").classList.remove("active");
 }
 
-// Ejemplo de cómo abrir el popup
+// Asignar el evento de cerrar al botón "Cancelar"
+document.querySelector("#cancelar-btn").addEventListener("click", cerrarPopup);
+
+// También asignamos el evento al botón de cerrar (si existe)
+document.querySelector(".popup .close-btn").addEventListener("click", cerrarPopup);
+
+// Evento para abrir el popup en modo agregar
 document.querySelector("#show-car").addEventListener("click", function () {
   abrirPopup(false); // false indica que es un nuevo vehículo (no es edición)
 });
@@ -111,28 +126,27 @@ document.querySelectorAll(".box-img a").forEach(function (editarBtn) {
   editarBtn.addEventListener("click", function (e) {
     const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
     e.preventDefault(); // Evitar el comportamiento por defecto del ancla
-    
+
     // Obtener los datos del vehículo
     const datosVehiculo = {
       patente: this.closest(".single-box").querySelector(".patente-p").textContent.trim(),
       marca: this.closest(".single-box").querySelectorAll(".text-flex p")[1].textContent.trim(),
       modelo: this.closest(".single-box").querySelectorAll(".text-flex p")[3].textContent.trim(),
       fechaFabricacion: this.closest(".single-box").querySelectorAll(".text-flex p")[5].textContent.trim(),
-      cantKm: autoGuardado.km// Ejemplo: puedes agregar este dato en tu HTML si lo tienes
+      cantKm: autoGuardado.km // Ejemplo: puedes agregar este dato en tu HTML si lo tienes
     };
-    console.log(datosVehiculo)
+
     abrirPopup(true, datosVehiculo); // true indica que es una edición
   });
 });
 
-
 //Guardar auto que clickea
-
 function guardarEdicionVehiculo() {
   const botonesEditar = document.querySelectorAll(".editar");
   const vehiculosGuardados = JSON.parse(
     localStorage.getItem("vehiculosRegistrados")
   );
+
   botonesEditar.forEach((boton) => {
     boton.addEventListener("click", function (event) {
       // Evitar que el enlace redirija inmediatamente
@@ -155,45 +169,90 @@ function guardarEdicionVehiculo() {
       };
 
       localStorage.setItem("vehiculoEditar", JSON.stringify(datosVehiculo));
-      
+
     });
   });
 }
 guardarEdicionVehiculo();
 
+////////////// Verifico para las clases validas////////////
+function verificarClasesValidasFormulario() {
+
+  const inputs = [
+    document.getElementById('patente'),
+    document.getElementById('modelo'),
+    document.getElementById('marca'),
+    document.getElementById('anio-fab'),
+    document.getElementById('km')
+  ];
 
 
+  for (let input of inputs) {
+    if (input.classList.contains('is-invalid')) {
+      return false;
+    }
+  }
 
-
-// Función para cerrar el popup
-function cerrarPopup() {
-  document.querySelector(".popup").classList.remove("active");
-  document.querySelector(".popup-container").classList.remove("active");
+  return true;
 }
 
-// Evento para abrir el popup en modo agregar
-document.querySelector("#show-car").addEventListener("click", function () {
-  abrirPopup(false); // false indica que es un nuevo vehículo (no es edición)
-});
+//////////////Modificar el auto/////////////
+document
+  .getElementById("guardar-btn2")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    if (verificarClasesValidasFormulario()) {
 
-// Evento para cerrar el popup al hacer clic en el botón de cerrar o cancelar
-document.querySelector(".popup .close-btn").addEventListener("click", cerrarPopup);
-document.querySelector(".btn-form:nth-of-type(2)").addEventListener("click", cerrarPopup);
+      const patente = document.getElementById("patente").value;
+      const modelo = document.getElementById("modelo").value;
+      const marca = document.getElementById("marca").value;
+      const anioFab = document.getElementById("anio-fab").value;
+      const km = document.getElementById("km").value;
 
-// Agregar evento a los botones de edición (ancla dentro de .box-img)
-document.querySelectorAll(".box-img a").forEach(function (editarBtn) {
-  editarBtn.addEventListener("click", function (e) {
-    e.preventDefault(); // Evitar el comportamiento por defecto del ancla
-    const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
-    // Obtener los datos del vehículo (esto depende de cómo los tienes estructurados)
-    const datosVehiculo = {
-      patente: this.closest(".single-box").querySelector(".patente-p").textContent.trim(),
-      marca: this.closest(".single-box").querySelectorAll(".text-flex p")[1].textContent.trim(),
-      modelo: this.closest(".single-box").querySelectorAll(".text-flex p")[3].textContent.trim(),
-      fechaFabricacion: this.closest(".single-box").querySelectorAll(".text-flex p")[5].textContent.trim(),
-      cantKm: autoGuardado.km // Ejemplo: puedes agregar este dato en tu HTML si lo tienes
-    };
 
-    abrirPopup(true, datosVehiculo); // true indica que es una edición
+      if (!patente || !modelo || !marca || !anioFab || !km || parseInt(km, 10) < 0) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
+
+
+
+      const data = {
+        patente_vehiculo_modif: patente,
+        marca,
+        modelo,
+        año: anioFab,
+        km: parseInt(km, 10),
+
+      };
+      console.log(data);
+
+      fetch("https://aaaaa-deploy-back.vercel.app/users/modificarVehiculo", {
+        method: "PATCH",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert("Vehículo guardado con éxito");
+          console.log(patente);
+          location.reload(true);
+          // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Hubo un problema al guardar el vehículo.");
+        });
+    } else {
+      alert("Completar los campos con datos validos");
+    }
   });
-});

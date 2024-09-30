@@ -28,61 +28,86 @@ async function obtenerVehiculosRegistrados() {
   }
 }
 obtenerVehiculosRegistrados();
+
+//Verifico que todas los inputs son validos///
+function verificarClasesValidasFormulario() {
+  // Obtén los inputs del formulario
+  const inputs = [
+    document.getElementById('patente'),
+    document.getElementById('modelo'),
+    document.getElementById('marca'),
+    document.getElementById('anio-fab'),
+    document.getElementById('km')
+  ];
+
+  // Verifica si todos los inputs tienen la clase 'is-valid'
+  for (let input of inputs) {
+    if (!input.classList.contains('is-valid')) {
+      return false; // Si algún input no tiene la clase, retorna false
+    }
+  }
+
+  return true; // Si todos los inputs tienen la clase, retorna true
+}
+
 //Post Vehiculo
 document
   .getElementById("guardar-btn")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Evita que el formulario se envíe automáticamente
+    if (verificarClasesValidasFormulario()) {
+      // Captura los valores de los campos
+      const patente = document.getElementById("patente").value;
+      const modelo = document.getElementById("modelo").value;
+      const marca = document.getElementById("marca").value;
+      const anioFab = document.getElementById("anio-fab").value;
 
-    // Captura los valores de los campos
-    const patente = document.getElementById("patente").value;
-    const modelo = document.getElementById("modelo").value;
-    const marca = document.getElementById("marca").value;
-    const anioFab = document.getElementById("anio-fab").value;
+      const km = document.getElementById("km").value;
 
-    const km = document.getElementById("km").value;
+      // Validar que los campos no estén vacíos
+      if (!patente || !modelo || !marca || !anioFab || !km) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
 
-    // Validar que los campos no estén vacíos
-    if (!patente || !modelo || !marca || !anioFab || !km) {
-      alert("Por favor, completa todos los campos.");
-      return;
+      // Crear un objeto JSON con los datos del formulario
+      const data = {
+        patente,
+        marca,
+        modelo,
+        año: anioFab,
+        km: parseInt(km, 10),
+        concesionario_ubicado: 1, // Asume que usuarioJSON es un objeto global con el cuilDueño
+      };
+      console.log(data);
+      // Enviar el JSON a la API usando fetch
+      fetch("https://aaaaa-deploy-back.vercel.app/users/registrarVehiculo", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert("Vehículo guardado con éxito");
+          location.reload(true);
+          // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Hubo un problema al guardar el vehículo.");
+        });
+    } else {
+      alert("Completar los campos con datos validos")
     }
-
-    // Crear un objeto JSON con los datos del formulario
-    const data = {
-      patente,
-      marca,
-      modelo,
-      año: anioFab,
-      km: parseInt(km, 10),
-      concesionario_ubicado: 1, // Asume que usuarioJSON es un objeto global con el cuilDueño
-    };
-    console.log(data);
-    // Enviar el JSON a la API usando fetch
-    fetch("https://aaaaa-deploy-back.vercel.app/users/registrarVehiculo", {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        alert("Vehículo guardado con éxito");
-        location.reload(true);
-        // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Hubo un problema al guardar el vehículo.");
-      });
   });
 
 //Enlisto autos
@@ -112,11 +137,11 @@ function enlistarAutos() {
           </div>
           <div class="text-flex">
             <p>Marca:</p>
-            <p>${vehiculo.marca}</p>
+            <p>${vehiculo.marca.charAt(0).toUpperCase() + vehiculo.marca.slice(1).toLowerCase()}</p>
           </div>
           <div class="text-flex">
             <p>Modelo:</p>
-            <p>${vehiculo.modelo}</p>
+            <p>${vehiculo.modelo.charAt(0).toUpperCase() + vehiculo.modelo.slice(1).toLowerCase()}</p>
           </div>
           <div class="text-flex">
             <p>Año de Fabricación:</p>
