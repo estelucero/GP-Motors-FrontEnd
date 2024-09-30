@@ -184,6 +184,7 @@ function eliminarVehiculo() {
           // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
           vehiculoBox.remove();
           console.log(`Vehículo con patente ${patente} eliminado del sistema`);
+          location.reload(true);
         } else {
           // Si hay un error, mostrar un mensaje
           console.error(

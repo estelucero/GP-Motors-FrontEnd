@@ -69,7 +69,7 @@ function enlistarAutos() {
           </div>
         </div>
         <div class="box-img">
-          <a href="./auto-supervisor.html"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic editar" /></a>
+          <a href="./auto-supervisor.html"><img src="../assets/logos/box-control.png" alt="" class="user-pic-pic editar" /></a>
           
         </div>
       `;

@@ -21,6 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     return regex.test(texto);
   }
 
+  function validarModelo(modelo) {
+    //const regexSoloLetras = /^[a-zA-Z\s]+$/; // Solo letras
+    const regexAlfanumerico = /^[a-zA-Z0-9\s]+$/; // Letras y números
+
+    return regexAlfanumerico.test(modelo);
+  }
+
   function validarFechaAnio(fecha) {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     return regex.test(fecha);
@@ -57,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   modeloInput.addEventListener("input", function () {
-    if (!validarTextoSoloLetras(modeloInput.value)) {
-      mostrarError(modeloInput, modeloFeedback, "El modelo solo puede contener letras.");
+    if (!validarModelo(modeloInput.value)) {
+      mostrarError(modeloInput, modeloFeedback, "El modelo no debe contener caracteres especiales.");
     } else {
       limpiarError(modeloInput, modeloFeedback);
       modeloInput.classList.add("is-valid");
@@ -76,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   anioFabInput.addEventListener("input", function () {
     if (!validarFechaAnio(anioFabInput.value)) {
-      mostrarError(anioFabInput, anioFabFeedback, "El formato debe ser YYYY-MM-DD.");
+      mostrarError(anioFabInput, anioFabFeedback, "El formato debe ser YYYY-MM-DD y la fecha debe ser válida.");
     } else {
       const fecha = new Date(anioFabInput.value);
       const fechaHoy = new Date();
@@ -88,6 +95,26 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  // Nueva función para validar la fecha de fabricación
+  function validarFechaAnio(fecha) {
+    // Comprobar si el formato es YYYY-MM-DD
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(fecha)) {
+      return false;
+    }
+
+    // Separar año, mes y día
+    const [anio, mes, dia] = fecha.split('-').map(Number);
+
+    // Crear una fecha a partir de los valores
+    const fechaObj = new Date(anio, mes - 1, dia); // mes - 1 porque los meses empiezan en 0
+
+    // Comprobar si la fecha generada es válida
+    return fechaObj.getFullYear() === anio &&
+      fechaObj.getMonth() === (mes - 1) &&
+      fechaObj.getDate() === dia;
+  }
 
   kmInput.addEventListener("input", function () {
     const km = parseInt(kmInput.value, 10);
@@ -117,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ocultar el popup
     document.querySelector(".popup").classList.remove("active");
     document.querySelector(".popup-container").classList.remove("active");
-    
+
   }
 
   // Asignar el evento de cerrar al botón "Cancelar"

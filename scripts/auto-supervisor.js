@@ -121,6 +121,7 @@ guardarBtn.addEventListener("click", async function (event) {
     const resultado = await response.json();
     console.log("Control pendiente registrado:", resultado);
     alert("El control pendiente se ha registrado correctamente.");
+    location.reload(true);
   } catch (error) {
     console.error("Error al registrar el control:", error);
     alert("Ocurrió un error al registrar el control.");
@@ -221,6 +222,7 @@ function eliminarControl() {
           // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
           alerta.remove();
           console.log(`Control con patente ${control} eliminado del sistema`);
+          location.reload(true);
         } else {
           // Si hay un error, mostrar un mensaje
           console.error(
