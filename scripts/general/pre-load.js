@@ -3,5 +3,5 @@ window.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     $('#preloader').fadeOut(); 
     document.body.classList.remove('hidden-carga'); 
-  }, 500); 
+  }, 700); 
 });
