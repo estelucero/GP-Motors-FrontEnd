@@ -1,6 +1,6 @@
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
-    $(window).scrollTop(0);
+    window.scrollTo(0, 0);
     $('#preloader').fadeOut(); 
     document.body.classList.remove('hidden-carga'); 
   }, 700); 
