@@ -1,5 +1,4 @@
 const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
-
 console.log(autoGuardado);
 
 // Seleccionar los elementos del HTML donde se insertará la información/////////////////
@@ -78,132 +77,6 @@ controles_disponibles.forEach((control) => {
   selectElemento.appendChild(opcion);
 });
 
-
-//Get de los controles
-async function obtenerControles() {
-  const url = `https://aaaaa-deploy-back.vercel.app/users/consultarControlesPendientesPorPatente?patente=${autoGuardado.patente}`;
-
-  try {
-    // Realiza la solicitud GET
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    // Verifica si la respuesta es exitosa
-    if (!response.ok) {
-      throw new Error("Error al obtener los datos de los vehículos");
-    }
-
-    // Convierte la respuesta a JSON
-    const controles = await response.json();
-    
-    // Guarda los datos en el localStorage
-    localStorage.setItem("controles-pendientes", JSON.stringify(controles));
-    
-    console.log("Controles  guardados en el localStorage");
-    return controles;
-  } catch (error) {
-    console.error("Hubo un problema con la solicitud:", error);
-  }
-}
-
-
-//Enlistar Controles//
-function recuperarControles() {
-  const vehiculosData = localStorage.getItem("controles-pendientes");
-  
-  const vehiculos = vehiculosData ? JSON.parse(vehiculosData) : null;
-  
-  return vehiculos;
-}
-const controlesGuardados = recuperarControles();
-console.log(controlesGuardados);
-async function enlistarControles() {
-  const contenedor = document.getElementById("alertas");
-  const controlesGuardados = await obtenerControles();
-  controlesGuardados.controles_pendientes.forEach((control) => {
-    const singleBox = document.createElement("div");
-    singleBox.classList.add("alerta");
-
-    singleBox.innerHTML = `
-    <div class="box-avatar-text">
-    <div class="avatar">
-    <img src="../assets/logos/cambio_aceite.png" alt="perfil-imagen" />
-    </div>
-    <div class="box-text">
-    <div class="text-patente">
-    <p class="control-p">${control.control}</p>
-    </div>
-    
-    </div>
-    </div>
-    <div class="box-img">
-    <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic eliminar-control" />
-    </div>
-    </div>
-    `;
-    
-    contenedor.appendChild(singleBox);
-  });
-}
-//Orquesta Controles///
-async function manejarControles() {
-  
-  //await obtenerControles();
-  
-  
-  enlistarControles();
-  
-  //cargaPagina();
-}
-
-
-manejarControles();
-
-////Eliminar control///
-function eliminarControl() {
-
-  const botonesEliminar = document.querySelectorAll(".eliminar-control");
-  
-  botonesEliminar.forEach((boton) => {
-    boton.addEventListener("click", async function () {
-      const alerta = this.closest(".alerta");
-      console.log("ELIMINO LOS CONTROLES")
-      const control = alerta.querySelector(".control-p").textContent;
-      console.log(autoGuardado.patente);
-      // URL del endpoint para eliminar el vehículo
-      const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarControlesPendientes?patente=${autoGuardado.patente}&control=${control}`;
-      
-      try {
-        // Hacer la solicitud DELETE al endpoint
-        const response = await fetch(urlDeleteVehiculo, {
-          method: "DELETE",
-        });
-        
-        if (response.ok) {
-          // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
-          alerta.remove();
-          console.log(`Control con patente ${control} eliminado del sistema`);
-          location.reload(true);
-        } else {
-          // Si hay un error, mostrar un mensaje
-          console.error(
-            `Error al eliminar el control con patente ${control}: ${response.statusText}`
-          );
-          alert("No se pudo eliminar el control, intente nuevamente.");
-        }
-      } catch (error) {
-        console.error("Error en la solicitud de eliminación:", error);
-        alert("Ocurrió un error al intentar eliminar el vehículo.");
-      }
-    });
-  });
-}
-eliminarControl();
-
 /////Post de los Controles///
 
 const guardarBtn = document.getElementById("guardar-btn");
@@ -211,7 +84,7 @@ const selectControl = document.getElementById("campo_rubro");
 
 guardarBtn.addEventListener("click", async function (event) {
   event.preventDefault();
-  console.log("AGREGO LOS CONTROLES")
+
   const valorSeleccionado = selectControl.value;
 
   if (!valorSeleccionado) {
@@ -254,3 +127,114 @@ guardarBtn.addEventListener("click", async function (event) {
     alert("Ocurrió un error al registrar el control.");
   }
 });
+
+// Get de los controles
+async function obtenerControles() {
+  const url = `https://aaaaa-deploy-back.vercel.app/users/consultarControlesPendientesPorPatente?patente=${autoGuardado.patente}`;
+
+  try {
+    // Realiza la solicitud GET
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Verifica si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error("Error al obtener los datos de los vehículos");
+    }
+
+    // Convierte la respuesta a JSON
+    const controles = await response.json();
+    
+    // Guarda los datos en el localStorage
+    localStorage.setItem("controles-pendientes", JSON.stringify(controles));
+    
+    console.log("Controles guardados en el localStorage");
+    return controles;
+  } catch (error) {
+    console.error("Hubo un problema con la solicitud:", error);
+  }
+}
+
+// Enlistar Controles
+async function enlistarControles() {
+  const contenedor = document.getElementById("alertas");
+  const controlesGuardados = await obtenerControles();
+  
+  // Verifica que hay controles pendientes antes de enlistar
+  if (controlesGuardados && controlesGuardados.controles_pendientes) {
+    controlesGuardados.controles_pendientes.forEach((control) => {
+      const singleBox = document.createElement("div");
+      singleBox.classList.add("alerta");
+
+      singleBox.innerHTML = `
+        <div class="box-avatar-text">
+          <div class="avatar">
+            <img src="../assets/logos/cambio_aceite.png" alt="perfil-imagen" />
+          </div>
+          <div class="box-text">
+            <div class="text-patente">
+              <p class="control-p">${control.control}</p>
+            </div>
+          </div>
+        </div>
+        <div class="box-img">
+          <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic eliminar-control" />
+        </div>
+      `;
+      
+      contenedor.appendChild(singleBox);
+    });
+  } else {
+    console.log("No hay controles pendientes.");
+  }
+}
+
+// Orquesta Controles
+async function manejarControles() {
+  await enlistarControles(); // Espera a que se complete enlistarControles
+  eliminarControl(); // Luego llama a eliminarControl
+}
+
+manejarControles();
+
+// Eliminar control
+function eliminarControl() {
+  const botonesEliminar = document.querySelectorAll(".eliminar-control");
+  
+  botonesEliminar.forEach((boton) => {
+    boton.addEventListener("click", async function () {
+      const alerta = this.closest(".alerta");
+      console.log("ELIMINO LOS CONTROLES");
+      const control = alerta.querySelector(".control-p").textContent;
+      console.log(autoGuardado.patente);
+      
+      // URL del endpoint para eliminar el vehículo
+      const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarControlesPendientes?patente=${autoGuardado.patente}&control=${control}`;
+      
+      try {
+        // Hacer la solicitud DELETE al endpoint
+        const response = await fetch(urlDeleteVehiculo, {
+          method: "DELETE",
+        });
+        
+        if (response.ok) {
+          // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
+          alerta.remove();
+          console.log(`Control con patente ${control} eliminado del sistema`);
+          location.reload(true);
+        } else {
+          // Si hay un error, mostrar un mensaje
+          console.error(`Error al eliminar el control con patente ${control}: ${response.statusText}`);
+          alert("No se pudo eliminar el control, intente nuevamente.");
+        }
+      } catch (error) {
+        console.error("Error en la solicitud de eliminación:", error);
+        alert("Ocurrió un error al intentar eliminar el vehículo.");
+      }
+    });
+  });
+}
