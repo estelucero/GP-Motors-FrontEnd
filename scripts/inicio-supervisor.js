@@ -1,3 +1,4 @@
+localStorage.removeItem("controles-pendientes");
 //Get de los vehiculos registrados
 async function obtenerVehiculosRegistrados() {
   const url = `https://aaaaa-deploy-back.vercel.app/users/verVehiculosRegistradosEnUnaSede?sede_id=1`;

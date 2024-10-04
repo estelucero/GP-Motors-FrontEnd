@@ -1,4 +1,5 @@
 const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
+
 console.log(autoGuardado);
 
 // Seleccionar los elementos del HTML donde se insertará la información/////////////////
@@ -157,7 +158,7 @@ async function obtenerControles() {
     console.error("Hubo un problema con la solicitud:", error);
   }
 }
-obtenerControles();
+
 
 //Enlistar Controles//
 function recuperarControles() {
@@ -196,8 +197,17 @@ function enlistarControles() {
     contenedor.appendChild(singleBox);
   });
 }
+//Orquesta Controles///
+async function manejarControles() {
+  
+  await obtenerControles();
 
-enlistarControles();
+  
+  enlistarControles();
+}
+
+
+manejarControles();
 
 ////Eliminar control///
 function eliminarControl() {
