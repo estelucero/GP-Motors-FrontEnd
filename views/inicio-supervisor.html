@@ -8,16 +8,34 @@
   <!-- Favicon -->
   <link rel="icon" href="" type="image/x-icon" />
   <!-- Style-->
-  <link rel="stylesheet" href="../styles/navbar.css" />
-  <link rel="stylesheet" href="../styles/footer.css" />
-  <link rel="stylesheet" href="../styles/incio-supervisor.css" />
-
-
+  <link rel="stylesheet" href="../styles/general/navbar.css" />
+  <link rel="stylesheet" href="../styles/general/footer.css" />
+  <link rel="stylesheet" href="../styles/supervisor/incio-supervisor.css" />
+  <link rel="stylesheet" href="../styles/pre-load.css" />
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="hidden-carga" id="contenido">
+  <!-- Pre-load -->
+  <div class="centrado" id="preloader">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p class="text-carga">Cargando...</p>
+  </div>
+
   <!-- Navbar-->
   <header>
     <div class="logo">
@@ -161,9 +179,10 @@
   </div>
 
   <!-- Scripts -->
-  <script src="../scripts/navbar.js"></script>
-  <script src="../scripts/inicio-supervisor.js"></script>
-  <script src="../scripts/buscador-supervisor.js"></script>
+  <script src="../scripts/pre-load.js"></script>
+  <script src="../scripts/general/navbar.js"></script>
+  <script src="../scripts/supervisor/inicio-supervisor.js"></script>
+  <script src="../scripts/supervisor/buscador-supervisor.js"></script>
 
 </body>
 
