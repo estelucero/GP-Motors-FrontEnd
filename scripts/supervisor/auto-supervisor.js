@@ -197,6 +197,7 @@ async function enlistarControles() {
 async function manejarControles() {
   await enlistarControles(); // Espera a que se complete enlistarControles
   eliminarControl(); // Luego llama a eliminarControl
+  window.scrollTo(0, 0);
 }
 
 manejarControles();
