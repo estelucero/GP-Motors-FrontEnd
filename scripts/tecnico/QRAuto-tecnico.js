@@ -10,6 +10,7 @@ function onScanError(errorMessage) {
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250}
+    "reader", { fps: 10,
+        qrbox: { width: 350, height: 350 }}
 );
 html5QrcodeScanner.render(onScanSuccess, onScanError);
