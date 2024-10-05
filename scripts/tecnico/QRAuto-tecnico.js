@@ -1,6 +1,14 @@
 function onScanSuccess(qrMessage) {
-    document.getElementById("result").innerHTML = qrMessage;
-    html5QrcodeScanner.clear();
+    document.getElementById('result').innerHTML = `
+        <h2>Success!</h2>
+        <p><a href="${result}">${result}</a></p>
+        `;
+        // Prints result as a link inside result element
+
+        scanner.clear();
+        // Clears scanning instance
+
+        document.getElementById('reader').remove();
 }
 
 function onScanError(errorMessage) {
