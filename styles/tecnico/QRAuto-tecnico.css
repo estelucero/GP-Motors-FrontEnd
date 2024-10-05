@@ -33,7 +33,7 @@ main {
 }
 
 .scanner {
-    height: 700px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ main {
 .reader {
     width: 100%;
     max-width: 700px;
-    height: 500px;
+    height: 700px;
     background-color: var(--celeste);
     border-radius: 10px;
     box-shadow: 0px 0px 26px -7px rgba(0, 0, 0, 1);
