@@ -1,7 +1,7 @@
 function onScanSuccess(qrMessage) {
     document.getElementById('result').innerHTML = `
         <h2>Success!</h2>
-        <p><a href="${result}">${result}</a></p>
+        <p><a href="${qrMessage}">${qrMessage}</a></p>
         `;
         // Prints result as a link inside result element
 
