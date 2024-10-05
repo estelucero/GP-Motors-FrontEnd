@@ -5,7 +5,7 @@ function onScanSuccess(qrMessage) {
         `;
         // Prints result as a link inside result element
 
-        scanner.clear();
+        html5QrcodeScanner.clear();
         // Clears scanning instance
 
         document.getElementById('reader').remove();
