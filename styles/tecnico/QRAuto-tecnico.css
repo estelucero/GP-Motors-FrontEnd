@@ -30,12 +30,12 @@ main {
   font-size: 1.5rem;
 }
 
-.scanner {
+/* .scanner {
   height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .reader {
   width: 100%;
@@ -118,7 +118,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 700px;
   padding: 20px;
 }
 
@@ -134,7 +134,7 @@ main {
 
 #reader video {
   width: 100%;
-  height: auto;
+  height: 200px;
   max-width: 488px;
 
   display: block;
