@@ -23,32 +23,34 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
 );
 html5QrcodeScanner.render(onScanSuccess, onScanError);
 
-// const html5QrCode = new Html5Qrcode("reader");
-// const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-//     document.getElementById('result').innerHTML = `
-//         <h2>Patente Leida Con Exito!</h2>
-//         <p>${decodedText}</p>
-//     `;
-//     // Detiene el escáner
-//     html5QrCode.stop().then(() => {
-//         document.getElementById('reader').remove();
-//     }).catch(err => {
-//         console.error('Error al detener el escáner: ', err);
-//     });
-// };
-// const qrCodeErrorCallback = (errorMessage) => {
-//     console.error(`Error en el escaneo: ${errorMessage}`);
-// };
 
-// const config = { fps: 30, qrbox: { width: 250, height: 250 } };
-// html5QrCode.start(
-//     { facingMode: "environment" }, 
-//     config, 
-//     qrCodeSuccessCallback,
-//     qrCodeErrorCallback
-// ).catch(err => {
-//     console.error(`Error al iniciar el escaneo: ${err}`);
-// });
+////Codigo nuevo//
+const html5QrCode = new Html5Qrcode("reader");
+const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    document.getElementById('result').innerHTML = `
+        <h2>Patente Leida Con Exito!</h2>
+        <p>${decodedText}</p>
+    `;
+    // Detiene el escáner
+    html5QrCode.stop().then(() => {
+        document.getElementById('reader').remove();
+    }).catch(err => {
+        console.error('Error al detener el escáner: ', err);
+    });
+};
+const qrCodeErrorCallback = (errorMessage) => {
+    console.error(`Error en el escaneo: ${errorMessage}`);
+};
+
+const config = { fps: 30, qrbox: { width: 250, height: 250 } };
+html5QrCode.start(
+    { facingMode: "environment" }, 
+    config, 
+    qrCodeSuccessCallback,
+    qrCodeErrorCallback
+).catch(err => {
+    console.error(`Error al iniciar el escaneo: ${err}`);
+});
 
 
 
