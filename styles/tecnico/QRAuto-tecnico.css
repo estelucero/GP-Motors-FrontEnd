@@ -85,17 +85,3 @@ main {
     display: none !important;
 
 }
-
-#qr-shaded-region {
-
-    width: 300px;
-    height: 300px;
-    inset: 200px 0px 0px 130px !important;
-    z-index: 100;
-
-}
-
-video {
-    width: 400px;
-    height: 600px;
-}
