@@ -87,8 +87,10 @@ main {
 }
 
 #qr-shaded-region {
-    width: 350px;
-    height: 350px;
-    inset: 178px !important;
+
+    width: 100px;
+    height: 300px;
+    inset: 200px 0px 0px 130px !important;
+    z-index: 100;
 
 }

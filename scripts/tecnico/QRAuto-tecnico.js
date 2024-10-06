@@ -40,7 +40,7 @@ const qrCodeErrorCallback = (errorMessage) => {
     console.error(`Error en el escaneo: ${errorMessage}`);
 };
 
-const config = { fps: 30, qrbox: { width: 350, height: 350 } };
+const config = { fps: 30, qrbox: { width: 250, height: 250 } };
 html5QrCode.start(
     { facingMode: "environment" }, 
     config, 
