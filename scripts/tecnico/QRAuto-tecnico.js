@@ -54,17 +54,17 @@ html5QrCode.start(
 
 
 ///Elimina las linea del QRScanner
-const observer = new MutationObserver((mutations) => {
-    mutations.forEach(mutation => {
-        if (mutation.type === 'childList') {
-            const qrShadedRegion = document.getElementById('qr-shaded-region');
-            if (qrShadedRegion) {
-                const divs = qrShadedRegion.querySelectorAll('div');
-                divs.forEach(div => div.remove()); // Elimina los divs
-            }
-        }
-    });
-});
+// const observer = new MutationObserver((mutations) => {
+//     mutations.forEach(mutation => {
+//         if (mutation.type === 'childList') {
+//             const qrShadedRegion = document.getElementById('qr-shaded-region');
+//             if (qrShadedRegion) {
+//                 const divs = qrShadedRegion.querySelectorAll('div');
+//                 divs.forEach(div => div.remove()); // Elimina los divs
+//             }
+//         }
+//     });
+// });
 
 // Configuración del observador
-observer.observe(document.body, { childList: true, subtree: true });
+// observer.observe(document.body, { childList: true, subtree: true });
