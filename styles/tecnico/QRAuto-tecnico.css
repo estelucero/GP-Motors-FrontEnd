@@ -81,6 +81,7 @@ main {
 }
 
 #html5-qrcode-anchor-scan-type-change {
+    /*El !important hizo que funcionara*/
     display: none !important;
 
 }
