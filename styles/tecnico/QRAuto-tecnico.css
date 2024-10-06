@@ -111,6 +111,9 @@ main {
 
 /* Estilos para el lector de QR */
 /* Estilos para el lector de QR */
+
+
+
 .scanner {
   display: flex;
   justify-content: center;
@@ -122,7 +125,7 @@ main {
 #reader {
   position: relative;
   max-width: 100%;
-  height: auto;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +136,7 @@ main {
   width: 100%;
   height: auto;
   max-width: 488px;
-  /* Tamaño máximo del video en pantallas grandes */
+
   display: block;
 }
 
@@ -150,16 +153,16 @@ main {
   box-sizing: border-box;
   inset: 0px;
   border-width: 125px 80.5px;
-  /* Ajustar según el tamaño */
+
 }
 
-/* Ajustar las esquinas del marco sombreado */
+
 #qr-shaded-region div {
   position: absolute;
   background-color: rgb(255, 255, 255);
 }
 
-/* Media Queries */
+
 @media (max-width: 768px) {
   .scanner {
     flex-direction: column;
@@ -167,12 +170,14 @@ main {
   }
 
   #reader {
-    max-width: 80%;
+    max-width: 90%;
+    height: 400px;
   }
 
   #reader video {
-    max-width: 300px;
-    /* Tamaño máximo en pantallas medianas */
+    max-width: 80%;
+
+
   }
 
   #qr-canvas {
@@ -188,15 +193,29 @@ main {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   #reader {
-    max-width: 90%;
+    max-width: 80%;
     padding: 10px;
+    height: 400px;
   }
 
   #reader video {
-    max-width: 200px;
-    /* Tamaño máximo en pantallas móviles */
+    max-width: 300px;
+
+  }
+}
+
+@media (max-width: 480px) {
+  #reader {
+    max-width: 80%;
+    padding: 10px;
+    height: 400px;
+  }
+
+  #reader video {
+    max-width: 300px;
+
   }
 
   #qr-canvas {
@@ -205,7 +224,7 @@ main {
 
   #qr-shaded-region {
     border-width: 30px 40px;
-    /* Ajuste más pequeño para pantallas móviles */
+
   }
 
   #result {
