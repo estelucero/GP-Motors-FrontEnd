@@ -94,3 +94,8 @@ main {
     z-index: 100;
 
 }
+
+video {
+    width: 400px;
+    height: 600px;
+}
