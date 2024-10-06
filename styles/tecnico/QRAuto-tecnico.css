@@ -170,8 +170,9 @@ main {
   }
 
   #reader {
-    max-width: 90%;
-    height: 400px;
+    max-width: 95%;
+    padding: 10px;
+    height: 500px;
   }
 
   #reader video {
@@ -195,9 +196,9 @@ main {
 
 @media (max-width: 650px) {
   #reader {
-    max-width: 80%;
+    max-width: 95%;
     padding: 10px;
-    height: 400px;
+    height: 500px;
   }
 
   #reader video {
@@ -208,9 +209,9 @@ main {
 
 @media (max-width: 480px) {
   #reader {
-    max-width: 80%;
+    max-width: 95%;
     padding: 10px;
-    height: 400px;
+    height: 500px;
   }
 
   #reader video {
