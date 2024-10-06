@@ -42,10 +42,29 @@ const qrCodeErrorCallback = (errorMessage) => {
 
 const config = { fps: 30, qrbox: { width: 350, height: 350 } };
 html5QrCode.start(
-    { facingMode: { exact: "environment"} }, 
+    { facingMode: "environment" }, 
     config, 
     qrCodeSuccessCallback,
     qrCodeErrorCallback
 ).catch(err => {
     console.error(`Error al iniciar el escaneo: ${err}`);
 });
+
+
+
+
+///Elimina las linea del QRScanner
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+            const qrShadedRegion = document.getElementById('qr-shaded-region');
+            if (qrShadedRegion) {
+                const divs = qrShadedRegion.querySelectorAll('div');
+                divs.forEach(div => div.remove()); // Elimina los divs
+            }
+        }
+    });
+});
+
+// Configuración del observador
+observer.observe(document.body, { childList: true, subtree: true });

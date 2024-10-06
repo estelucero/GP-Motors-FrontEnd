@@ -85,3 +85,10 @@ main {
     display: none !important;
 
 }
+
+#qr-shaded-region {
+    width: 350px;
+    height: 350px;
+    inset: 178px !important;
+
+}
