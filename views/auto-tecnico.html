@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Control Car - Inicio</title>
+  <title>Control Car - Vehiculo</title>
   <!-- Favicon -->
-  <link rel="icon" href="" type="image/x-icon" />
+  <link rel="icon" href="../assets/logos/car.png" type="image/x-icon" />
   <!-- Style-->
+  <link rel="stylesheet" href="../styles/supervisor/auto-supervisor.css" />
+  <link rel="stylesheet" href="../styles/supervisor/popup-carga-control.css" />
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
-  <link rel="stylesheet" href="../styles/supervisor/incio-supervisor.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
+  <link rel="stylesheet" href="../styles/tecnico/auto-tecnico.css" />
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <title>autos</title>
 </head>
 
 <body class="hidden-carga" id="contenido">
@@ -83,23 +86,49 @@
     </nav>
   </header>
 
-  <!-- Seccion Titulo-->
-  <section class="seccion-titulo">
-    <div class="auto-text">
-      <h1 class="texto-titulo">Bienvenido a Su <span>Cuenta</span></h1>
+  <!-- Seccion Auto -->
+  <section class="auto-info-card" id="home">
+    <div class="box-img-auto">
+      <img src="../assets/imagenes/corolla.png" />
+    </div>
+    <div class="auto-info-section">
+      <h1 class="auto-info-text titulo">PATENTE</h1>
+      <div class="auto-info-text-section">
+        <h2 class="auto-info-text-subtitulo">Marca:</h2>
+        <p class="auto-info-text" id="marca">Toyota</p>
+
+      </div>
+      <div class="auto-info-text-section">
+        <h2 class="auto-info-text-subtitulo">Modelo:</h2>
+        <p class="auto-info-text" id="modelo">Corolla</p>
+
+      </div>
+      <div class="auto-info-text-section">
+        <h2 class="auto-info-text-subtitulo">Año:</h2>
+        <p class="auto-info-text" id="anio">2024</p>
+
+      </div>
+
+      <div class="auto-info-text-section">
+        <h2 class="auto-info-text-subtitulo">Kilometraje:</h2>
+        <p class="auto-info-text" id="kilometraje">22Km</p>
+
+
+      </div>
+      <button id="save-btn" style="display: none">Guardar</button>
     </div>
   </section>
 
-  <hr class="linea-hr">
-  <!-- Seccion Autos -->
+
+  <!-- Seccion Controles -->
   <section class="section-autos">
     <div class="auto-text">
-      <h3 class="home-titulo">Vehículos <span>Registrados</span></h3>
+      <h3 class="home-titulo">Controles <span>Pendientes</span></h3>
     </div>
-    <div class="section-buscador">
+    <!-- <div class="section-buscador">
       <input type="text" id="patenteInput" placeholder="Buscar por patente..." />
       <button class="button-search" id="searchButton"><i class="bx bx-search"></i></button>
-    </div>
+    </div> -->
     <!-- Cards -->
     <div class="section-card">
       <div class="wrapper">
@@ -110,35 +139,21 @@
           <!-- Auto 1-->
 
           <!-- Auto 2 -->
-          <!-- <div class="single-box">
+          <div class="single-box">
             <div class="box-avatar-text">
               <div class="avatar">
-                <img src="../assets/imagenes/corolla.png" alt="perfil-imagen" />
+                <img src="../assets/logos/cambio_aceite.png" alt="perfil-imagen" />
               </div>
               <div class="box-text">
-                <div class="text-patente">
-                  <p class="patente-p">AA 456 BB</p>
-                </div>
-                <div class="text-flex">
-                  <p>Marca:</p>
-                  <p>Toyota</p>
-                </div>
-                <div class="text-flex">
-                  <p> Modelo:</p>
-                  <p>Corola</p>
-                </div>
-                <div class="text-flex">
-                  <p>Año de Fabricación:</p>
-                  <p>2018</p>
+                <div class="text-control">
+                  <p class="patente-p">Cambio de aceite</p>
                 </div>
               </div>
             </div>
             <div class="box-img">
-              <a href="./auto-supervisor.html"><img src="../assets/logos/edit-solid-24.png" alt=""
-                  class="user-pic-pic" /></a>
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
+              <a href="./auto-supervisor.html"><i class='icon-edit bx bx-wrench'></i></a>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -160,6 +175,19 @@
           <a href="" class="footer-i"><i class="bx bxl-youtube"></i></a>
         </div>
       </div>
+      <!-- <div class="izquierda">
+        <div class="footer-box box-column derecha">
+          <h3>Página</h3>
+          <a href="./index.html">Inicio</a>
+          <a href="#about">Sobre Nosotros</a>
+        </div>
+        <div class="footer-box box-column">
+          <h3>Contacto</h3>
+          <a href="">Teléfono</a>
+          <a href="">Mail</a>
+          <a href="">Sucursales</a>
+        </div>
+      </div> -->
     </div>
   </section>
   <!-- Copyright -->
@@ -170,8 +198,8 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
-  <script src="../scripts/supervisor/inicio-supervisor.js"></script>
-  <script src="../scripts/supervisor/buscador-supervisor.js"></script>
+  <script src="../scripts/supervisor/popup-carga-control.js"></script>
+  <script src="../scripts/supervisor/auto-supervisor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
 
 </body>
