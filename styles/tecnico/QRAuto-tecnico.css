@@ -30,12 +30,12 @@ main {
   font-size: 1.5rem;
 }
 
-/* .scanner {
+.scanner {
   height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .reader {
   width: 100%;
@@ -111,37 +111,35 @@ main {
 
 /* Estilos para el lector de QR */
 /* Estilos para el lector de QR */
-
-
-
 .scanner {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 700px;
+  height: auto;
   padding: 20px;
 }
 
 #reader {
   position: relative;
   max-width: 100%;
-  height: 400px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 #reader video {
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 488px;
-
+  /* Tamaño máximo del video en pantallas grandes */
   display: block;
 }
 
 #qr-canvas {
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 250px;
 }
 
@@ -152,16 +150,16 @@ main {
   box-sizing: border-box;
   inset: 0px;
   border-width: 125px 80.5px;
-
+  /* Ajustar según el tamaño */
 }
 
-
+/* Ajustar las esquinas del marco sombreado */
 #qr-shaded-region div {
   position: absolute;
   background-color: rgb(255, 255, 255);
 }
 
-
+/* Media Queries */
 @media (max-width: 768px) {
   .scanner {
     flex-direction: column;
@@ -169,15 +167,12 @@ main {
   }
 
   #reader {
-    max-width: 95%;
-    padding: 10px;
-    height: 500px;
+    max-width: 80%;
   }
 
   #reader video {
-    max-width: 80%;
-
-
+    max-width: 300px;
+    /* Tamaño máximo en pantallas medianas */
   }
 
   #qr-canvas {
@@ -193,29 +188,15 @@ main {
   }
 }
 
-@media (max-width: 650px) {
-  #reader {
-    max-width: 95%;
-    padding: 10px;
-    height: 500px;
-  }
-
-  #reader video {
-    max-width: 300px;
-
-  }
-}
-
 @media (max-width: 480px) {
   #reader {
-    max-width: 95%;
+    max-width: 90%;
     padding: 10px;
-    height: 500px;
   }
 
   #reader video {
-    max-width: 400px;
-
+    max-width: 200px;
+    /* Tamaño máximo en pantallas móviles */
   }
 
   #qr-canvas {
@@ -224,7 +205,7 @@ main {
 
   #qr-shaded-region {
     border-width: 30px 40px;
-
+    /* Ajuste más pequeño para pantallas móviles */
   }
 
   #result {
