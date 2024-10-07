@@ -10,19 +10,21 @@ section {
   --azul-oscuro: #132F3D;
   --blanco: white;
   --azul-claro: #79A1D5;
-  --gris: rgb(218, 218, 218)
+  --gris: rgb(218, 218, 218);
+  --azul: rgb(5, 68, 97);
 }
 
 .footer {
   background: var(--azul-oscuro);
   color: var(--gris);
-  border-top: 2px solid var(--azul-claro);
+  border-top: 4px solid var(--azul);
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 a.logo {
@@ -70,6 +72,17 @@ a.logo {
 
 .footer-box a:hover {
   color: var(--azul-claro);
+}
+
+footer-box.box-column a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-box.box-column a:hover {
+  color: #007BFF;
+  text-decoration: underline;
 }
 
 .box-column {

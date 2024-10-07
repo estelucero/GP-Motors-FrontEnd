@@ -112,7 +112,7 @@ function createAndAdjustQRShadedRegion() {
     const left = videoRect.left - readerRect.left;
 
     // Ajustar el tamaño y el inset del div para que coincida con el video
-    shadedRegion.style.width = `${width-5}px`;
+    shadedRegion.style.width = `${width}px`;
     shadedRegion.style.height = `${height}px`;
     shadedRegion.style.inset = `${top}px auto auto ${left}px`;
   }
