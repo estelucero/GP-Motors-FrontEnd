@@ -40,6 +40,10 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     }).catch(err => {
       console.error('Error al detener el escáner: ', err);
     });
+
+    setTimeout(function () {
+      window.location.href = "./auto-tecnico.html"; // Refresca la página
+    }, 1500);
   } else {
     document.getElementById('result').innerHTML = `
         <h2>Patente Erronea</h2>
@@ -52,7 +56,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     });
     setTimeout(function () {
       location.reload(); // Refresca la página
-    }, 1000);
+    }, 1500);
 
   }
 };
