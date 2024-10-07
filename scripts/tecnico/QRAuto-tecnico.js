@@ -42,7 +42,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
   } else {
     document.getElementById('result').innerHTML = `
         <h2>Patente Erronea</h2>
-        `;
+        <p>Aparace: ${decodedText} y No ${vehiculosData[0].patente}</p>`;
     // Detiene el escáner
     html5QrCode.stop().then(() => {
       document.getElementById('reader').remove();
