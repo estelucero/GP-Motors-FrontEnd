@@ -152,6 +152,7 @@ main {
     box-sizing: border-box;
     inset: 0px;
     border-width: 125px 80.5px;
+    border-radius: 20px;
 
 }
 
