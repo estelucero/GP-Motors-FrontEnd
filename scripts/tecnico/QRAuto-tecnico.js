@@ -1,4 +1,4 @@
-const vehiculosData = localStorage.getItem("vehiculoControlar");
+var vehiculosData = localStorage.getItem("vehiculoControlar");
 // function onScanSuccess(qrMessage) {
 //     document.getElementById('result').innerHTML = `
 //         <h2>Patente Leida Con Exito!</h2>
