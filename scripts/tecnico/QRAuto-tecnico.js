@@ -1,5 +1,3 @@
-var vehiculosData = JSON.parse(localStorage.getItem("vehiculoControlar"));
-console.log(vehiculosData[0].patente)
 // function onScanSuccess(qrMessage) {
 //     document.getElementById('result').innerHTML = `
 //         <h2>Patente Leida Con Exito!</h2>
@@ -29,36 +27,16 @@ console.log(vehiculosData[0].patente)
 ////Codigo nuevo//
 const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  if (decodedText.toUpperCase() === vehiculosData[0].patente) {
-    document.getElementById('result').innerHTML = `
+  document.getElementById('result').innerHTML = `
         <h2>Patente Leida Con Exito!</h2>
         <p>${decodedText}</p>
     `;
-    // Detiene el escáner
-    html5QrCode.stop().then(() => {
-      document.getElementById('reader').remove();
-    }).catch(err => {
-      console.error('Error al detener el escáner: ', err);
-    });
-
-    setTimeout(function () {
-      window.location.href = "./auto-tecnico.html"; // Refresca la página
-    }, 1500);
-  } else {
-    document.getElementById('result').innerHTML = `
-        <h2>Patente Erronea</h2>
-        <p>Aparace: ${decodedText} y No ${vehiculosData[0].patente}</p>`;
-    // Detiene el escáner
-    html5QrCode.stop().then(() => {
-      document.getElementById('reader').remove();
-    }).catch(err => {
-      console.error('Error al detener el escáner: ', err);
-    });
-    setTimeout(function () {
-      location.reload(); // Refresca la página
-    }, 1500);
-
-  }
+  // Detiene el escáner
+  html5QrCode.stop().then(() => {
+    document.getElementById('reader').remove();
+  }).catch(err => {
+    console.error('Error al detener el escáner: ', err);
+  });
 };
 const qrCodeErrorCallback = (errorMessage) => {
   console.error(`Error en el escaneo: ${errorMessage}`);
