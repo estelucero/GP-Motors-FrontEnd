@@ -1,3 +1,4 @@
+localStorage.clear();
 //Password//
 function myPassword() {
   const password = document.getElementById('logPassword');
@@ -43,11 +44,6 @@ async function login() {
     } else {
       validarTipoUsuario(data);
     }
-
-
-
-
-
   } catch (error) {
     alert("Hubo un problema con la autenticación. Inténtalo nuevamente.");
     console.error("Error:", error);
@@ -55,29 +51,27 @@ async function login() {
 }
 
 function validarTipoUsuario(response) {
-
   localStorage.setItem("usuario", JSON.stringify(response));
   if ("root" === response) {
     window.location.href = "";
-
   }
   if ("admin" === response) {
-    window.location.href = "./adminInicio.html";
+    window.location.href = "./views/adminInicio.html";
   }
   if ("supervisor" === response) {
-    window.location.href = "./inicio-supervisor.html";
+    window.location.href = "./views/inicio-supervisor.html";
   }
   if ("gerente" === response) {
     window.location.href = "";
   }
   if ("tecnico" === response) {
-    window.location.href = "./inicio-tecnico.html";
+    window.location.href = "./views/inicio-tecnico.html";
   }
 }
 
 document.getElementById('login-btn').addEventListener('click', function (e) {
-  e.preventDefault(); // Evita que se recargue la página
-  login();            // Llama a la función login
+  e.preventDefault();
+  login();
 });
 
 
