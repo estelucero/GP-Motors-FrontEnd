@@ -29,7 +29,7 @@ console.log(vehiculosData[0].patente)
 ////Codigo nuevo//
 const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  if (decodedText.toUpperCase() === vehiculosData[0].patente) {
+  if (decodedText.toUpperCase() === vehiculosData[0].patente.toUpperCase()) {
     document.getElementById('result').innerHTML = `
         <h2>Patente Leida Con Exito!</h2>
         <p>${decodedText}</p>
