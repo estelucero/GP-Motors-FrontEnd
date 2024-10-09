@@ -42,7 +42,7 @@ async function login() {
     if (data === false) {
       alert("Contraseña o Email erronea");
     } else {
-      validarTipoUsuario(data);
+      validarTipoUsuario(data[3]);
     }
   } catch (error) {
     alert("Hubo un problema con la autenticación. Inténtalo nuevamente.");
