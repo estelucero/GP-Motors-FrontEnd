@@ -14,6 +14,22 @@
   --azul: rgb(121, 161, 213);
 }
 
+.qr-logo {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.qr-logo a {
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 main {
   display: flex;
   justify-content: center;
