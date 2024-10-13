@@ -117,6 +117,14 @@ input {
   box-shadow: 0px 0px 26px -13px rgba(0, 0, 0, 1);
 }
 
+.mensaje-no-vehiculos {
+  display: none;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+}
+
 p.num {
   color: orange;
   background-color: white;
@@ -357,6 +365,10 @@ span.dot {
   .no-vehiculos i {
     font-size: 2.5rem;
   }
+
+  .mensaje-no-vehiculos {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -366,5 +378,9 @@ span.dot {
     align-items: center;
     font-size: 1.6rem;
 
+  }
+
+  .mensaje-no-vehiculos {
+    font-size: 1rem;
   }
 }

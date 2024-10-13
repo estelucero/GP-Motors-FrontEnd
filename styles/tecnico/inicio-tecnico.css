@@ -266,6 +266,14 @@ span.dot {
   margin-bottom: 10px;
 }
 
+.mensaje-no-vehiculos {
+  display: none; 
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+}
+
 /* Responsive */
 
 @media (max-width: 700px) {
@@ -346,6 +354,10 @@ span.dot {
   .no-vehiculos i {
     font-size: 2.5rem;
   }
+
+  .mensaje-no-vehiculos {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -354,6 +366,9 @@ span.dot {
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
+  }
 
+  .mensaje-no-vehiculos {
+    font-size: 1rem;
   }
 }

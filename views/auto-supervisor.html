@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
+  <link rel="stylesheet" href="../styles/supervisor/historial-controles.css" />
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <title>autos</title>
@@ -118,22 +119,21 @@
     </div>
   </section>
 
-
-  <!-- Seccion Alertas -->
+  <!-- Seccion Control -->
   <section class="section-alertas-titulo">
     <div class="alertas-titulo">
-      <h3>Tus <span>Controles</span></h3>
+      <h3>Cargar <span>Controles</span></h3>
     </div>
     <!-- Cards -->
     <div class="alertas-section">
       <div class="alertas-section-cards">
         <div class="alertas" id="alertas">
-          <!-- Agregar Alerta -->
+          <!-- Agregar Control -->
           <button class="button-agregar-alerta" id="show-car">
             <div class="centrar-div">
               <div class="agregar-alerta">
                 <img src="../assets/logos/mas.png" alt="" class="user-pic-add" />
-                <p>Agregar Alerta</p>
+                <p>Agregar Control</p>
               </div>
             </div>
           </button>
@@ -142,9 +142,9 @@
             <div class="popup">
               <div class="close-btn">&times;</div>
               <div class="form">
-                <h2>Cargar Alerta</h2>
+                <h2>Cargar Control</h2>
                 <div class="form-element form_personal">
-                  <label for="campo_rubro">Tipo de Alerta</label>
+                  <label for="campo_rubro">Tipo de Control</label>
                   <select id="campo_rubro" name="DesplegableRubro">
                     <option value="" disabled selected>Seleccione</option>
                     <option value="aceite">Cambio de aceite</option>
@@ -174,9 +174,6 @@
                     </div>
                   </div>
                 </div>
-
-
-
                 <div class="form-element form-div">
                   <button id="guardar-btn" class="btn-form">Guardar</button>
                   <button class="btn-form">Cancelar</button>
@@ -184,187 +181,75 @@
               </div>
             </div>
           </div>
-          <!-- Alerta 1-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/cambio_aceite.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Aceite</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 2 -->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_neumaticos.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Neumaticos</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 3-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/vtv.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>VTV</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 4-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/servicio_completo.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Servicio Completo</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 5-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_bateria.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Bateria</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 6-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_escape.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Caño de Escape</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 7-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_refrig.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Sistema de Enfriamiento</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>Fecha de alerta:</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 8-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/viaje.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Viaje Programado</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
-          <!-- Alerta 9-->
-          <!-- <div class="alerta">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_fluidos.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p>Nivel de Fluidos</p>
-                </div>
-                <div class="text-flex">
-                  <p>Fecha de alerta:</p>
-                  <p>26/6/2011</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Historial de Controles -->
+  <div class="auto-text">
+    <h3 class="control-titulo">Historial de <span>Controles</span></h3>
+  </div>
+
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-controles">
+        <input type="text" id="filter-id" placeholder="Buscar por ID">
+        <input type="text" id="filter-tecnico" placeholder="Buscar por Técnico">
+        <div class="filtros-column">
+          <label for="control-select">Control:</label>
+          <select id="control-select" class="custom-select">
+            <option value="">Todos</option>
+            <option value="Cambio de aceite">Cambio de aceite</option>
+            <option value="Revisión de neumático">Revisión de neumático</option>
+            <option value="Verificación técnica vehicular">Verificación técnica vehicular</option>
+            <option value="Revisión caño de escape">Revisión caño de escape</option>
+            <option value="Revisión de batería">Revisión de batería</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion de Controles -->
+  <section class="seccion-control">
+    <div class="table-control">
+      <div class="table-body">
+        <table>
+          <thead>
+            <tr>
+              <th> id </th>
+              <th> Control </th>
+              <th> Técnico </th>
+              <th> Fecha Realizado </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td>1</td>
+              <td> <img src="../assets/logos/cambio_aceite.png" alt=""> <p>Cambio de aceite</p></td>
+              <td> Cosme Fulanito </td>
+              <td> 23/05/2023 </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td> <img src="../assets/logos/revision_bateria.png" alt=""> <p>Revisión de batería</p></td>
+              <td> Cosme Fulanito </td>
+              <td> 08/05/2024 </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td> <img src="../assets/logos/revision_escape.png" alt=""> <p>Revisión caño de escape</p></td>
+              <td> Cosme Fulanito </td>
+              <td> 09/09/2024 </td>
+            </tr>
+            <tr> -->
+          </tbody>
+        </table>
+        <p id="no-controles-message" class="mensaje-no-controles" style="display: none;">No hay controles cargados</p>
+        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
       </div>
     </div>
   </section>
@@ -398,6 +283,7 @@
   <script src="../scripts/supervisor/popup-carga-control.js"></script>
   <script src="../scripts/supervisor/auto-supervisor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
+  <script src="../scripts/supervisor/historial-controles.js"></script>
 
 </body>
 

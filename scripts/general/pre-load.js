@@ -8,5 +8,5 @@ window.addEventListener('DOMContentLoaded', function () {
    
     $('#preloader').fadeOut(); 
     document.body.classList.remove('hidden-carga'); 
-  }, 700); 
+  }, 800); 
 });

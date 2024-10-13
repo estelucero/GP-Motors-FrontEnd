@@ -122,6 +122,12 @@ const vehiculosRegistrados = recuperarVehiculosRegistrados();
 console.log(vehiculosRegistrados);
 function enlistarAutos() {
   const contenedor = document.getElementById("notifications");
+
+  if (vehiculosRegistrados === null || vehiculosRegistrados.length === 0 || vehiculosRegistrados === false) {
+    const noVehiclesMessage = document.getElementById("no-vehicles-message");
+    noVehiclesMessage.style.display = 'block';
+    return;
+  }
   vehiculosRegistrados.forEach((vehiculo) => {
     const singleBox = document.createElement("div");
     singleBox.classList.add("single-box");

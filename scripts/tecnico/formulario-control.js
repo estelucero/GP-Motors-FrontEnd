@@ -1,15 +1,16 @@
 var control = JSON.parse(localStorage.getItem("controlGuardado"));
 var vehiculosData = JSON.parse(localStorage.getItem("vehiculoControlar"));
+var tecnico = JSON.parse(localStorage.getItem("usuario"));
 console.log(control);
 console.log(vehiculosData)
 //Post de la reparacion//
 document.getElementById('guardar-btn').addEventListener('click', function () {
     const patente = control.patente;  // Debes obtener este valor de algún campo en tu formulario
-    const idTecnico = 2;  // Valor por defecto o seleccionado en el formulario
+    const idTecnico = tecnico[0];  // Valor por defecto o seleccionado en el formulario
     const descripcion = document.getElementById('observaciones').value;
     const fechaRealizacion = new Date().toISOString().split('T')[0];  // Fecha actual
     const piezas = {
-        "1": 3
+        "1": 1
 
     }
     const concesionario = 1;  // Concesionario ID fijo o seleccionado

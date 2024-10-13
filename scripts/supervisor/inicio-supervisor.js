@@ -42,6 +42,14 @@ const vehiculosRegistrados = recuperarVehiculosRegistrados();
 console.log(vehiculosRegistrados);
 function enlistarAutos() {
   const contenedor = document.getElementById("notifications");
+  const noVehiclesMessage = document.getElementById("no-vehicles-message");
+
+  if (!vehiculosRegistrados || vehiculosRegistrados.length === 0) {
+    noVehiclesMessage.style.display = 'block';
+    return;
+  }
+
+  noVehiclesMessage.style.display = 'none';
   vehiculosRegistrados.forEach((vehiculo) => {
     const singleBox = document.createElement("div");
     singleBox.classList.add("single-box");

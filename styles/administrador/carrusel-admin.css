@@ -21,6 +21,11 @@
   box-sizing: border-box;
 }
 
+.sin-decoracion {
+  text-decoration: none;
+  color: inherit;
+}
+
 .seccion-menu-carrusel {
   padding: 20px;
   display: flex;

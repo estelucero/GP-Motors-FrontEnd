@@ -25,6 +25,9 @@ async function obtenerVehiculosRegistrados() {
     console.log("Datos de vehículos registrados guardados en el localStorage");
   } catch (error) {
     console.error("Hubo un problema con la solicitud:", error);
+    const noVehiclesMessage = document.getElementById("no-vehicles-message");
+
+    noVehiclesMessage.style.display = 'block';
   }
 }
 obtenerVehiculosRegistrados();
@@ -32,15 +35,24 @@ obtenerVehiculosRegistrados();
 //Enlisto autos
 function recuperarVehiculosRegistrados() {
   const vehiculosData = localStorage.getItem("vehiculosRegistrados");
-
   const vehiculos = vehiculosData ? JSON.parse(vehiculosData) : null;
 
   return vehiculos;
 }
 const vehiculosRegistrados = recuperarVehiculosRegistrados();
 console.log(vehiculosRegistrados);
+
 function enlistarAutos() {
   const contenedor = document.getElementById("notifications");
+
+  // Verificar si no hay vehículos registrados
+  if (vehiculosRegistrados === null || vehiculosRegistrados.length === 0 || vehiculosRegistrados === false) {
+    const noVehiclesMessage = document.getElementById("no-vehicles-message");
+
+    noVehiclesMessage.style.display = 'block';
+    return;
+  }
+
   vehiculosRegistrados.forEach((vehiculo) => {
     const singleBox = document.createElement("div");
     singleBox.classList.add("single-box");

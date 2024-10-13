@@ -148,10 +148,10 @@ async function obtenerControles() {
 
     // Convierte la respuesta a JSON
     const controles = await response.json();
-    
+
     // Guarda los datos en el localStorage
     localStorage.setItem("controles-pendientes", JSON.stringify(controles));
-    
+
     console.log("Controles guardados en el localStorage");
     return controles;
   } catch (error) {
@@ -163,7 +163,7 @@ async function obtenerControles() {
 async function enlistarControles() {
   const contenedor = document.getElementById("alertas");
   const controlesGuardados = await obtenerControles();
-  
+
   // Verifica que hay controles pendientes antes de enlistar
   if (controlesGuardados && controlesGuardados.controles_pendientes) {
     controlesGuardados.controles_pendientes.forEach((control) => {
@@ -173,7 +173,7 @@ async function enlistarControles() {
       singleBox.innerHTML = `
         <div class="box-avatar-text">
           <div class="avatar">
-            <img src="../assets/logos/cambio_aceite.png" alt="perfil-imagen" />
+            <img src="../assets/logos/${control.control}.png" alt="perfil-imagen" />
           </div>
           <div class="box-text">
             <div class="text-patente">
@@ -182,10 +182,10 @@ async function enlistarControles() {
           </div>
         </div>
         <div class="box-img">
-          <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic eliminar-control" />
+          <a href=""><img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic eliminar-control" /></a>
         </div>
       `;
-      
+
       contenedor.appendChild(singleBox);
     });
   } else {
@@ -196,7 +196,8 @@ async function enlistarControles() {
 // Orquesta Controles
 async function manejarControles() {
   await enlistarControles(); // Espera a que se complete enlistarControles
-  eliminarControl(); // Luego llama a eliminarControl
+  await eliminarControl(); // Luego llama a eliminarControl
+  await obtenerControlesTerminados();
   window.scrollTo(0, 0);
 }
 
@@ -205,28 +206,32 @@ manejarControles();
 // Eliminar control
 function eliminarControl() {
   const botonesEliminar = document.querySelectorAll(".eliminar-control");
-  
+  const controles = JSON.parse(localStorage.getItem("controles-pendientes"));
   botonesEliminar.forEach((boton) => {
     boton.addEventListener("click", async function () {
+      event.preventDefault(); // Prevenir el comportamiento predeterminado
       const alerta = this.closest(".alerta");
       console.log("ELIMINO LOS CONTROLES");
       const control = alerta.querySelector(".control-p").textContent;
       console.log(autoGuardado.patente);
-      
+
       // URL del endpoint para eliminar el vehículo
       const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarControlesPendientes?patente=${autoGuardado.patente}&control=${control}`;
-      
+
       try {
         // Hacer la solicitud DELETE al endpoint
         const response = await fetch(urlDeleteVehiculo, {
           method: "DELETE",
         });
-        
+
         if (response.ok) {
           // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
           alerta.remove();
+          console.log(controles.controles_pendientes)
+          nuevosControles = controles.controles_pendientes.filter(eliminar => eliminar.control !== control)
+          localStorage.setItem("controles-pendientes", JSON.stringify(nuevosControles));
           console.log(`Control con patente ${control} eliminado del sistema`);
-          location.reload(true);
+          //location.reload(true);
         } else {
           // Si hay un error, mostrar un mensaje
           console.error(`Error al eliminar el control con patente ${control}: ${response.statusText}`);
@@ -234,8 +239,99 @@ function eliminarControl() {
         }
       } catch (error) {
         console.error("Error en la solicitud de eliminación:", error);
-        alert("Ocurrió un error al intentar eliminar el vehículo.");
+        //alert("Ocurrió un error al intentar eliminar el vehículo.");
       }
     });
   });
 }
+//Obtener controles terminados//
+async function obtenerControlesTerminados() {
+  const url = `https://aaaaa-deploy-back.vercel.app/users/verControlesVehiculosPorConcesionario?id_concesionario=1`;
+
+  try {
+    // Realiza la solicitud GET
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Verifica si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error("Error al obtener los datos de los vehículos");
+    }
+
+    // Convierte la respuesta a JSON
+    const controlesTerminados = await response.json();
+    ///AMOR ESCRIBI ACA PARA QUE APAREZCA EL TEXTO EN EL HISTORIAL DE CONTROLES
+    if (controlesTerminados === false) {
+      return;
+    }
+    controlesTerminadosPatente = controlesTerminados.filter(control => control.patente_vehiculo.includes(autoGuardado.patente))
+
+    await enlistarControlesTerminados(controlesTerminadosPatente)
+
+    console.log(controlesTerminados);
+  } catch (error) {
+    console.error("Hubo un problema con la solicitud:", error);
+  }
+}
+//Enlistar controles terminados//
+async function enlistarControlesTerminados(controlesTerminados) {
+  const tbody = document.querySelector('.table-body table tbody'); // Seleccionamos el tbody
+
+  controlesTerminados.forEach((control) => {
+
+    const fila = document.createElement('tr');
+
+
+    const celdaId = document.createElement('td');
+    celdaId.textContent = control.id_control;
+    fila.appendChild(celdaId);
+
+
+    const celdaControl = document.createElement('td');
+    celdaControl.innerHTML = `<img src="../assets/logos/${control.nombre_control}.png" alt="">
+      <p>${control.nombre_control}</p>`;
+    fila.appendChild(celdaControl);
+
+
+
+    const celdaTecnico = document.createElement('td');
+    celdaTecnico.textContent = control.nombre_tecnico;
+    fila.appendChild(celdaTecnico);
+
+
+
+    const celdaFechaRealizado = document.createElement('td');
+    celdaFechaRealizado.innerHTML = `<strong>${control.fecha_control}</strong>`;
+    fila.appendChild(celdaFechaRealizado);
+
+
+
+
+
+
+    tbody.appendChild(fila);
+  });
+}
+
+//Enlistar el select del filtro
+
+function enlistarControlesSelect(controles_disponibles) {
+  const selectElemento = document.getElementById("control-select");
+  console.log(controles_disponibles)
+  selectElemento.innerHTML =
+    '<option value=""  selected>Todos</option>';
+
+  controles_disponibles.forEach((control) => {
+    const opcion = document.createElement("option");
+    opcion.value = control;
+    opcion.textContent = control;
+
+    selectElemento.appendChild(opcion);
+  });
+}
+
+enlistarControlesSelect(controles_disponibles);

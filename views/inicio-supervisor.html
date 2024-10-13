@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/supervisor/incio-supervisor.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
+  <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
+
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
@@ -89,8 +91,27 @@
       <h1 class="texto-titulo">Bienvenido a Su <span>Cuenta</span></h1>
     </div>
   </section>
-
   <hr class="linea-hr">
+
+   <!-- Seccion Menu Carrusel -->
+  <section class="seccion-menu-carrusel">
+    <div class="wrapper-carrusel wrapper-carrusel-none">
+      <i id="left" class='icon-flecha bx bx-chevron-left'></i>
+      <ul class="carrusel">
+        <a href="./inicio-supervisor.html" class="sin-decoracion"><li class="card-carrusel">
+          <div class="img"><i class='bx bx-car' draggable="false"></i></div>
+          <h2>Cargar Control</h2>
+        </li></a>
+        <a href="./controles-supervisor.html" class="sin-decoracion"><li class="card-carrusel">
+          <div class="img"><i class='bx bx-cog' draggable="false"></i></div>
+          <h2>Controles</h2>
+        </li></a>
+      </ul>
+      <i id="right" class='icon-flecha bx bx-chevron-right'></i>
+    </div>
+  </section>
+  <hr class="linea-hr">
+  
   <!-- Seccion Autos -->
   <section class="section-autos">
     <div class="auto-text">
@@ -104,6 +125,7 @@
     <div class="section-card">
       <div class="wrapper">
         <div class="notifications" id="notifications">
+          <p id="no-vehicles-message" class="mensaje-no-vehiculos">No hay vehículos registrados</p>
           <!-- Agregar Auto -->
 
 
@@ -171,6 +193,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
   <script src="../scripts/supervisor/inicio-supervisor.js"></script>
+  <script src="../scripts/administrador/carrusel-admin.js"></script>
   <script src="../scripts/supervisor/buscador-supervisor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
 

@@ -42,6 +42,7 @@ async function login() {
     if (data === false) {
       alert("Contraseña o Email erronea");
     } else {
+      localStorage.setItem("usuario", JSON.stringify(data));
       validarTipoUsuario(data[3]);
     }
   } catch (error) {
@@ -51,7 +52,7 @@ async function login() {
 }
 
 function validarTipoUsuario(response) {
-  localStorage.setItem("usuario", JSON.stringify(response));
+
   if ("root" === response) {
     window.location.href = "";
   }
@@ -62,7 +63,7 @@ function validarTipoUsuario(response) {
     window.location.href = "./views/inicio-supervisor.html";
   }
   if ("gerente" === response) {
-    window.location.href = "";
+    window.location.href = "./views/inicio-gerente.html";
   }
   if ("tecnico" === response) {
     window.location.href = "./views/inicio-tecnico.html";
