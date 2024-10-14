@@ -309,8 +309,10 @@ async function enlistarControlesTerminados(controlesTerminados) {
     fila.appendChild(celdaFechaRealizado);
 
 
-
-
+    const celdaObservaciones = document.createElement('td');
+    celdaObservaciones.classList.add('wrap-text');
+    celdaObservaciones.textContent = control.observaciones || '-';
+    fila.appendChild(celdaObservaciones);
 
 
     tbody.appendChild(fila);

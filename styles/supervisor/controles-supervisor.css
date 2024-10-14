@@ -349,6 +349,14 @@ tbody tr:hover {
   height: auto;
 }
 
+.wrap-text {
+  white-space: normal; 
+  word-wrap: break-word; 
+  word-break: break-word; 
+  max-width: 200px; 
+  overflow-wrap: break-word;
+}
+
 /* Responsive */
 
 @media (max-width: 1000px) {
