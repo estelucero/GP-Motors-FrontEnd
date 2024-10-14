@@ -268,7 +268,7 @@ async function obtenerControlesTerminados() {
     if (controlesTerminados === false) {
       return;
     }
-    controlesTerminadosPatente = controlesTerminados.filter(control => control.patente_vehiculo.includes(autoGuardado.patente))
+    const controlesTerminadosPatente = controlesTerminados.filter(control => control.patente_vehiculo.includes(autoGuardado.patente))
 
     await enlistarControlesTerminados(controlesTerminadosPatente)
 
