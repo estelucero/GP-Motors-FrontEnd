@@ -57,7 +57,7 @@ async function enlistarTodosControles(controlesTerminados) {
 
 
     const celdaControl = document.createElement('td');
-    celdaControl.innerHTML = `<img src="../assets/logos/${control.nombre_control}.png" alt="">
+    celdaControl.innerHTML = `<img src="../assets/logos/${control.nombre_control.toLowerCase()}.png" alt="">
         <p>${control.nombre_control}</p>`;
     fila.appendChild(celdaControl);
 
