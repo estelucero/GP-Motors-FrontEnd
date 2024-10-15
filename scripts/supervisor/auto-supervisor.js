@@ -62,7 +62,7 @@ obtenerControlesDisponibles();
 const controles_disponibles_lista = JSON.parse(
   localStorage.getItem("controles-disponibles")
 );
-controles_disponibles = controles_disponibles_lista.controles;
+const controles_disponibles = controles_disponibles_lista.controles;
 
 const selectElemento = document.getElementById("campo_rubro");
 
