@@ -122,24 +122,25 @@ document.querySelector("#show-car").addEventListener("click", function () {
 });
 
 // Agregar evento a los botones de edición
-document.querySelectorAll(".box-img a").forEach(function (editarBtn) {
-  editarBtn.addEventListener("click", function (e) {
-    const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
-    e.preventDefault(); // Evitar el comportamiento por defecto del ancla
+function listenerEdicion() {
+  document.querySelectorAll(".box-img a").forEach(function (editarBtn) {
+    editarBtn.addEventListener("click", function (e) {
+      const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
+      e.preventDefault(); // Evitar el comportamiento por defecto del ancla
 
-    // Obtener los datos del vehículo
-    const datosVehiculo = {
-      patente: this.closest(".single-box").querySelector(".patente-p").textContent.trim(),
-      marca: this.closest(".single-box").querySelectorAll(".text-flex p")[1].textContent.trim(),
-      modelo: this.closest(".single-box").querySelectorAll(".text-flex p")[3].textContent.trim(),
-      fechaFabricacion: this.closest(".single-box").querySelectorAll(".text-flex p")[5].textContent.trim(),
-      cantKm: autoGuardado.km // Ejemplo: puedes agregar este dato en tu HTML si lo tienes
-    };
+      // Obtener los datos del vehículo
+      const datosVehiculo = {
+        patente: this.closest(".single-box").querySelector(".patente-p").textContent.trim(),
+        marca: this.closest(".single-box").querySelectorAll(".text-flex p")[1].textContent.trim(),
+        modelo: this.closest(".single-box").querySelectorAll(".text-flex p")[3].textContent.trim(),
+        fechaFabricacion: this.closest(".single-box").querySelectorAll(".text-flex p")[5].textContent.trim(),
+        cantKm: autoGuardado.km // Ejemplo: puedes agregar este dato en tu HTML si lo tienes
+      };
 
-    abrirPopup(true, datosVehiculo); // true indica que es una edición
+      abrirPopup(true, datosVehiculo); // true indica que es una edición
+    });
   });
-});
-
+}
 //Guardar auto que clickea
 function guardarEdicionVehiculo() {
   const botonesEditar = document.querySelectorAll(".editar");

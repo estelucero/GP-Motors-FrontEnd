@@ -23,6 +23,8 @@ async function obtenerVehiculosRegistrados() {
     localStorage.setItem("vehiculosRegistrados", JSON.stringify(vehiculosData));
 
     console.log("Datos de vehículos registrados guardados en el localStorage");
+    enlistarAutos();
+    ocultarPreloader()
   } catch (error) {
     console.error("Hubo un problema con la solicitud:", error);
     const noVehiclesMessage = document.getElementById("no-vehicles-message");
@@ -39,10 +41,10 @@ function recuperarVehiculosRegistrados() {
 
   return vehiculos;
 }
-const vehiculosRegistrados = recuperarVehiculosRegistrados();
-console.log(vehiculosRegistrados);
 
 function enlistarAutos() {
+  const vehiculosRegistrados = recuperarVehiculosRegistrados();
+  console.log(vehiculosRegistrados);
   const contenedor = document.getElementById("notifications");
 
   // Verificar si no hay vehículos registrados
@@ -90,7 +92,7 @@ function enlistarAutos() {
   });
 }
 
-enlistarAutos();
+
 
 
 //Guardar auto que clickea

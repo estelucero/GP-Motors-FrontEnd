@@ -199,8 +199,9 @@ async function obtenerControlesDisponibles() {
 
 
 async function orquesta() {
-  obtenerControlesDisponibles()
+  obtenerControlesDisponibles();
   await obtenerControles();
+  ocultarPreloader();
 
 }
 orquesta();

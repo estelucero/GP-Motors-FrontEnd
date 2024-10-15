@@ -1,6 +1,9 @@
 const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
 console.log(autoGuardado);
 
+
+
+
 // Seleccionar los elementos del HTML donde se insertará la información/////////////////
 const patenteElement = document.querySelector(".titulo");
 const marcaElement = document.querySelector(
@@ -49,6 +52,8 @@ async function obtenerControlesDisponibles() {
     localStorage.setItem("controles-disponibles", JSON.stringify(datos));
 
     console.log("Datos guardados en localStorage:", datos);
+    selectControlesDisponibles();
+    enlistarControlesSelect(datos.controles);
   } catch (error) {
     // Manejo de errores
     console.error("Hubo un error al obtener los datos:", error);
@@ -57,25 +62,42 @@ async function obtenerControlesDisponibles() {
 
 obtenerControlesDisponibles();
 
-//Poner en el select los controles disponibles///
+//Poner en el select los controles disponibles para Post///
+function selectControlesDisponibles() {
+  const controles_disponibles_lista = JSON.parse(
+    localStorage.getItem("controles-disponibles")
+  );
+  const controles_disponibles = controles_disponibles_lista.controles;
 
-const controles_disponibles_lista = JSON.parse(
-  localStorage.getItem("controles-disponibles")
-);
-const controles_disponibles = controles_disponibles_lista.controles;
+  const selectElemento = document.getElementById("campo_rubro");
 
-const selectElemento = document.getElementById("campo_rubro");
+  selectElemento.innerHTML =
+    '<option value="" disabled selected>Seleccione</option>';
 
-selectElemento.innerHTML =
-  '<option value="" disabled selected>Seleccione</option>';
+  controles_disponibles.forEach((control) => {
+    const opcion = document.createElement("option");
+    opcion.value = control;
+    opcion.textContent = control;
 
-controles_disponibles.forEach((control) => {
-  const opcion = document.createElement("option");
-  opcion.value = control;
-  opcion.textContent = control;
+    selectElemento.appendChild(opcion);
+  });
+}
+//Enlistar el select del filtro con Controles Disponibles//
 
-  selectElemento.appendChild(opcion);
-});
+function enlistarControlesSelect(controles_disponibles) {
+  const selectElemento = document.getElementById("control-select");
+  console.log(controles_disponibles)
+  selectElemento.innerHTML =
+    '<option value=""  selected>Todos</option>';
+
+  controles_disponibles.forEach((control) => {
+    const opcion = document.createElement("option");
+    opcion.value = control;
+    opcion.textContent = control;
+
+    selectElemento.appendChild(opcion);
+  });
+}
 
 /////Post de los Controles///
 
@@ -199,6 +221,8 @@ async function manejarControles() {
   await eliminarControl(); // Luego llama a eliminarControl
   await obtenerControlesTerminados();
   window.scrollTo(0, 0);
+
+  ocultarPreloader();
 }
 
 manejarControles();
@@ -319,21 +343,3 @@ async function enlistarControlesTerminados(controlesTerminados) {
   });
 }
 
-//Enlistar el select del filtro
-
-function enlistarControlesSelect(controles_disponibles) {
-  const selectElemento = document.getElementById("control-select");
-  console.log(controles_disponibles)
-  selectElemento.innerHTML =
-    '<option value=""  selected>Todos</option>';
-
-  controles_disponibles.forEach((control) => {
-    const opcion = document.createElement("option");
-    opcion.value = control;
-    opcion.textContent = control;
-
-    selectElemento.appendChild(opcion);
-  });
-}
-
-enlistarControlesSelect(controles_disponibles);
