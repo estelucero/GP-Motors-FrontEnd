@@ -174,7 +174,7 @@ function guardarEdicionVehiculo() {
     });
   });
 }
-guardarEdicionVehiculo();
+
 
 ////////////// Verifico para las clases validas////////////
 function verificarClasesValidasFormulario() {

@@ -25,6 +25,7 @@ async function obtenerVehiculosRegistrados() {
     console.log("Datos de vehículos registrados guardados en el localStorage");
     enlistarAutos();
     eliminarVehiculo();
+    guardarEdicionVehiculo();
     listenerEdicion();
     ocultarPreloader();
   } catch (error) {
