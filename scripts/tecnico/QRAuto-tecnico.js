@@ -1,5 +1,5 @@
 var vehiculosData = JSON.parse(localStorage.getItem("vehiculoControlar"));
-console.log(vehiculosData[0].patente)
+console.log(vehiculosData[0].patente);
 // function onScanSuccess(qrMessage) {
 //     document.getElementById('result').innerHTML = `
 //         <h2>Patente Leida Con Exito!</h2>

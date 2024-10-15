@@ -24,6 +24,7 @@ async function obtenerVehiculosRegistrados() {
 
     console.log("Datos de vehículos registrados guardados en el localStorage");
     enlistarAutos();
+    guardarControlesVehiculo();
     ocultarPreloader()
   } catch (error) {
     console.error("Hubo un problema con la solicitud:", error);
@@ -83,7 +84,7 @@ function enlistarAutos() {
             </div>
           </div>
           <div class="box-img">
-            <a href="./auto-tecnico.html"><img src="../assets/logos/box-control.png" alt="" class="user-pic-pic controlar" /></a>
+            <a><i class='user-qr bx bx-qr-scan'></i></a>
             
           </div>
         `;
@@ -92,7 +93,7 @@ function enlistarAutos() {
   });
 }
 
-
+//<img src="../assets/logos/qr.png" alt="" class="user-qr controlar" />
 
 
 //Guardar auto que clickea
@@ -128,4 +129,3 @@ function guardarControlesVehiculo() {
     });
   });
 }
-guardarControlesVehiculo();
