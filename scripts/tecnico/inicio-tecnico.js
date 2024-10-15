@@ -84,7 +84,7 @@ function enlistarAutos() {
             </div>
           </div>
           <div class="box-img">
-            <a><i class='user-qr bx bx-qr-scan'></i></a>
+            <a><i class='user-qr bx bx-qr-scan controlar'></i></a>
             
           </div>
         `;

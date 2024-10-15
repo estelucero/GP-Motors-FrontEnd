@@ -41,8 +41,7 @@ function mostrarVehiculosFiltrados(vehiculosFiltrados) {
             </div>
           </div>
           <div class="box-img">
-            <a href="./auto-supervisor.html"><img src="../assets/logos/box-control.png" alt="" class="user-pic-pic controlar" /></a>
-            
+            <a><i class='user-qr bx bx-qr-scan controlar'></i></a>
           </div>
         `;
 
