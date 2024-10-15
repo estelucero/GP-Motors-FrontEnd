@@ -96,3 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+  const options = document.getElementById('id_export_file-options');
+  options.classList.add('active');
+});

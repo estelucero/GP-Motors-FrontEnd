@@ -117,12 +117,12 @@
   <hr class="linea-hr">
 
   <!-- Seccion Tabla de Controles -->
-  <section id="titulo-controles">
-    <div class="auto-text">
+   <section id="titulo-controles">
+    <div class="auto-text" >
       <h3 class="control-titulo">Tabla de <span>Controles</span></h3>
     </div>
-  </section>
-
+   </section>
+  
   <!-- Seccion Filtro -->
   <section class="seccion-filtro" id="id-filtro">
     <div class="table-header">
@@ -160,13 +160,12 @@
   <section class="seccion-control" id="section-control">
     <div class="table-control">
       <div class="export_file">
-        <label for="export-file" class="export-file-btn" title="Exportar Archivo"></label>
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
         <input type="checkbox" id="export-file">
-        <div class="export_file-options">
+        <div class="export_file-options" id="id_export_file-options">
           <label>Exportar como &nbsp; &#10140;</label>
-          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
-              alt=""></label>
-          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/pdf.png" alt=""></label>
+          <label for="export-file" id="toCSV" >CSV <img src="../assets/logos/csv.png" alt=""></label>
           <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
         </div>
       </div>
