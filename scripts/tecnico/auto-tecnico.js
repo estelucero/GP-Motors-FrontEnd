@@ -90,3 +90,4 @@ function guardarControlesVehiculo() {
   });
 }
 guardarControlesVehiculo();
+ocultarPreloader();

@@ -58,3 +58,4 @@ function eliminarcControl() {
     vehiculosData[1] = vehiculosData[1].filter(item => item.id_control !== control.id_control)
     localStorage.setItem('vehiculoControlar', JSON.stringify(vehiculosData));
 }
+ocultarPreloader();

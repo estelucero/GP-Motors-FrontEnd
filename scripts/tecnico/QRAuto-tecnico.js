@@ -145,3 +145,4 @@ window.onload = createAndAdjustQRShadedRegion;
 
 // Ejecutar la función cuando se redimensione la ventana
 window.onresize = createAndAdjustQRShadedRegion;
+ocultarPreloader();
