@@ -17,7 +17,7 @@ function guardarProducto(piezaEncontrada) {
 ////Codigo nuevo//
 const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  let piezasUtilizadas = JSON.parse(localStorage.getItem('piezasUtilizadas'));
+  let piezasUtilizadas = JSON.parse(localStorage.getItem('piezasUtilizadas')) || [];
   const piezaNoRepetida = piezasUtilizadas.find(pieza => pieza.id_pieza === parseInt(decodedText, 10));
   const piezaEncontrada = respuestosData.find(pieza => pieza.id_pieza === parseInt(decodedText, 10));
 
