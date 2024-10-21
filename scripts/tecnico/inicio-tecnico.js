@@ -23,6 +23,7 @@ async function obtenerVehiculosRegistrados() {
     localStorage.setItem("vehiculosRegistrados", JSON.stringify(vehiculosData));
 
     console.log("Datos de vehículos registrados guardados en el localStorage");
+
     enlistarAutos();
     guardarControlesVehiculo();
     ocultarPreloader()

@@ -1,3 +1,4 @@
+localStorage.removeItem('piezasUtilizadas');
 var autoGuardado = JSON.parse(localStorage.getItem("vehiculoControlar"));
 var controles = JSON.parse(localStorage.getItem("vehiculoControlar"))[1];
 console.log(controles)
@@ -30,6 +31,14 @@ kilometrajeElement.textContent = `${autoGuardado[0].km} Km`;
 function enlistarControles() {
   const contenedor = document.getElementById("notifications");
   const controlesGuardados = JSON.parse(localStorage.getItem("vehiculoControlar"))[1];
+
+  // Verificar si no hay controles pendientes
+  if (controlesGuardados === null || controlesGuardados.length === 0 || controlesGuardados === false) {
+    const noControlesMensaje = document.getElementById("no-controles-pendientes");
+
+    noControlesMensaje.style.display = 'block';
+    return;
+  }
 
   // Verifica que hay controles pendientes antes de enlistar
 
@@ -89,5 +98,44 @@ function guardarControlesVehiculo() {
     });
   });
 }
+
+//Get de los vehiculos registrados
+var tecnico = JSON.parse(localStorage.getItem("usuario"));
+async function obtenerRespuestos() {
+  const url = `https://aaaaa-deploy-back.vercel.app/users/obtenerPiezasConcesionarioDB?id_concesionario=${tecnico[5]}`;
+
+  try {
+    // Realiza la solicitud GET
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Verifica si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error("Error al obtener los datos de los vehículos");
+    }
+
+    // Convierte la respuesta a JSON
+    const respuestosData = await response.json();
+
+    // Guarda los datos en el localStorage
+    localStorage.setItem("respuestosRegistrados", JSON.stringify(respuestosData));
+
+    console.log("Datos de respuestos registrados guardados en el localStorage");
+
+
+    ocultarPreloader()
+  } catch (error) {
+    console.error("Hubo un problema con la solicitud:", error);
+    const noVehiclesMessage = document.getElementById("no-vehicles-message");
+
+    noVehiclesMessage.style.display = 'block';
+  }
+}
+
+
 guardarControlesVehiculo();
-ocultarPreloader();
+obtenerRespuestos();

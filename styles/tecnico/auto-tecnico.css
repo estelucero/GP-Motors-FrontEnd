@@ -223,6 +223,26 @@ span.dot {
   color: #000;
 }
 
+.no-controles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mensaje-no-controles {
+  display: none;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+}
+
 /* Responsive */
 
 @media (max-width: 700px) {
@@ -303,6 +323,10 @@ span.dot {
   .no-vehiculos i {
     font-size: 2.5rem;
   }
+
+  .mensaje-no-controles {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -327,5 +351,9 @@ span.dot {
   .avatar img {
     width: 70px;
     margin-right: 15px;
+  }
+
+  .mensaje-no-controles {
+    font-size: 1rem;
   }
 }

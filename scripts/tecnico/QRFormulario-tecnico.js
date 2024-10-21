@@ -1,13 +1,30 @@
 var vehiculosData = JSON.parse(localStorage.getItem("vehiculoControlar"));
+var respuestosData = JSON.parse(localStorage.getItem("respuestosRegistrados"));
 console.log(vehiculosData[0].patente);
+console.log(respuestosData);
+
+//Guardar pieza en localStorage//
+function guardarProducto(piezaEncontrada) {
+  let piezasUtilizadas = JSON.parse(localStorage.getItem('piezasUtilizadas')) || [];
+
+  // Agregar el nuevo producto al array
+  piezasUtilizadas.push(piezaEncontrada);
+
+  // Guardar el array actualizado en el localStorage
+  localStorage.setItem('piezasUtilizadas', JSON.stringify(piezasUtilizadas));
+}
 
 ////Codigo nuevo//
 const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  if (decodedText.toUpperCase() === vehiculosData[0].patente.toUpperCase()) {
+  let piezasUtilizadas = JSON.parse(localStorage.getItem('piezasUtilizadas'));
+  const piezaNoRepetida = piezasUtilizadas.find(pieza => pieza.id_pieza === parseInt(decodedText, 10));
+  const piezaEncontrada = respuestosData.find(pieza => pieza.id_pieza === parseInt(decodedText, 10));
+
+  if (piezaEncontrada && piezaEncontrada.stock_actual > 0 && !piezaNoRepetida) {
     document.getElementById('result').innerHTML = `
-        <h2>Patente Leida Con Exito!</h2>
-        <p>${decodedText}</p>
+        <h2>Producto Leído Con Éxito!</h2>
+        <p>${piezaEncontrada.nombre}</p>
     `;
     // Detiene el escáner
     html5QrCode.stop().then(() => {
@@ -15,14 +32,40 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     }).catch(err => {
       console.error('Error al detener el escáner: ', err);
     });
-
+    guardarProducto(piezaEncontrada);
     setTimeout(function () {
-      window.location.href = "./auto-tecnico.html"; // Refresca la página
+      window.location.href = "./formulario-control.html"; // Refresca la página
+    }, 1500);
+  } else if (piezaEncontrada.stock_actual === 0) {
+    document.getElementById('result').innerHTML = `
+    <h2>Producto Sin Stock</h2>`;
+    console.log(decodedText)
+    // Detiene el escáner
+    html5QrCode.stop().then(() => {
+      document.getElementById('reader').remove();
+    }).catch(err => {
+      console.error('Error al detener el escáner: ', err);
+    });
+    setTimeout(function () {
+      window.location.href = "./formulario-control.html";
+    }, 1500);
+  } else if (piezaNoRepetida) {
+    document.getElementById('result').innerHTML = `
+    <h2>Producto Ya Agregado</h2>`;
+    console.log(decodedText)
+    // Detiene el escáner
+    html5QrCode.stop().then(() => {
+      document.getElementById('reader').remove();
+    }).catch(err => {
+      console.error('Error al detener el escáner: ', err);
+    });
+    setTimeout(function () {
+      window.location.href = "./formulario-control.html";
     }, 1500);
   } else {
     document.getElementById('result').innerHTML = `
-        <h2>Patente Erronea</h2>
-        <p>Aparace: ${decodedText} y No ${vehiculosData[0].patente}</p>`;
+        <h2>Producto Erroneo</h2>`;
+    console.log(decodedText)
     // Detiene el escáner
     html5QrCode.stop().then(() => {
       document.getElementById('reader').remove();
