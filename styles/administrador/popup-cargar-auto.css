@@ -116,7 +116,11 @@
 .popup .form .form-element input[type="km"],
 .popup .form .form-element input[type="file"],
 .popup .form .form-element input[type="number"],
-.popup .form .form-element input[id="nombreViaje"] {
+.popup .form .form-element input[id="proveedor"],
+.popup .form .form-element input[id="repuesto"],
+.popup .form .form-element input[id="mail"],
+.popup .form .form-element input[id="telefono"],
+.popup .form .form-element input[id="direccion"] {
   margin-top: 5px;
   display: block;
   width: 100%;

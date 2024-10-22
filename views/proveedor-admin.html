@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../styles/administrador/proveedor-admin.css" />
   <link rel="stylesheet" href="../styles/administrador/popup-cargar-auto.css" />
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
+  <link rel="stylesheet" href="../styles/administrador/tabla-proveedores.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <!-- Box Icons -->
@@ -98,10 +99,12 @@
     <div class="wrapper-carrusel wrapper-carrusel-none">
       <i id="left" class='icon-flecha bx bx-chevron-left'></i>
       <ul class="carrusel">
-        <li class="card-carrusel">
-          <div class="img"><i class='bx bx-car' draggable="false"></i></div>
-          <h2>Cargar Auto</h2>
-        </li>
+        <a href="./adminInicio.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bx-car' draggable="false"></i></div>
+            <h2>Cargar Auto</h2>
+          </li>
+        </a>
         <li class="card-carrusel">
           <div class="img"><i class='bx bx-cog' draggable="false"></i></div>
           <h2>Stock Repuestos</h2>
@@ -110,10 +113,12 @@
           <div class="img"><i class='bx bxs-package' draggable="false"></i></div>
           <h2>Pedidos</h2>
         </li>
-        <li class="card-carrusel">
-          <div class="img"><i class='bx bxs-truck' draggable="false"></i></div>
-          <h2>Proveedores</h2>
-        </li>
+        <a href="./proveedor-admin.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bxs-truck' draggable="false"></i></div>
+            <h2>Proveedores</h2>
+          </li>
+        </a>
         <li class="card-carrusel">
           <div class="img"><i class='bx bx-user' draggable="false"></i></div>
           <h2>Registro</h2>
@@ -124,106 +129,140 @@
   </section>
   <hr class="linea-hr">
 
-  <!-- Seccion Proveedores -->
-  <section class="section-autos">
-    <div class="auto-text">
-      <h3 class="home-titulo">Proveedores <span>Registrados</span></h3>
-    </div>
-    <div class="section-buscador">
-      <input type="text" id="patenteInput" placeholder="Buscar proveedor..." />
-      <button class="button-search" id="searchButton"><i class="bx bx-search"></i></button>
-    </div>
-    <!-- Cards -->
-    <div class="section-card">
-      <div class="wrapper">
-        <div class="notifications" id="notifications">
-          <!-- PopUp Proveedor -->
-          <div class="popup-container">
-            <div class="popup">
-              <div class="close-btn">&times;</div>
-              <div class="form">
-                <h2>Modificar Proveedor</h2>
-                <div class="form-element">
-                  <label for="patente">Nombre Proveedor</label>
-                  <input type="patente" id="patente" placeholder="Escribir patente" required />
-                  <div class="invalid-feedback" id="patente-feedback">
-                    Formato permitido: AAA111 o AA111AA
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="modelo">Repuesto</label>
-                  <input type="modelo" id="modelo" placeholder="Escribir modelo" required />
-                  <div class="invalid-feedback" id="modelo-feedback">
-                    El modelo solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="marca">Mail</label>
-                  <input type="marca" id="marca" placeholder="Escribir marca" required />
-                  <div class="invalid-feedback" id="marca-feedback">
-                    La marca solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="anio-fab">Dirección</label>
-                  <input type="anio-fab" id="anio-fab" placeholder="Escribir año de fabricación" required />
-                  <div class="invalid-feedback" id="anio-fab-feedback">
-                    El formato debe ser YYYY-MM-DD.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="km">Teléfono</label>
-                  <input type="km" id="km" placeholder="Escribir cantidad de km" required />
-                  <div class="invalid-feedback" id="km-feedback">
-                    El kilometraje debe estar entre 0 y 450000.
-                  </div>
-                </div>
-                <!--<div class="form-element">
-                  <label for="imagen">Imagen del Vehículo</label>
-                  <input type="file" id="imagen" accept="image/*" />
-                </div>-->
-                <div class="form-element form-div">
-                  <button id="guardar-btn2" class="btn-form">Guardar</button>
-                  <!--<button class="btn-form">Cancelar</button>-->
-                  <button id="cancelar-btn" class="btn-form">Cancelar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Proveedor 1 -->
-          <div class="single-box">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/logos/revision_escape.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p class="proveedor-p">Nombre Proveedor</p>
-                </div>
-                <div class="text-flex">
-                  <p>Repuesto:</p>
-                  <p>Caño de escape</p>
-                </div>
-                <div class="text-flex">
-                  <p>Mail:</p>
-                  <p class="email-p">proveedor@gmail.com</p>
-                </div>
-                <div class="text-flex">
-                  <p>Dirección:</p>
-                  <p>Calle Falsa 123</p>
-                </div>
-                <div class="text-flex">
-                  <p>Teléfono:</p>
-                  <p>011-3849-9945</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt=""
-                  class="user-pic-pic" id="edit-icon" /></a>
-            </div>
+  <!-- Pop up proveedor -->
+  <div class="popup-container">
+    <div class="popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Modificar Proveedor</h2>
+        <div class="form-element">
+          <label for="proveedor">Nombre Proveedor</label>
+          <input type="proveedor" id="proveedor" placeholder="Escribir nombre" required />
+          <div class="invalid-feedback" id="patente-feedback">
+            Formato permitido: AAA111 o AA111AA
           </div>
         </div>
+        <div class="form-element">
+          <label for="repuesto">Repuesto</label>
+          <input type="repuesto" id="repuesto" placeholder="Escribir repuesto" required />
+          <div class="invalid-feedback" id="modelo-feedback">
+            El modelo solo puede contener letras.
+          </div>
+        </div>
+        <div class="form-element">
+          <label for="mail">Mail</label>
+          <input type="mail" id="mail" placeholder="Escribir mail" required />
+          <div class="invalid-feedback" id="marca-feedback">
+            La marca solo puede contener letras.
+          </div>
+        </div>
+        <div class="form-element">
+          <label for="direccion">Dirección</label>
+          <input type="direccion" id="direccion" placeholder="Escribir dirección" required />
+          <div class="invalid-feedback" id="anio-fab-feedback">
+            El formato debe ser YYYY-MM-DD.
+          </div>
+        </div>
+        <div class="form-element">
+          <label for="telefono">Teléfono</label>
+          <input type="telefono" id="telefono" placeholder="Escribir teléfono" required />
+          <div class="invalid-feedback" id="km-feedback">
+            El kilometraje debe estar entre 0 y 450000.
+          </div>
+        </div>
+        <!--<div class="form-element">
+          <label for="imagen">Imagen del Vehículo</label>
+          <input type="file" id="imagen" accept="image/*" />
+        </div>-->
+        <div class="form-element form-div">
+          <button id="guardar-btn2" class="btn-form">Guardar</button>
+          <!--<button class="btn-form">Cancelar</button>-->
+          <button id="cancelar-btn" class="btn-form">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="box-img">
+    <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic"
+        id="edit-icon" /></a>
+  </div> -->
+
+  <!-- Seccion Tabla de Controles -->
+  <section id="titulo-controles">
+    <div class="auto-text">
+      <h3 class="control-titulo">Tabla de <span>Proveedores</span></h3>
+    </div>
+  </section>
+
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro" id="id-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-controles">
+        <input type="text" id="filter-id" placeholder="Buscar por ID">
+        <input type="text" id="filter-patente" placeholder="Buscar nombre Proveedor">
+        <input type="text" id="filter-tecnico" placeholder="Buscar por Repuesto">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion de Controles -->
+  <section class="seccion-control" id="section-control">
+    <div class="table-control">
+      <div class="export_file">
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
+        <input type="checkbox" id="export-file">
+        <div class="export_file-options" id="id_export_file-options">
+          <label>Exportar como &nbsp; &#10140;</label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+              alt=""></label>
+          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
+        </div>
+      </div>
+      <div class="table-body">
+        <table id="controlTable">
+          <thead>
+            <tr>
+              <th> ID </th>
+              <th> Nombre </th>
+              <th> Repuesto </th>
+              <th> Mail </th>
+              <th> Teléfono </th>
+              <th> Dirección </th>
+              <th> Editar </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>Ferrari</p>
+              </td>
+              <td>
+                <p>Neumático</p>
+              </td>
+              <td>
+                <p>ferrari@gmail.com</p>
+              </td>
+              <td>
+                <p>159383822</p>
+              </td>
+              <td>
+                <p>Calle Falsa 123</p>
+              </td>
+              <td>
+                <div class="box-img">
+                  <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic"
+                      id="edit-icon" /></a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -257,10 +296,9 @@
   <script src="../scripts/administrador/carrusel-admin.js"></script>
   <script src="../scripts/administrador/popup-proveedor.js"></script>
   <script src="../scripts/expresion-regular-popup.js"></script>
-  <script src="../scripts/buscardor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
-  
-  
+  <script src="../scripts/administrador/proveedor-admin.js"></script>
+
 </body>
 
 </html>
