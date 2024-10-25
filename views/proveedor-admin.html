@@ -105,10 +105,12 @@
             <h2>Cargar Auto</h2>
           </li>
         </a>
-        <li class="card-carrusel">
-          <div class="img"><i class='bx bx-cog' draggable="false"></i></div>
-          <h2>Stock Repuestos</h2>
-        </li>
+        <a href="./stock-repuestos-admin.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bx-cog' draggable="false"></i></div>
+            <h2>Stock Repuestos</h2>
+          </li>
+        </a>
         <li class="card-carrusel">
           <div class="img"><i class='bx bxs-package' draggable="false"></i></div>
           <h2>Pedidos</h2>
@@ -201,8 +203,8 @@
       <h1>Filtros</h1>
       <div class="filtros-controles">
         <input type="text" id="filter-id" placeholder="Buscar por ID">
-        <input type="text" id="filter-patente" placeholder="Buscar nombre Proveedor">
-        <input type="text" id="filter-tecnico" placeholder="Buscar por Repuesto">
+        <input type="text" id="filter-nombre" placeholder="Buscar por Nombre">
+        <input type="text" id="filter-repuesto" placeholder="Buscar por Repuesto">
       </div>
     </div>
   </section>
@@ -225,7 +227,7 @@
         <table id="controlTable">
           <thead>
             <tr>
-              <th> ID </th>
+              <th class="ocultar-columna"> ID </th>
               <th> Nombre </th>
               <th> Repuesto </th>
               <th> Mail </th>
@@ -235,7 +237,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!-- <tr>
               <td>
                 <p>1</p>
               </td>
@@ -260,9 +262,10 @@
                       id="edit-icon" /></a>
                 </div>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
+        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
       </div>
     </div>
   </section>
@@ -291,13 +294,16 @@
   </div>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
   <script src="../scripts/administrador/carrusel-admin.js"></script>
   <script src="../scripts/administrador/popup-proveedor.js"></script>
   <script src="../scripts/expresion-regular-popup.js"></script>
+  <script src="../scripts/administrador/buscador-proveedor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/administrador/proveedor-admin.js"></script>
+  <script src="../scripts/general/exportar-tabla.js"></script>
 
 </body>
 

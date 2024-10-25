@@ -277,6 +277,9 @@ span.dot {
   margin-bottom: 10px;
 }
 
+.ocultar-columna {
+  display: none;
+}
 
 /* Responsive */
 

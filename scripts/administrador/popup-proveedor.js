@@ -48,7 +48,7 @@ function abrirPopup(datosVehiculo = {}) {
   } else {
     modificarBtn.style.display = "block"; // Asegurarse de que el botón esté visible
   }
-  popupTitulo.textContent = "Editar Vehículo";
+  popupTitulo.textContent = "Modificar Proveedor";
 
   // Completar los campos con los datos del vehículo
   proveedorInput.value = datosVehiculo.nombre || '';

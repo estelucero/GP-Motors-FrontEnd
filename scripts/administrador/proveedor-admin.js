@@ -7,8 +7,10 @@ async function enlistarTodosProveedores(proveedores) {
     // Crear fila
     const fila = document.createElement('tr');
     fila.classList.add("fila");
+    
     // Crear celdas para cada columna
     const celdaId = document.createElement('td');
+    celdaId.classList.add('ocultar-columna');
     celdaId.innerHTML = `<p class="id-p">${proveedor.id_pieza}</p>`;
     fila.appendChild(celdaId);
 
@@ -17,7 +19,7 @@ async function enlistarTodosProveedores(proveedores) {
     fila.appendChild(celdaNombre);
 
     const celdaRepuesto = document.createElement('td');
-    celdaRepuesto.innerHTML = `<p>${proveedor.nombre}</p>`;
+    celdaRepuesto.innerHTML = `<p>${proveedor.nombre.charAt(0).toUpperCase() + proveedor.nombre.slice(1).toLowerCase()}</p>`;
     fila.appendChild(celdaRepuesto);
 
     const celdaMail = document.createElement('td');
