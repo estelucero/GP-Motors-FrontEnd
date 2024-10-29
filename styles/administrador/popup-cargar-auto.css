@@ -120,7 +120,10 @@
 .popup .form .form-element input[id="repuesto"],
 .popup .form .form-element input[id="mail"],
 .popup .form .form-element input[id="telefono"],
-.popup .form .form-element input[id="direccion"] {
+.popup .form .form-element input[id="direccion"],
+.popup .form .form-element input[id="stock_minimo"],
+.popup .form .form-element input[id="stock_maximo"],
+.popup .form .form-element input[id="stock_precio"] {
   margin-top: 5px;
   display: block;
   width: 100%;

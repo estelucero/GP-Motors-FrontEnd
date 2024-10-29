@@ -67,14 +67,112 @@ p {
   color: var(--azul);
 }
 
-input {
-  width: 600px;
-  padding: 10px;
-  padding-right: 35px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  font-size: 1rem;
+/* Seccion de QR */
+.qr-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 40px 0;
+  /* background-color: #eef4fd; */
+}
+
+.qr-wrapper {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.qr-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Descripción */
+.qr-description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Pasos */
+.qr-steps {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.qr-steps ul {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.qr-steps li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Contenedor de QR */
+.qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0f7fa;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.qr-container:hover {
+  transform: scale(1.1);
+}
+
+.qr-icon {
+  font-size: 60px;
+  color: #007bff;
+}
+
+/* Botón de Escanear */
+.boton-escanear {
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-escanear:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.boton-escanear:active {
+  transform: translateY(0px);
+}
+
+/* Botón alternativo */
+.manual-option {
+  margin-top: 10px;
+}
+
+.manual-option a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.manual-option a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive */

@@ -25,15 +25,74 @@ p {
   font-family: "Barlow", sans-serif;
 }
 
-/* Seccion Tabla de Stock */
+.box-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 
+.box-img img {
+  margin-left: 0;
+}
+
+/* Seccion Autos */
+.auto-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  padding: 20px;
+  text-align: center;
+}
+
+.auto-text .control-titulo {
+  color: black;
+  margin-top: 20px;
+}
+
+.auto-text span {
+  color: var(--azul);
+}
+
+.linea-hr {
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+.no-vehiculos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.no-vehiculos i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Seccion Filtro */
+
+.seccion-filtro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Seccion Controles */
 .seccion-control {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 80px; */
-  padding: 5%;
-  background-color: #eef4fd;
+  margin-bottom: 80px;
+  padding: 0;
 }
 
 td img {
@@ -62,31 +121,7 @@ td {
   border-radius: 0.8rem;
 
   /* overflow: hidden; */
-}
 
-.container-stock {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  padding: 10px;
-}
-
-.header-stock {
-  display: flex;
-  align-items: center;
-}
-
-.header-stock h2 {
-  margin-right: 50px;
-  font-size: 2rem;
-  color: #333;
-}
-
-.header-stock select {
-  padding: 5px 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .table-header {
@@ -342,6 +377,10 @@ tbody tr:hover {
   word-break: break-word;
   max-width: 200px;
   overflow-wrap: break-word;
+}
+
+.ocultar-columna {
+  display: none;
 }
 
 /* Responsive */

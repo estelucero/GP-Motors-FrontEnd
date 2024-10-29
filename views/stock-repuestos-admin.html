@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
   <link rel="stylesheet" href="../styles/administrador/stock-repuestos-admin.css">
+  <link rel="stylesheet" href="../styles/administrador/popup-cargar-auto.css">
   <link rel="stylesheet" href="../styles/administrador/tabla-stock-admin.css">
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
@@ -110,10 +111,12 @@
             <h2>Stock Repuestos</h2>
           </li>
         </a>
-        <li class="card-carrusel">
-          <div class="img"><i class='bx bxs-package' draggable="false"></i></div>
-          <h2>Pedidos</h2>
-        </li>
+        <a href="./pedidos-admin.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bxs-package' draggable="false"></i></div>
+            <h2>Pedidos</h2>
+          </li>
+        </a>
         <a href="./proveedor-admin.html" class="sin-decoracion">
           <li class="card-carrusel">
             <div class="img"><i class='bx bxs-truck' draggable="false"></i></div>
@@ -130,127 +133,138 @@
   </section>
   <hr class="linea-hr">
 
-  <!-- Seccion Tabla de Controles -->
+  <!-- Seccion Tabla de Stock -->
   <section id="titulo-controles">
     <div class="auto-text">
       <h3 class="control-titulo">Stock de <span>Repuestos</span></h3>
     </div>
   </section>
 
-  <!-- Seccion de QR -->
-  <!-- <section class="qr-section">
-    <div class="qr-wrapper">
-      <h2 class="qr-title">Cargar QR del Pedido</h2>
-      <div class="qr-container">
-        <i class='bx bx-qr-scan qr-icon'></i>
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro" id="id-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-column">
+        <div class="filter-control">
+          <label for="estado-select">Piezas:</label>
+          <select id="estado-select" class="custom-select">
+            <option value="">Todos</option>
+            <option value="pendiente">Aceite</option>
+            <option value="terminado">Neumático</option>
+            <option value="pendiente">Caño de escape</option>
+          </select>
+        </div>
       </div>
-      <div class="boton-qr">
-        <a href="./QRFormulario-tecnico.html">
-          <button id="id-boton-escanear" class="boton-escanear">Escanear Pedido</button>
-        </a>
-      </div>
     </div>
-  </section> -->
-
-  <!-- Sección de QR -->
-<section class="qr-section">
-  <div class="qr-wrapper">
-    <h2 class="qr-title">Cargar QR del Pedido</h2>
-    
-    <!-- Descripción breve -->
-    <p class="qr-description">Escanea el código QR para verificar y actualizar el stock de piezas en nuestro sistema de concesionaria.</p>
-    
-    <!-- Contenedor de QR -->
-    <div class="qr-container">
-      <i class='bx bx-qr-scan qr-icon'></i>
-    </div>
-    
-    <!-- Indicador de pasos -->
-    <div class="qr-steps">
-      <p><strong>Pasos a seguir:</strong></p>
-      <ul>
-        <li>1. Escanear el QR del pedido.</li>
-        <li>2. Verificar el stock de piezas.</li>
-        <li>3. Confirmar la actualización.</li>
-      </ul>
-    </div>
-
-    <!-- Botón de Escanear -->
-    <div class="boton-qr">
-      <a href="./QRFormulario-tecnico.html">
-        <button id="id-boton-escanear" class="boton-escanear">Escanear Pedido</button>
-      </a>
-    </div>
-
-    <!-- Botón alternativo -->
-    <div class="manual-option">
-      <a href="#">Cargar manualmente</a>
-    </div>
-    
-  </div>
-</section>
+  </section>
 
   <!-- Seccion Tabla de Stock -->
   <section class="seccion-control" id="section-control">
     <div class="table-control">
-      <div class="container-stock">
-        <div class="header-stock">
-          <h2>Tabla de Piezas</h2>
-          <select name="" id="">
-            <option value="" selected>Seleccionar Pieza</option>
-            <option value="">Pieza 1</option>
-            <option value="">Piezas 2</option>
-          </select>
-        </div>
-        <div class="export_file">
-          <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
-          <input type="checkbox" id="export-file">
-          <div class="export_file-options" id="id_export_file-options">
-            <label>Exportar como &nbsp; &#10140;</label>
-            <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
-                alt=""></label>
-            <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
-            <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
-          </div>
+      <div class="export_file">
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
+        <input type="checkbox" id="export-file">
+        <div class="export_file-options" id="id_export_file-options">
+          <label>Exportar como &nbsp; &#10140;</label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+              alt=""></label>
+          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
         </div>
       </div>
-      
+
       <div class="table-body">
         <table id="controlTable">
           <thead>
             <tr>
+              <th class="ocultar-columna"> ID </th>
               <th> Nombre </th>
               <th> Descripción </th>
               <th> Stock Actual </th>
               <th> Stock Mínimo </th>
               <th> Stock Máximo </th>
-              <th> Última Actualización </th>
+              <th> Precio </th>
+              <th> Editar </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td> <p>Aceite</p> </td>
-              <td> <p>Algo de descripción</p> </td>
-              <td> <p>20</p> </td>
-              <td> <p>30</p> </td>
-              <td> <p>150</p> </td>
-              <td> <p>06/06/2024</p> </td>
+            <!-- <tr>
+              <td>
+                <p>1</p>
+              </td>
+              <td>
+                <p>Aceite</p>
+              </td>
+              <td>
+                <p>Algo de descripción</p>
+              </td>
+              <td>
+                <p>20</p>
+              </td>
+              <td>
+                <p>30</p>
+              </td>
+              <td>
+                <p>150</p>
+              </td>
+              <td>
+                <div class="box-img">
+                  <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic"
+                      id="edit-icon" /></a>
+                </div>
+              </td>
             </tr>
             <tr>
-              <td> <p>Neumático</p> </td>
-              <td> <p>Algo de descripción</p> </td>
-              <td> <p>20</p> </td>
-              <td> <p>30</p> </td>
-              <td> <p>150</p> </td>
-              <td> <p>06/08/2024</p> </td>
+              <td>
+                <p>2</p>
+              </td>
+              <td>
+                <p>Neumático</p>
+              </td>
+              <td>
+                <p>Algo de descripción</p>
+              </td>
+              <td>
+                <p>20</p>
+              </td>
+              <td>
+                <p>30</p>
+              </td>
+              <td>
+                <p>150</p>
+              </td>
+              <td>
+                <div class="box-img">
+                  <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic"
+                      id="edit-icon" /></a>
+                </div>
+              </td>
             </tr>
             <tr>
-              <td> <p>Caño de escape</p> </td>
-              <td> <p>Algo de descripción</p> </td>
-              <td> <p>20</p> </td>
-              <td> <p>30</p> </td>
-              <td> <p>150</p> </td>
-              <td> <p>25/06/2024</p> </td>
+              <td>
+                <p>3</p>
+              </td>
+              <td>
+                <p>Caño de escape</p>
+              </td>
+              <td>
+                <p>Algo de descripción</p>
+              </td>
+              <td>
+                <p>20</p>
+              </td>
+              <td>
+                <p>30</p>
+              </td>
+              <td>
+                <p>150</p>
+              </td>
+              <td>
+                <div class="box-img">
+                  <a class="editar-margin"><img src="../assets/logos/edit-solid-24.png" alt="" class="user-pic-pic"
+                      id="edit-icon" /></a>
+                </div>
+              </td> -->
             </tr>
           </tbody>
         </table>
@@ -258,6 +272,42 @@
       </div>
     </div>
   </section>
+
+  <!-- Pop up Stock -->
+  <div class="popup-container">
+    <div class="popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Modificar Stock</h2>
+        <div class="form-element">
+          <label for="stock_minimo">Stock Mínimo</label>
+          <input type="stock_minimo" id="stock_minimo" placeholder="Escribir Stock Mínimo" required />
+          <div class="invalid-feedback" id="stock-minimo-feedback">
+            Formato permitido: AAA111 o AA111AA
+          </div>
+        </div>
+        <div class="form-element">
+          <label for="stock_maximo">Stock Máximo</label>
+          <input type="stock_maximo" id="stock_maximo" placeholder="Escribir Stock Máximo" required />
+          <div class="invalid-feedback" id="stock-maximo-feedback">
+            El modelo solo puede contener letras.
+          </div>
+        </div>
+        <div class="form-element">
+          <label for="stock_precio">Precio</label>
+          <input type="stock_precio" id="stock_precio" placeholder="Escribir Precio" required />
+          <div class="invalid-feedback" id="stock-precio-feedback">
+            La marca solo puede contener letras.
+          </div>
+        </div>
+        <div class="form-element form-div">
+          <button id="guardar-btn2" class="btn-form">Guardar</button>
+          <!--<button class="btn-form">Cancelar</button>-->
+          <button id="cancelar-btn" class="btn-form">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <section class="footer">
@@ -283,11 +333,15 @@
   </div>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
   <script src="../scripts/administrador/carrusel-admin.js"></script>
+  <script src="../scripts/administrador/buscador-stock.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
-  <script src="../scripts/administrador/strock-repuestos-admin.js"></script>
+  <script src="../scripts/administrador/stock-repuestos-admin.js"></script>
+  <script src="../scripts/administrador/popup-stock.js"></script>
+  <script src="../scripts/general/exportar-tabla.js"></script>
 
 </body>
 

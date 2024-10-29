@@ -379,6 +379,10 @@ tbody tr:hover {
   overflow-wrap: break-word;
 }
 
+.ocultar-columna {
+  display: none;
+}
+
 /* Responsive */
 
 @media (max-width: 1000px) {

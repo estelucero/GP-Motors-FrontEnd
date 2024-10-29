@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR-Auto-Tecnico</title>
+  <!-- Style-->
+  <link rel="stylesheet" href="../styles/general/navbar.css" />
+  <link rel="stylesheet" href="../styles/general/footer.css" />
+  <link rel="stylesheet" href="../styles/administrador/QRPedido-admin.css" />
+  <!-- Box Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Navbar-->
+  <header>
+    <div class="logo">
+      <a href="./inicio-tecnico.html">
+        <img class="navbar-logo" src="../assets/logos/logo.png" alt="">
+        GP <span class="nav-span">Motors</span></a>
+    </div>
+    <!-- <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div> -->
+    <nav class="nav-bar">
+      <ul>
+        <div class="user-info-menu">
+          <div class="user-info">
+            <img src="../assets/logos/logo-user.png" alt="" class="user-pic" />
+            <h3 class="nombre-perfil-sesion">Usuario</h3>
+          </div>
+        </div>
+        <!-- <li class="inicio-nav navbar-padding">
+          <a href="./inicio-supervisor.html">Inicio</a>
+        </li>
+        <li class="sesion-nav navbar-padding" id="logout">
+          <a href="">Cerrar Sesión</a>
+        </li>
+        <li class="close-inicio padding-li"><a href="./inicio-supervisor.html" class="active">Inicio</a></li>
+        <img src="../assets/logos/logo-user.png" alt="" class="close-user user-pic" onclick="toggleMenu()"
+          id="logo-user" /> -->
+      </ul>
+      <!-- <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="../assets/logos/logo-user.png" alt="" class="user-pic" />
+            <h3 class="nombre-perfil-sesion">Usuario </h3>
+          </div>
+          <hr />
+          <a href="" class="sub-menu-link">
+            <img src="../assets/logos/logo-log-out.png" alt="logo log-out" class="user-pic-pic" />
+            <p>Cerrar Sesión</p>
+            <span>></span>
+          </a>
+        </div>
+      </div> -->
+    </nav>
+  </header>
+
+  <!--Scanner-->
+  <h1 class="titulo-qr">Escanear QR del <span> Vehículo</span></h1>
+  <section class="scanner">
+    <div id="reader" class="reader"></div>
+    <div id="result" class="result"></div>
+  </section>
+
+  <!-- Seccion Confimación Pedido -->
+  <!-- <div class="pedido-section" id="cargar-pedido">
+    <div class="pedido-card">
+      <h2>Confirmar Pedido</h2>
+      <p class="descripcion">Por favor, revisa los datos antes de confirmar el pedido.</p>
+
+      <div class="datos-pedido">
+        <p><strong>Datos del Pedido:</strong></p>
+        <ul>
+          <li>ID Proveedor: <p>1</p>
+          </li>
+          <li>Pieza: <p>1</p>
+          </li>
+          <li>Nombre Proveedor: <p>Anacleto</p>
+          </li>
+          <li>Cantidad: <p>20</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pedido-actions">
+        <button id="btn-confirmar-pedido" class="btn-confirmar">Confirmar</button>
+        <button id="btn-cancelar-pedido" class="btn-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script src="../scripts/administrador/QRPedido-admin.js"></script>
+  <script src="../scripts/general/navbar.js"></script>
+
+</body>
+
+</html>

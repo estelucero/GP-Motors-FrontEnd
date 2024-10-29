@@ -4,11 +4,9 @@ function abrirPopup(datosVehiculo = {}) {
   document.querySelector(".popup-container").classList.add("active");
 
   const popupTitulo = document.querySelector(".popup h2");
-  const proveedorInput = document.querySelector("#proveedor");
-  const repuestoInput = document.querySelector("#repuesto");
-  const mailInput = document.querySelector("#mail");
-  const direccionInput = document.querySelector("#direccion");
-  const telefonoInput = document.querySelector("#telefono");
+  const stockMinimoInput = document.querySelector("#stock_minimo");
+  const stockMaximoInput = document.querySelector("#stock_maximo");
+  const stockPrecioInput = document.querySelector("#stock_precio");
   const formElement = document.querySelector(".form-element");
   const patenteLabel = document.querySelector("label[for='patente']");
   const guardarBtnModificar = document.querySelector("#guardar-btn2");
@@ -34,10 +32,9 @@ function abrirPopup(datosVehiculo = {}) {
       e.preventDefault(); // Prevenir comportamiento por defecto
 
       // Habilitar los campos de edición excepto el de la patente
-      proveedorInput.removeAttribute("disabled");
-      mailInput.removeAttribute("disabled");
-      direccionInput.removeAttribute("disabled");
-      telefonoInput.removeAttribute("disabled");
+      stockPrecioInput.removeAttribute("disabled");
+      stockMaximoInput.removeAttribute("disabled");
+      stockMinimoInput.removeAttribute("disabled");
 
       modificarBtn.style.display = "none"; // Ocultar el botón "Modificar"
 
@@ -48,21 +45,17 @@ function abrirPopup(datosVehiculo = {}) {
   } else {
     modificarBtn.style.display = "block"; // Asegurarse de que el botón esté visible
   }
-  popupTitulo.textContent = "Modificar Proveedor";
+  popupTitulo.textContent = "Modificar Stock";
 
   // Completar los campos con los datos del vehículo
-  proveedorInput.value = datosVehiculo.nombre || '';
-  repuestoInput.value = datosVehiculo.repuesto || '';
-  mailInput.value = datosVehiculo.mail || '';
-  direccionInput.value = datosVehiculo.direccion || '';
-  telefonoInput.value = datosVehiculo.telefono;
+  stockPrecioInput.value = datosVehiculo.stockPrecio || '';
+  stockMaximoInput.value = datosVehiculo.stockMaximo || '';
+  stockMinimoInput.value = datosVehiculo.stockMinimo;
 
   // Deshabilitar todos los campos para evitar modificaciones antes de presionar "Modificar"
-  proveedorInput.setAttribute("disabled", true); // Mantener deshabilitado
-  repuestoInput.setAttribute("disabled", true);
-  mailInput.setAttribute("disabled", true);
-  direccionInput.setAttribute("disabled", true);
-  telefonoInput.setAttribute("disabled", true);
+  stockPrecioInput.setAttribute("disabled", true);
+  stockMaximoInput.setAttribute("disabled", true);
+  stockMinimoInput.setAttribute("disabled", true);
 }
 
 // Función para cerrar el popup
@@ -106,12 +99,9 @@ function listenerEdicion() {
 
       // Obtener los datos del vehículo desde las celdas
       const datosProveedor = {
-        id: fila.querySelector("td:nth-child(1) p").textContent.trim(),
-        nombre: fila.querySelector("td:nth-child(2) p").textContent.trim(),
-        repuesto: fila.querySelector("td:nth-child(3) p").textContent.trim(),
-        mail: fila.querySelector("td:nth-child(4) p").textContent.trim(),
-        telefono: fila.querySelector("td:nth-child(5) p").textContent.trim(),
-        direccion: fila.querySelector("td:nth-child(6) p").textContent.trim(),
+        stockMinimo: fila.querySelector("td:nth-child(5) p").textContent.trim(),
+        stockMaximo: fila.querySelector("td:nth-child(6) p").textContent.trim(),
+        stockPrecio: fila.querySelector("td:nth-child(7) p").textContent.trim()
       };
 
       abrirPopup(datosProveedor); // true indica que es una edición
@@ -122,10 +112,10 @@ function listenerEdicion() {
 
 
 //Guardar auto que clickea
-function guardarEdicionProveedor() {
+function guardarEdicionStock() {
   const botonesEditar = document.querySelectorAll(".editar");
-  const proveedoresGuardados = JSON.parse(
-    localStorage.getItem("proveedores")
+  const stockGuardados = JSON.parse(
+    localStorage.getItem("stock")
   );
 
   botonesEditar.forEach((boton) => {
@@ -133,17 +123,17 @@ function guardarEdicionProveedor() {
       // Evitar que el enlace redirija inmediatamente
       event.preventDefault();
 
-      const vehiculoBox = this.closest(".fila");
+      const stockBox = this.closest(".fila");
 
-      const proveedorBuscado = vehiculoBox.querySelector(".id-p").textContent;
-      const proveedorEncontrado = proveedoresGuardados.find(
-        (proveedor) => proveedor.id_pieza === parseInt(proveedorBuscado, 10)
+      const stockBuscado = stockBox.querySelector(".id-p").textContent;
+      const stockEncontrado = stockGuardados.find(
+        (stock) => stock.id_pieza === parseInt(stockBuscado, 10)
       );
-      console.log(proveedorEncontrado);
+      console.log(stockEncontrado);
 
 
 
-      localStorage.setItem("proveedorEditar", JSON.stringify(proveedorEncontrado));
+      localStorage.setItem("stockEditar", JSON.stringify(stockEncontrado));
 
     });
   });
@@ -154,10 +144,9 @@ function guardarEdicionProveedor() {
 function verificarClasesValidasFormulario() {
 
   const inputs = [
-    document.getElementById('proveedor'),
-    document.getElementById('mail'),
-    document.getElementById('direccion'),
-    document.getElementById('telefono'),
+    document.getElementById('stockPrecio'),
+    document.getElementById('stockMaximo'),
+    document.getElementById('stockMinimo'),
 
   ];
 
@@ -171,67 +160,63 @@ function verificarClasesValidasFormulario() {
   return true;
 }
 
-//////////////Modificar Proveedor/////////////
-document
-  .getElementById("guardar-btn2")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    let pieza = JSON.parse(localStorage.getItem("proveedorEditar"));
-    if (verificarClasesValidasFormulario()) {
+//////////////Modificar Stock/////////////
+// document
+//   .getElementById("guardar-btn2")
+//   .addEventListener("click", function (event) {
+//     event.preventDefault();
+//     let pieza = JSON.parse(localStorage.getItem("proveedorEditar"));
+//     if (verificarClasesValidasFormulario()) {
 
-      const proveedor = document.getElementById("proveedor").value;
-      const mail = document.getElementById("mail").value;
-      const direccion = document.getElementById("direccion").value;
-      const telefono = document.getElementById("telefono").value;
-
-
-
-      if (!proveedor || !mail || !direccion || !telefono) {
-        alert("Por favor, completa todos los campos.");
-        return;
-      }
+//       const stockPrecio = document.getElementById("stock_precio").value;
+//       const stockMaximo = document.getElementById("stock_maximo").value;
+//       const stockMinimo = document.getElementById("stock_minimo").value;
 
 
 
-      const data = {
-        id_pieza: pieza.id_pieza,
-        nombre: proveedor,
-        email: mail,
-        direccion: direccion,
-        celular: telefono,
-        ubicacion: [
-          "0", "0"
-        ]
+//       if (!stockPrecio || !stockMaximo || !stockMinimo) {
+//         alert("Por favor, completa todos los campos.");
+//         return;
+//       }
 
-      };
-      console.log(data);
 
-      fetch("https://aaaaa-deploy-back.vercel.app/users/modificarProveedor", {
-        method: "PATCH",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+//       const data = {
+//         id_pieza: pieza.id_pieza,
+//         precio_unitario: stockPrecio,
+//         stock_max: stockMaximo,
+//         stock_min: stockMinimo,
 
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          alert("Proveedor guardado con éxito");
 
-          location.reload(true);
-          // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("Hubo un problema al guardar el vehículo.");
-        });
-    } else {
-      alert("Completar los campos con datos validos");
-    }
-  });
+//       };
+//       console.log(data);
+
+//       fetch("https://aaaaa-deploy-back.vercel.app/users/modificarProveedor", {
+//         method: "PATCH",
+
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+
+//         body: JSON.stringify(data),
+//       })
+//         .then((response) => {
+//           if (!response.ok) {
+//             throw new Error("Network response was not ok");
+//           }
+//           return response.json();
+//         })
+//         .then((data) => {
+//           alert("Proveedor guardado con éxito");
+
+//           location.reload(true);
+//           // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+//         })
+//         .catch((error) => {
+//           console.error("Error:", error);
+//           alert("Hubo un problema al guardar el vehículo.");
+//         });
+//     } else {
+//       alert("Completar los campos con datos validos");
+//     }
+//   });

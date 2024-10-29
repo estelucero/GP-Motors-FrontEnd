@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GP Motors - Inicio</title>
+  <title>GP Motors - Pedidos</title>
   <!-- Favicon -->
   <link rel="icon" href="" type="image/x-icon" />
   <!-- Style-->
   <link rel="stylesheet" href="../styles/general/navbar.css" />
-  <link rel="stylesheet" href="../styles/administrador/adminInicio.css" />
-  <link rel="stylesheet" href="../styles/administrador/popup-cargar-auto.css" />
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
+  <link rel="stylesheet" href="../styles/administrador/pedidos-admin.css">
+  <link rel="stylesheet" href="../styles/administrador/tabla-stock-admin.css">
+  <link rel="stylesheet" href="../styles/administrador/tabla-proveedores.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <!-- Box Icons -->
@@ -132,116 +133,95 @@
   </section>
   <hr class="linea-hr">
 
-  <!-- Seccion Autos -->
-  <section class="section-autos">
+  <!-- Seccion Tabla de Controles -->
+  <section id="titulo-controles">
     <div class="auto-text">
-      <h3 class="home-titulo">Vehículos <span>Registrados</span></h3>
+      <h3 class="control-titulo">Pedidos de <span>Repuestos</span></h3>
     </div>
-    <div class="section-buscador">
-      <input type="text" id="patenteInput" placeholder="Buscar por patente..." />
-      <button class="button-search" id="searchButton"><i class="bx bx-search"></i></button>
-    </div>
-    <!-- Cards -->
-    <div class="section-card">
-      <div class="wrapper">
-        <div class="notifications" id="notifications">
-          <!-- Agregar Auto -->
-          <button class="button-add-car" id="show-car">
-            <div class="centrar-div">
-              <div class="agregar-auto">
-                <img src="../assets/logos/mas.png" alt="" class="user-pic-pic" />
-                <p>Agregar auto</p>
-              </div>
-            </div>
-          </button>
-          <p id="no-vehicles-message" class="mensaje-no-vehiculos">No hay vehículos registrados</p>
-          <!-- PopUp -->
-          <div class="popup-container">
-            <div class="popup">
-              <div class="close-btn">&times;</div>
-              <div class="form">
-                <h2>Cargar Vehículo</h2>
-                <div class="form-element">
-                  <label for="patente">Patente</label>
-                  <input type="patente" id="patente" placeholder="Escribir patente" required />
-                  <div class="invalid-feedback" id="patente-feedback">
-                    Formato permitido: AAA111 o AA111AA
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="modelo">Modelo</label>
-                  <input type="modelo" id="modelo" placeholder="Escribir modelo" required />
-                  <div class="invalid-feedback" id="modelo-feedback">
-                    El modelo solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="marca">Marca</label>
-                  <input type="marca" id="marca" placeholder="Escribir marca" required />
-                  <div class="invalid-feedback" id="marca-feedback">
-                    La marca solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="anio-fab">Año de Fabricación</label>
-                  <input type="anio-fab" id="anio-fab" placeholder="Escribir año de fabricación" required />
-                  <div class="invalid-feedback" id="anio-fab-feedback">
-                    El formato debe ser YYYY-MM-DD.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="km">Cantidad de Kilómetros</label>
-                  <input type="km" id="km" placeholder="Escribir cantidad de km" required />
-                  <div class="invalid-feedback" id="km-feedback">
-                    El kilometraje debe estar entre 0 y 450000.
-                  </div>
-                </div>
-                <!--<div class="form-element">
-                  <label for="imagen">Imagen del Vehículo</label>
-                  <input type="file" id="imagen" accept="image/*" />
-                </div>-->
-                <div class="form-element form-div">
-                  <button id="guardar-btn" class="btn-form">Guardar</button>
-                  <button id="guardar-btn2" class="btn-form">Guardar</button>
-                  <!--<button class="btn-form">Cancelar</button>-->
-                  <button id="cancelar-btn" class="btn-form">Cancelar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Auto 1-->
+  </section>
 
-          <!-- Auto 2 -->
-          <!-- <div class="single-box">
-            <div class="box-avatar-text">
-              <div class="avatar">
-                <img src="../assets/imagenes/corolla.png" alt="perfil-imagen" />
-              </div>
-              <div class="box-text">
-                <div class="text-patente">
-                  <p class="patente-p">AA 456 BB</p>
-                </div>
-                <div class="text-flex">
-                  <p>Marca:</p>
-                  <p>Toyota</p>
-                </div>
-                <div class="text-flex">
-                  <p>Modelo:</p>
-                  <p>Corola</p>
-                </div>
-                <div class="text-flex">
-                  <p>Año de Fabricación:</p>
-                  <p>2018</p>
-                </div>
-              </div>
-            </div>
-            <div class="box-img">
-              <a class="editar-margin" href=""><img src="../assets/logos/edit-solid-24.png" alt=""
-                  class="user-pic-pic" /></a>
-              <img src="../assets/logos/eliminar.png" alt="" class="user-pic-pic" />
-            </div>
-          </div> -->
+  <!-- Sección de QR -->
+  <section class="qr-section">
+    <div class="qr-wrapper">
+      <h2 class="qr-title">Cargar QR del Pedido</h2>
+
+      <!-- Descripción breve -->
+      <p class="qr-description">Escanea el código QR para verificar y actualizar el stock de piezas en nuestro sistema
+        de concesionaria.</p>
+
+      <!-- Contenedor de QR -->
+      <div class="qr-container">
+        <i class='bx bx-qr-scan qr-icon'></i>
+      </div>
+
+      <!-- Indicador de pasos -->
+      <div class="qr-steps">
+        <p><strong>Pasos a seguir:</strong></p>
+        <ul>
+          <li>1. Escanear el QR del pedido.</li>
+          <li>2. Verificar el pedido de las piezas.</li>
+          <li>3. Confirmar el pedido.</li>
+        </ul>
+      </div>
+
+      <!-- Botón de Escanear -->
+      <div class="boton-qr">
+        <a href="./QRPedido-admin.html">
+          <button id="id-boton-escanear" class="boton-escanear">Escanear Pedido</button>
+        </a>
+      </div>
+
+      <!-- Botón alternativo -->
+      <div class="manual-option">
+        <a href="#">Cargar manualmente</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro" id="id-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-controles">
+        <input type="text" id="filter-nombre" placeholder="Buscar nombre Proveedor">
+        <input type="text" id="filter-repuesto" placeholder="Buscar por Repuesto">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Tabla de Pedidos Pendientes -->
+  <section class="seccion-control" id="section-control">
+    <div class="table-control">
+      <div class="export_file">
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
+        <input type="checkbox" id="export-file">
+        <div class="export_file-options" id="id_export_file-options">
+          <label>Exportar como &nbsp; &#10140;</label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+              alt=""></label>
+          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
         </div>
+      </div>
+      <div class="table-body">
+        <table id="controlTable">
+          <thead>
+            <tr>
+              <th class="ocultar-columna"> ID </th>
+              <th> Nombre Proveedor</th>
+              <th> Repuesto </th>
+              <th> Cantidad </th>
+              <th> Precio </th>
+              <th> Fecha de Pedido </th>
+              <th> Eliminar </th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
       </div>
     </div>
   </section>
@@ -270,14 +250,15 @@
   </div>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
-  <script src="../scripts/administrador/adminInicio.js"></script>
   <script src="../scripts/administrador/carrusel-admin.js"></script>
-  <script src="../scripts/administrador/popup-admin.js"></script>
-  <script src="../scripts/expresion-regular-popup.js"></script>
-  <script src="../scripts/buscardor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
+  <script src="../scripts/administrador/buscador-pedidos.js"></script>
+  <script src="../scripts/administrador/pedidos-admin.js"></script>
+  <script src="../scripts/general/exportar-tabla.js"></script>
+
 </body>
 
 </html>
