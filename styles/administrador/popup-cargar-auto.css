@@ -411,3 +411,17 @@ input.is-invalid+.invalid-feedback {
     border-radius: 10px;
   }
 }
+
+@media (max-width: 576px) {
+  #contenedor-mapa {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  #contenedor-mapa {
+    height: 250px;
+    width: 250px;
+  }
+}
