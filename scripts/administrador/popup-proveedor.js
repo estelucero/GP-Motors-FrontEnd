@@ -8,6 +8,7 @@ function abrirPopup(datosVehiculo = {}) {
   const repuestoInput = document.querySelector("#repuesto");
   const mailInput = document.querySelector("#mail");
   const direccionInput = document.querySelector("#direccion");
+  const validarBtn = document.querySelector("#normalizarBtn");
   const telefonoInput = document.querySelector("#telefono");
   const formElement = document.querySelector(".form-element");
   const patenteLabel = document.querySelector("label[for='patente']");
@@ -16,6 +17,7 @@ function abrirPopup(datosVehiculo = {}) {
 
 
   // Ocultar el botón de modificar al abrir el popup
+  validarBtn.style.display = "none";
   guardarBtnModificar.style.display = "none";
 
   // Crear el botón "Modificar" si no existe
@@ -43,6 +45,7 @@ function abrirPopup(datosVehiculo = {}) {
 
       // Mostrar el botón de modificar
       guardarBtnModificar.style.display = "block";
+      validarBtn.style.display = "block";
 
     });
   } else {

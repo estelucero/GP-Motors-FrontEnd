@@ -156,6 +156,101 @@
   align-items: center;
 }
 
+#normalizarBtn {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 8px 15px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#normalizarBtn:hover {
+  background-color: #45a049; 
+}
+
+#normalizarBtn:active {
+  background-color: #3e8e41; 
+  transform: translateY(1px); 
+}
+
+/* #contenedor-mapa {
+  display: none; 
+  height: 300px; 
+  width: 400px; 
+  margin-top: 20px; 
+} */
+
+#contenedor-mapa {
+  height: 400px;
+  width: 400px;
+}
+
+#resultados {
+  margin-top: 10px;
+}
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+select:focus {
+  border-color: #007bff; 
+  outline: none; 
+}
+option {
+  padding: 10px; 
+}
+
+.sugerencias {
+  border: 1px solid #ccc;
+  border-top: none;
+  position: absolute;
+  background: white;
+  z-index: 1000;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+}
+.sugerencias div {
+  padding: 10px;
+  cursor: pointer;
+}
+.sugerencias div:hover {
+  background-color: #f0f0f0;
+}
+
+.resultados {
+  margin-top: 10px;
+  max-height: 150px; 
+  overflow-y: auto; 
+}
+
+.resultados-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resultados-lista li {
+  padding: 8px;
+  background: #f8f8f8; 
+  border: 1px solid #ccc; 
+  margin: 2px 0; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.resultados-lista li:hover {
+  background-color: rgb(121, 161, 213);
+}
+
 /* Feedback */
 input.is-invalid {
   border: 2px solid red;

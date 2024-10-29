@@ -281,6 +281,42 @@ span.dot {
   display: none;
 }
 
+/* Feedback */
+.input-field input.is-invalid {
+  border: 2px solid #dc3545;
+}
+
+.input-field input.is-valid {
+  border: 2px solid #28a745;
+}
+
+.invalid-feedback,
+.valid-feedback {
+  width: 100%;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-align: left;
+  padding: 0;
+  margin-left: 15px;
+  display: none;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+}
+
+.valid-feedback {
+  color: #28a745;
+}
+
+.is-invalid+.invalid-feedback {
+  display: block;
+}
+
+.is-valid+.valid-feedback {
+  display: block;
+}
+
 /* Responsive */
 
 @media (max-width: 700px) {

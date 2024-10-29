@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body class="hidden-carga" id="contenido">
@@ -142,45 +144,42 @@
         <div class="form-element">
           <label for="proveedor">Nombre Proveedor</label>
           <input type="proveedor" id="proveedor" placeholder="Escribir nombre" required />
-          <div class="invalid-feedback" id="patente-feedback">
-            Formato permitido: AAA111 o AA111AA
-          </div>
+          <div class="invalid-feedback" id="nombre-proveedor-feedback"></div>
         </div>
         <div class="form-element">
           <label for="repuesto">Repuesto</label>
           <input type="repuesto" id="repuesto" placeholder="Escribir repuesto" required />
-          <div class="invalid-feedback" id="modelo-feedback">
-            El modelo solo puede contener letras.
-          </div>
+          <div class="invalid-feedback" id="repuesto-feedback"></div>
         </div>
         <div class="form-element">
           <label for="mail">Mail</label>
           <input type="mail" id="mail" placeholder="Escribir mail" required />
-          <div class="invalid-feedback" id="marca-feedback">
-            La marca solo puede contener letras.
+          <div class="invalid-feedback" id="mail-feedback">
+            Por favor, ingresa un correo válido.
           </div>
         </div>
         <div class="form-element">
           <label for="direccion">Dirección</label>
-          <input type="direccion" id="direccion" placeholder="Escribir dirección" required />
-          <div class="invalid-feedback" id="anio-fab-feedback">
-            El formato debe ser YYYY-MM-DD.
+          <input type="text" id="direccion" placeholder="Ingrese la dirección" required />
+          <div class="invalid-feedback" id="direccion-feedback">
+              Campo Obligatorio
           </div>
-        </div>
+          <div id="sugerencias" class="sugerencias" style="display: none;"></div>
+          <!-- <button id="normalizarBtn" type="button">Validar</button>
+          <div id="resultados"></div> -->
+          <button id="normalizarBtn">Validar</button>
+          <div id="resultados" class="resultados"></div>
+      </div>
+
         <div class="form-element">
           <label for="telefono">Teléfono</label>
           <input type="telefono" id="telefono" placeholder="Escribir teléfono" required />
-          <div class="invalid-feedback" id="km-feedback">
-            El kilometraje debe estar entre 0 y 450000.
+          <div class="invalid-feedback" id="telefono-feedback">
+            El teléfono debe contener solo números.
           </div>
         </div>
-        <!--<div class="form-element">
-          <label for="imagen">Imagen del Vehículo</label>
-          <input type="file" id="imagen" accept="image/*" />
-        </div>-->
         <div class="form-element form-div">
           <button id="guardar-btn2" class="btn-form">Guardar</button>
-          <!--<button class="btn-form">Cancelar</button>-->
           <button id="cancelar-btn" class="btn-form">Cancelar</button>
         </div>
       </div>
@@ -296,16 +295,19 @@
   </div>
 
   <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
   <script src="../scripts/general/navbar.js"></script>
   <script src="../scripts/administrador/carrusel-admin.js"></script>
   <script src="../scripts/administrador/popup-proveedor.js"></script>
-  <script src="../scripts/expresion-regular-popup.js"></script>
+  <script src="../scripts/administrador/expresion-regular-proveedor.js"></script>
   <script src="../scripts/administrador/buscador-proveedor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/administrador/proveedor-admin.js"></script>
   <script src="../scripts/general/exportar-tabla.js"></script>
+  <script src="../scripts/administrador/normalizar-direccion-proveedor.js"></script>
 
 </body>
 
