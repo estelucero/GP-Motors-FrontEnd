@@ -111,7 +111,7 @@ function listenerEdicion() {
 
 
 
-//Guardar auto que clickea
+//Guardar pieza que clickea
 function guardarEdicionStock() {
   const botonesEditar = document.querySelectorAll(".editar");
   const stockGuardados = JSON.parse(
@@ -151,72 +151,142 @@ function verificarClasesValidasFormulario() {
   ];
 
 
-  for (let input of inputs) {
-    if (input.classList.contains('is-invalid')) {
-      return false;
-    }
-  }
+  // for (let input of inputs) {
+  //   if (input.classList.contains('is-invalid')) {
+  //     return false;
+  //   }
+  // }
 
   return true;
 }
 
 //////////////Modificar Stock/////////////
-// document
-//   .getElementById("guardar-btn2")
-//   .addEventListener("click", function (event) {
-//     event.preventDefault();
-//     let pieza = JSON.parse(localStorage.getItem("proveedorEditar"));
-//     if (verificarClasesValidasFormulario()) {
+document
+  .getElementById("guardar-btn2")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    let pieza = JSON.parse(localStorage.getItem("stockEditar"));
+    if (verificarClasesValidasFormulario()) {
 
-//       const stockPrecio = document.getElementById("stock_precio").value;
-//       const stockMaximo = document.getElementById("stock_maximo").value;
-//       const stockMinimo = document.getElementById("stock_minimo").value;
-
-
-
-//       if (!stockPrecio || !stockMaximo || !stockMinimo) {
-//         alert("Por favor, completa todos los campos.");
-//         return;
-//       }
+      const stockPrecio = document.getElementById("stock_precio").value.replace("$", "");
+      const stockMaximo = document.getElementById("stock_maximo").value;
+      const stockMinimo = document.getElementById("stock_minimo").value;
 
 
 
-//       const data = {
-//         id_pieza: pieza.id_pieza,
-//         precio_unitario: stockPrecio,
-//         stock_max: stockMaximo,
-//         stock_min: stockMinimo,
+      if (!stockPrecio || !stockMaximo || !stockMinimo) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
 
 
-//       };
-//       console.log(data);
 
-//       fetch("https://aaaaa-deploy-back.vercel.app/users/modificarProveedor", {
-//         method: "PATCH",
+      const datos = {
+        id_pieza: parseInt(pieza.id_pieza, 10),
+        precio_unitario: parseFloat(stockPrecio, 10),
+        stock_max: parseInt(stockMaximo, 10),
+        stock_min: parseInt(stockMinimo, 10)
 
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
 
-//         body: JSON.stringify(data),
-//       })
-//         .then((response) => {
-//           if (!response.ok) {
-//             throw new Error("Network response was not ok");
-//           }
-//           return response.json();
-//         })
-//         .then((data) => {
-//           alert("Proveedor guardado con éxito");
+      };
+      console.log(datos);
 
-//           location.reload(true);
-//           // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
-//         })
-//         .catch((error) => {
-//           console.error("Error:", error);
-//           alert("Hubo un problema al guardar el vehículo.");
-//         });
-//     } else {
-//       alert("Completar los campos con datos validos");
+      orquestaFormulario(datos);
+
+    } else {
+      alert("Completar los campos con datos validos");
+    }
+  });
+
+async function modificarPrecio(datos) {
+
+  await fetch(`https://aaaaa-deploy-back.vercel.app/users/actualizarPiezaStockOPrecioPorID?idpieza=${datos.id_pieza}&nvo_stock_act=${-1}&nvo_precio=${datos.precio_unitario}`, {
+    method: "PATCH",
+
+    headers: {
+      "Content-Type": "application/json",
+    }
+
+
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      alert("Precio guardado con éxito");
+
+
+      // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Hubo un problema al guardar el precio.");
+    });
+
+}
+
+// async function modificarUmbral(datos) {
+//   await fetch(`https://aaaaa-deploy-back.vercel.app/users/actualizarUmbralesPiezaPorID?idPieza=${datos.id_pieza}&nvoStockMax=${datos.stock_max}&nvoStockMin=${datos.stock_min}`, {
+//     method: "PATCH",
+
+//     headers: {
+//       "Content-Type": "application/json",
 //     }
-//   });
+
+
+//   })
+//     .then((response) => {
+//       if (!response.ok) {
+//         response.json().then(error => {
+//           throw new Error(error.detail[0]); // Extrae el mensaje detallado del error
+//         });
+
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       alert("Umbral guardado con éxito");
+
+
+//       // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//       alert(error);
+//     });
+// }
+
+async function modificarUmbral(datos) {
+  try {
+    const response = await fetch(`https://aaaaa-deploy-back.vercel.app/users/actualizarUmbralesPiezaPorID?idPieza=${datos.id_pieza}&nvoStockMax=${datos.stock_max}&nvoStockMin=${datos.stock_min}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+
+    const result = await response.json(); // Lee el cuerpo de la respuesta una sola vez
+
+    if (!response.ok) {
+      throw new Error(result.detail[0]); // Extrae el mensaje detallado del error si la respuesta no es OK
+    }
+
+    alert("Umbral guardado con éxito");
+
+    // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+  } catch (error) {
+    console.error("Error:", error);
+    alert(error.message); // Muestra el mensaje de error
+  }
+}
+
+
+async function orquestaFormulario(datos) {
+
+  await modificarUmbral(datos);
+  await modificarPrecio(datos);
+  location.reload(true);
+}

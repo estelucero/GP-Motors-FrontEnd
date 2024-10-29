@@ -1,10 +1,13 @@
-var vehiculosData = JSON.parse(localStorage.getItem("vehiculoControlar"));
-console.log(vehiculosData[0].patente);
+var pedidos = JSON.parse(localStorage.getItem("pedidos"));
+
 
 ////Codigo nuevo//
 const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  if (decodedText.toUpperCase() === vehiculosData[0].patente.toUpperCase()) {
+
+  const pedidoEncontrado = pedidos.find(pedido => pedido.id_pedido === parseInt(decodedText, 10));
+  console.log(pedidoEncontrado);
+  if (pedidoEncontrado) {
     // Detiene el escáner
     html5QrCode.stop().then(() => {
       document.getElementById('reader').remove();
@@ -12,18 +15,13 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
       console.error('Error al detener el escáner: ', err);
     });
     //LLeno el html
-    document.getElementById('result').innerHTML = `
-        <h2>Patente Leida Con Exito!</h2>
-        <p>${decodedText}</p>
-    `;
+    cargarPedido(pedidoEncontrado);
 
-    setTimeout(function () {
-      window.location.href = "./auto-tecnico.html"; // Refresca la página
-    }, 1500);
+
+
   } else {
     document.getElementById('result').innerHTML = `
-        <h2>Patente Erronea</h2>
-        <p>Aparace: ${decodedText} y No ${vehiculosData[0].patente}</p>`;
+        <h2>Pedido Erronea</h2>`;
     // Detiene el escáner
     html5QrCode.stop().then(() => {
       document.getElementById('reader').remove();
@@ -55,9 +53,9 @@ html5QrCode.start(
 
 // Función para llamar a Confirmar Pedido
 
-function cargarPedido() {
+async function cargarPedido(pedidoEncontrado) {
   // Contenedor principal donde se insertará el pedido
-  const contenedor = document.getElementById("cargar-pedido");
+  const contenedor = document.getElementById("scanner");
 
   // Contenido HTML de la tarjeta de pedido
   const contenido = `
@@ -68,10 +66,10 @@ function cargarPedido() {
       <div class="datos-pedido">
         <p><strong>Datos del Pedido:</strong></p>
         <ul>
-          <li>ID Proveedor: <p>1</p></li>
-          <li>Pieza: <p>1</p></li>
-          <li>Nombre Proveedor: <p>Anacleto</p></li>
-          <li>Cantidad: <p>20</p></li>
+          <li>ID Pedido: <p>${pedidoEncontrado.id_pedido}</p></li>
+          <li>Pieza: <p>${pedidoEncontrado.nombre_pieza}</p></li>
+          <li>Nombre Proveedor: <p>${pedidoEncontrado.nombre_proveedor}</p></li>
+          <li>Cantidad: <p>${pedidoEncontrado.cantidad}</p></li>
         </ul>
       </div>
 
@@ -84,6 +82,56 @@ function cargarPedido() {
 
   // Insertar el contenido HTML en el contenedor
   contenedor.innerHTML = contenido;
+  await ConfirmarPedido(pedidoEncontrado);
+  CancelarPedido();
+}
+//Post para confirmar pedido
+async function ConfirmarPedido(pedido) {
+  document
+    .getElementById("btn-confirmar-pedido")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+
+
+      fetch(`https://aaaaa-deploy-back.vercel.app/users/simularLlegadaPedido/${pedido.id_pedido}`, {
+        method: "PATCH",
+
+
+
+
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert("Pedido confirmado con éxito");
+
+          window.location.href = "./pedidos-admin.html";
+
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Hubo un problema al confirmar el pedido.");
+          location.reload(true);
+        });
+
+    });
+}
+
+//Cancelar pedido//
+async function CancelarPedido(pedido) {
+  document
+    .getElementById("btn-cancelar-pedido")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+
+
+      window.location.href = "./pedidos-admin.html";
+
+    });
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -138,3 +186,4 @@ window.onload = createAndAdjustQRShadedRegion;
 // Ejecutar la función cuando se redimensione la ventana
 window.onresize = createAndAdjustQRShadedRegion;
 ocultarPreloader();
+

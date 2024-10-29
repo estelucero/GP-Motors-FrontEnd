@@ -20,6 +20,10 @@ async function enlistarPedidos(pedidoConcesionario) {
         celdaNombre.innerHTML = `<p>${pedido.nombre_proveedor.charAt(0).toUpperCase() + pedido.nombre_proveedor.slice(1).toLowerCase()}</p>`;
         fila.appendChild(celdaNombre);
 
+        const celdaEmail = document.createElement('td');
+        celdaEmail.innerHTML = `<p>${pedido.email_proveedor}</p>`;
+        fila.appendChild(celdaEmail);
+
         const celdaRepuesto = document.createElement('td');
         celdaRepuesto.innerHTML = `<p>${pedido.nombre_pieza.charAt(0).toUpperCase() + pedido.nombre_pieza.slice(1).toLowerCase()}</p>`;
         fila.appendChild(celdaRepuesto);
@@ -73,12 +77,12 @@ async function obtenerPedidos() {
 
         // Convierte la respuesta a JSON
         pedidos = await response.json();
-        const pedidosConcesionario = pedidos.filter(pedido => pedido.destino === 1);
+        const pedidosConcesionario = pedidos.filter(pedido => pedido.destino === usuario[5] && pedido.estado_pedido == 0);
 
 
         localStorage.setItem("pedidos", JSON.stringify(pedidosConcesionario));
         await enlistarPedidos(pedidosConcesionario);
-        await eliminarVehiculo();
+        await eliminarPedido();
 
         // guardarEdicionStock();
         // listenerEdicion();
@@ -90,7 +94,7 @@ async function obtenerPedidos() {
 }
 
 //Eliminar el auto
-async function eliminarVehiculo() {
+async function eliminarPedido() {
     const botonesEliminar = document.querySelectorAll(".eliminar");
 
     botonesEliminar.forEach((boton) => {
@@ -111,18 +115,18 @@ async function eliminarVehiculo() {
                 if (response.ok) {
                     // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
 
-                    console.log(`Vehículo con patente ${pedido} eliminado del sistema`);
+                    console.log(`Pedido con id ${pedido} eliminado del sistema`);
                     location.reload(true);
                 } else {
                     // Si hay un error, mostrar un mensaje
                     console.error(
-                        `Error al eliminar el vehículo con patente ${pedido}: ${response.statusText}`
+                        `Error al eliminar el pedido con id ${pedido}: ${response.statusText}`
                     );
-                    alert("No se pudo eliminar el vehículo, intente nuevamente.");
+                    alert("No se pudo eliminar el pedido, intente nuevamente.");
                 }
             } catch (error) {
                 console.error("Error en la solicitud de eliminación:", error);
-                alert("Ocurrió un error al intentar eliminar el vehículo.");
+                alert("Ocurrió un error al intentar eliminar el pedido.");
             }
         });
     });
