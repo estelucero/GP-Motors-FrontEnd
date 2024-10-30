@@ -1,5 +1,5 @@
-let mymap; 
-let marker; 
+let mymap;
+let marker;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('normalizarBtn').addEventListener('click', mostrarResultados);
@@ -24,10 +24,10 @@ async function mostrarResultados() {
             p.style.color = 'red';
             resultadosDiv.appendChild(p);
         });
-        return; 
+        return;
     }
 
-    ocultarMapa(); 
+    ocultarMapa();
 
     const resultados = await normalizarDireccion(direccion, 20);
     if (resultados && resultados.direccionesNormalizadas && resultados.direccionesNormalizadas.length > 0) {
@@ -59,8 +59,8 @@ async function mostrarResultados() {
 
 function seleccionarDireccion(direccionNormalizada) {
     const inputDireccion = document.getElementById('direccion');
-    inputDireccion.value = direccionNormalizada.direccion; 
-    mostrarResultados(); 
+    inputDireccion.value = direccionNormalizada.direccion;
+    mostrarResultados();
 }
 
 function visibilidadMapa(visibilidad_ubicacion, direccion, lat, lng, detallesDireccion) {
@@ -87,14 +87,14 @@ function visibilidadMapa(visibilidad_ubicacion, direccion, lat, lng, detallesDir
             parrafoDireccion = document.createElement('p');
             document.querySelector('.contenedor-perfil .info-direccion').appendChild(parrafoDireccion);
         }
-        parrafoDireccion.textContent = direccion; 
+        parrafoDireccion.textContent = direccion;
 
-        initMap(lat, lng); 
+        initMap(lat, lng);
     }
 }
 
 async function normalizarDireccion(direccion, maxOptions = 10, geocodificar = false, srid = 4326) {
-    const baseUrl = "http://servicios.usig.buenosaires.gob.ar/normalizar/";
+    const baseUrl = "https://servicios.usig.buenosaires.gob.ar/normalizar/";
 
     const params = new URLSearchParams();
     params.append("direccion", direccion);
@@ -160,40 +160,40 @@ async function obtenerDetallesDireccion(lat, lng) {
 }
 
 function initMap(lat, lng, detallesDireccion) {
-  if (!mymap) {
-      mymap = L.map('contenedor-mapa').setView([lat, lng], 17);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(mymap);
-  } else {
-      mymap.setView([lat, lng], 17);
-  }
+    if (!mymap) {
+        mymap = L.map('contenedor-mapa').setView([lat, lng], 17);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);
+    } else {
+        mymap.setView([lat, lng], 17);
+    }
 
-  if (marker) {
-      mymap.removeLayer(marker); 
-  }
+    if (marker) {
+        mymap.removeLayer(marker);
+    }
 
-  marker = L.marker([lat, lng]).addTo(mymap)
+    marker = L.marker([lat, lng]).addTo(mymap)
 
-      .openPopup();
+        .openPopup();
 
-  document.getElementById('contenedor-mapa').style.display = 'block';
+    document.getElementById('contenedor-mapa').style.display = 'block';
 }
 
 function ocultarMapa() {
     const contenedorMapa = document.getElementById('contenedor-mapa');
     const contenedorDireccion = document.querySelector('.info-direccion');
-    
+
     if (contenedorMapa) {
         contenedorMapa.style.display = 'none';
     }
-    
+
     if (contenedorDireccion) {
-        contenedorDireccion.innerHTML = ''; 
+        contenedorDireccion.innerHTML = '';
     }
 
     if (marker) {
-        mymap.removeLayer(marker); 
-        marker = null; 
+        mymap.removeLayer(marker);
+        marker = null;
     }
 }
