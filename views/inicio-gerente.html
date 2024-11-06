@@ -4,22 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Control Car - Controles Pendientes</title>
+  <title>Control Car - Reportes Generales</title>
   <!-- Favicon -->
   <link rel="icon" href="" type="image/x-icon" />
   <!-- Style-->
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
-  <link rel="stylesheet" href="../styles/supervisor/controles-supervisor.css" />
+  <!-- <link rel="stylesheet" href="../styles/supervisor/controles-supervisor.css" /> -->
+  <link rel="stylesheet" href="../styles/gerente/inicio-gerente.css">
+  <link rel="stylesheet" href="../styles/gerente/metabase.css">
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
 
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
-<body class="hidden-carga" id="contenido">
+<body>
   <!-- Pre-load -->
-  <div class="centrado" id="preloader">
+  <!-- <div class="centrado" id="preloader">
     <div class="lds-spinner">
       <div></div>
       <div></div>
@@ -35,7 +37,7 @@
       <div></div>
     </div>
     <p class="text-carga">Cargando...</p>
-  </div>
+  </div> -->
 
   <!-- Navbar-->
   <header>
@@ -92,11 +94,20 @@
   </section>
   <hr class="linea-hr">
 
-  <section class="seccion-titulo">
-    <div class="auto-text">
-      <h1 class="texto-titulo">Gerente</h1>
+  <!-- Sección MetaBase-->
+  <section class="seccion-metabase">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        Dashboard Gerencial - Concesionaria
+      </div>
+      <div id="iframe-container" id="iframe-container"></div> <!-- Contenedor para el iframe -->
+      <div class="dashboard-footer">
+        <p>Acceso directo a Metabase para análisis de datos: <a href="http://helping-officially-locust.ngrok-free.app"
+            target="_blank">Metabase</a></p>
+      </div>
     </div>
   </section>
+
 
   <!-- Footer -->
   <section class="footer">
@@ -122,11 +133,12 @@
   </div>
 
   <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
   <script src="../scripts/general/navbar.js"></script>
+  <script src="../scripts/gerente/inicio-gerente.js"></script>
 
-  
-  <script src="../scripts/general/pre-load.js"></script>
+
+  <!-- <script src="../scripts/general/pre-load.js"></script> -->
 
 </body>
 

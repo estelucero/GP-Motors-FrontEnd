@@ -65,7 +65,7 @@ function validarTipoUsuario(response) {
   if ("gerente" === response) {
     window.location.href = "./views/inicio-gerente.html";
   }
-  if ("tecnico" === response) {
+  if ("técnico" === response) {
     window.location.href = "./views/inicio-tecnico.html";
   }
 }
