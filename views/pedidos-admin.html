@@ -179,7 +179,7 @@
     </div>
   </section>
 
-  <!-- Seccion Tabla de Controles -->
+  <!-- Seccion Pedidos Pendientes -->
   <section id="titulo-controles">
     <div class="auto-text">
       <h3 class="control-titulo">Tabla de Pedidos <span>Pendientes</span></h3>
@@ -221,8 +221,63 @@
               <th> Repuesto </th>
               <th> Cantidad </th>
               <th> Precio </th>
-              <th> Fecha de Pedido </th>
+              <th> Fecha Pedido </th>
               <th> Eliminar </th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Pedidos Finalizados -->
+  <section id="titulo-controles">
+    <div class="auto-text">
+      <h3 class="control-titulo">Tabla de Pedidos <span>Finalizados</span></h3>
+    </div>
+  </section>
+
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro" id="id-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-controles">
+        <input type="text" id="filter-nombre" placeholder="Buscar nombre Proveedor">
+        <input type="text" id="filter-repuesto" placeholder="Buscar por Repuesto">
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion Tabla de Pedidos Finalizados -->
+  <section class="seccion-control" id="section-control">
+    <div class="table-control">
+      <div class="export_file">
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
+        <input type="checkbox" id="export-file">
+        <div class="export_file-options" id="id_export_file-options">
+          <label>Exportar como &nbsp; &#10140;</label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+              alt=""></label>
+          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
+        </div>
+      </div>
+      <div class="table-body">
+        <table id="controlTable">
+          <thead>
+            <tr>
+              <th class="ocultar-columna"> ID </th>
+              <th> Nombre Proveedor</th>
+              <th> Email Proveedor</th>
+              <th> Repuesto </th>
+              <th> Cantidad </th>
+              <th> Precio </th>
+              <th> Fecha Pedido </th>
+              <th> Fecha Finalizado </th>
             </tr>
           </thead>
           <tbody>

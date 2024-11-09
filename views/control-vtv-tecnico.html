@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GP Motors - Traslado VTV</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/logos/car.png" type="image/x-icon" />
+  <!-- Style-->
+  <link rel="stylesheet" href="../styles/general/pre-load.css" />
+  <link rel="stylesheet" href="../styles/tecnico/control-vtv-tecnico.css" />
+  <!-- Box Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <title>autos</title>
+</head>
+
+<body class="hidden-carga" id="contenido">
+  <!-- Pre-load -->
+  <div class="centrado" id="preloader">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p class="text-carga">Cargando...</p>
+  </div>
+
+  <!-- Sección VTV -->
+  <section class="tarjeta-vtv">
+    <div class="tarjeta">
+      <h3>VTV - Control de Viaje</h3>
+      <p class="texto-control">¿Está listo para iniciar el viaje?</p>
+
+      <button id="inicio-viaje" class="btn">Iniciar Viaje</button>
+      <button id="detener-viaje" class="btn" disabled>Detener Viaje</button>
+
+      <textarea id="comentario" placeholder="Escribe un comentario..."></textarea>
+
+      <div id="botones-finalizar" style="display: none;">
+        <div class="botones-control">
+          <button id="guardar-control" class="boton-form">Guardar</button>
+          <a href="./auto-tecnico.html"><button id="cancelar-control" class="boton-form">Cancelar</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="../scripts/general/pre-load.js"></script>
+  <script src="../scripts/tecnico/control-vtv-tecnico.js"></script>
+</body>
+
+</html>

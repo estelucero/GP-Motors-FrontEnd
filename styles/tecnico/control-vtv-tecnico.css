@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --celeste: rgba(214, 233, 255, 1);
+  --azul-oscuro: rgb(19, 47, 61);
+  --blanco: white;
+  --azul-claro: rgb(5, 68, 97);
+  --gris: rgb(218, 218, 218);
+  --azul: rgb(121, 161, 213);
+}
+
+* {
+  font-family: "Poppinms", sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 1rem;
+  scroll-behavior: smooth;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+p {
+  font-family: "Barlow", sans-serif;
+}
+
+.tarjeta-vtv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 20px;
+}
+
+.formulario-control h3 {
+  padding: 15px;
+}
+
+.texto-control {
+  text-align: center;
+  margin: 0 auto 25px;
+}
+
+.span-control {
+  color: var(--azul);
+}
+
+.tarjeta {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Asegura que todos los elementos se estiren al ancho del contenedor */
+}
+
+.btn {
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  /* Un margen abajo de cada botón */
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+#inicio-viaje {
+  background-color: #28a745;
+  color: white;
+}
+
+#detener-viaje {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Estilo para cuando los botones están desactivados */
+#inicio-viaje:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+#detener-viaje:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Estilo para el área de texto que se desliza */
+#comentario {
+  display: none;
+  /* El textarea estará oculto por defecto */
+  margin-top: 10px;
+  width: 100%;
+  height: 150px;
+  resize: vertical;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#botones-finalizar {
+  display: none;
+  /* Los botones de "Guardar control" y "Cancelar" estarán ocultos por defecto */
+}
+
+.botones-control {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px 20px;
+}
+
+.boton-form {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 0 5px;
+  background-color: var(--azul-claro);
+  color: white;
+}
+
+/* Responsive */
+
+@media (min-width: 768px) {
+  .tarjeta {
+    width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tarjeta {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .btn,
+  #comentario,
+  .boton-form {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #comentario {
+    height: 120px;
+  }
+}
