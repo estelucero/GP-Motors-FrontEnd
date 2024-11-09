@@ -54,14 +54,14 @@
   /* max-width: 200px;
   min-width: 120px;
   height: 140px; */
-  width: 150px;
+  /* width: 150px; */
   height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .card-carrusel .img i {
@@ -90,7 +90,9 @@
   font-size: 1rem;
   margin: 15px 0 5px;
   text-align: center;
+  /* Asegura que el texto esté centrado */
   white-space: nowrap;
+  /* Para mantener en una sola línea */
   overflow: hidden;
   text-overflow: ellipsis;
 }

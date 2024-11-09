@@ -123,6 +123,12 @@
             <h2>Proveedores</h2>
           </li>
         </a>
+        <a href="./traslado-concesionaria-admin.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bxs-truck' draggable="false"></i></div>
+            <h2>Traslado Concesionaria</h2>
+          </li>
+        </a>
         <li class="card-carrusel">
           <div class="img"><i class='bx bx-user' draggable="false"></i></div>
           <h2>Registro</h2>
@@ -241,7 +247,7 @@
     </div>
   </section>
 
-  <!-- Seccion Filtro -->
+  <!-- Seccion Filtro Pedidos Finalizados -->
   <section class="seccion-filtro" id="id-filtro">
     <div class="table-header">
       <h1>Filtros</h1>
@@ -253,7 +259,7 @@
   </section>
 
   <!-- Seccion Tabla de Pedidos Finalizados -->
-  <section class="seccion-control" id="section-control">
+  <section class="seccion-control" id="section-pedido-finalizado">
     <div class="table-control">
       <div class="export_file">
         <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
@@ -266,8 +272,8 @@
           <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
         </div>
       </div>
-      <div class="table-body">
-        <table id="controlTable">
+      <div class="table-body-finalizados">
+        <table id="pedidoFinalizadoTable">
           <thead>
             <tr>
               <th class="ocultar-columna"> ID </th>
@@ -284,7 +290,7 @@
 
           </tbody>
         </table>
-        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
+        <p id="no-results-message-finalizado" class="mensaje-no-resultados">No hay resultados</p>
       </div>
     </div>
   </section>

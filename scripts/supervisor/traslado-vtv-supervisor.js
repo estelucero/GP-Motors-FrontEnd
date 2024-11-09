@@ -59,6 +59,33 @@ async function cargarVehiculos() {
   });
 }
 
+// // Función para mostrar el contenido correspondiente al vehículo seleccionado
+// async function showContent(id, element) {
+//   // Ocultar todos los contenidos y el mensaje inicial
+//   document.querySelectorAll('.content div').forEach(div => {
+//     div.classList.remove('active');
+//   });
+//   document.getElementById("content").style.display = "none";
+//   // Ocultar el mensaje inicial
+//   document.getElementById('mensaje-inicial').classList.remove('active');
+//   document.getElementById(id).style.display = "block";
+//   // Mostrar el contenido correspondiente
+//   document.getElementById(id).classList.add('active');
+
+//   // Seleccionar todos los labels y quitarles la clase 'selected'
+//   const labels = document.querySelectorAll('.sidebar .label');
+//   labels.forEach(label => {
+//     label.classList.remove('selected');
+//   });
+
+//   // Añadir la clase 'selected' al label que ha sido clickeado
+//   element.classList.add('selected');
+
+//   await agregoMapa(id);
+// }
+
+let updateInterval; // Variable para almacenar el intervalo actual
+
 // Función para mostrar el contenido correspondiente al vehículo seleccionado
 async function showContent(id, element) {
   // Ocultar todos los contenidos y el mensaje inicial
@@ -81,8 +108,18 @@ async function showContent(id, element) {
   // Añadir la clase 'selected' al label que ha sido clickeado
   element.classList.add('selected');
 
+  // Limpia el intervalo anterior si existe
+  if (updateInterval) {
+    clearInterval(updateInterval);
+  }
+
+  // Ejecuta agregoMapa inmediatamente y luego cada 15 segundos
   await agregoMapa(id);
+  updateInterval = setInterval(async () => {
+    await agregoMapa(id);
+  }, 15000);
 }
+
 
 // Cargar los vehículos cuando se cargue la página
 async function main() {

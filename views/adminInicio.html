@@ -122,7 +122,13 @@
             <h2>Proveedores</h2>
           </li>
         </a>
-        <li class="card-carrusel">
+        <a href="./traslado-concesionaria-admin.html" class="sin-decoracion">
+          <li class="card-carrusel">
+            <div class="img"><i class='bx bxs-car' draggable="false"></i></div>
+            <h2>Traslado Concesionaria</h2>
+          </li>
+        </a>
+        <li class=" card-carrusel">
           <div class="img"><i class='bx bx-user' draggable="false"></i></div>
           <h2>Registro</h2>
         </li>
@@ -131,6 +137,25 @@
     </div>
   </section>
   <hr class="linea-hr">
+
+  <!-- Pop up proveedor -->
+  <div class="popup-container">
+    <div class="popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Eliminar Vehículo</h2>
+        <div class="form-element">
+          <label for="proveedor">Nombre Proveedor</label>
+          <input type="proveedor" id="proveedor" placeholder="Escribir nombre" required />
+          <div class="invalid-feedback" id="nombre-proveedor-feedback"></div>
+        </div>
+        <div class="form-element form-div">
+          <button id="guardar-btn2" class="btn-form">Guardar</button>
+          <button id="cancelar-btn" class="btn-form">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Seccion Autos -->
   <section class="section-autos">
