@@ -88,9 +88,16 @@ let updateInterval; // Variable para almacenar el intervalo actual
 
 // Función para mostrar el contenido correspondiente al vehículo seleccionado
 async function showContent(id, element) {
+
     // Ocultar todos los contenidos y el mensaje inicial
     document.querySelectorAll('.content div').forEach(div => {
         div.classList.remove('active');
+
+    });
+    document.querySelectorAll('.info-mapa.active').forEach(div => {
+        div._leaflet_id = null;
+        div.innerHTML = "";
+        div.style.display = "none";
     });
     document.getElementById("content").style.display = "none";
     // Ocultar el mensaje inicial
