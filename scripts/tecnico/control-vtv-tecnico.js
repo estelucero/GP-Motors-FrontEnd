@@ -75,9 +75,11 @@ document.getElementById('guardar-control').addEventListener('click', function ()
   document.getElementById('botones-finalizar').style.display = 'none'; // Ocultar botones de finalizar
   document.getElementById('comentario').style.display = 'none'; // Ocultar textarea
   document.getElementById('inicio-viaje').disabled = false; // Habilitar el botón de inicio
+  let usuario = JSON.parse(localStorage.getItem("usuario"));
   const data = {
     "patente_vehiculo": control.patente,
     "resultado_vtv": true,
+    "id_tecnico": usuario[5]
   };
   console.log(data)
 
@@ -113,10 +115,11 @@ document.getElementById('cancelar-control').addEventListener('click', function (
   document.getElementById('botones-finalizar').style.display = 'none'; // Ocultar botones de finalizar
   document.getElementById('comentario').style.display = 'none'; // Ocultar textarea
   document.getElementById('inicio-viaje').disabled = false; // Habilitar el botón de inicio
-
+  let usuario = JSON.parse(localStorage.getItem("usuario"));
   const data = {
     "patente_vehiculo": control.patente,
     "resultado_vtv": false,
+    "id_tecnico": usuario[5]
   };
   console.log(data)
 

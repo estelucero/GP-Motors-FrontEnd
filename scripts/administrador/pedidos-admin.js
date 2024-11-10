@@ -219,9 +219,123 @@ async function obtenerEntregados() {
   }
 }
 
+
+
+/////////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Obtener las secciones
+  const qrSection = document.getElementById("qr-section");
+  const manualSection = document.getElementById("manual-section");
+
+  // Obtener los enlaces de alternancia
+  const cargarManualmente = document.getElementById("cargar-manualmente");
+  const volverQr = document.getElementById("volver-qr");
+
+  // Función para mostrar la sección de Cargar Pedido Manualmente
+  cargarManualmente.addEventListener("click", function (event) {
+    event.preventDefault();
+    qrSection.style.display = "none"; // Oculta la sección de QR
+    manualSection.style.display = "block"; // Muestra la sección de manual
+  });
+
+  // Función para volver a la sección de QR
+  volverQr.addEventListener("click", function (event) {
+    event.preventDefault();
+    manualSection.style.display = "none"; // Oculta la sección de manual
+    qrSection.style.display = "block"; // Muestra la sección de QR
+  });
+});
+
+
+/////////////////////////////////////////////////// 
+
+function limpiarCampo() {
+  const campo = document.getElementById("codigo-id");
+  const errorMessage = document.getElementById("codigo-id-error");
+
+  campo.value = "";
+  errorMessage.style.display = "none";
+}
+
+document.getElementById("codigo-id").addEventListener("input", function (event) {
+  const codigoInput = event.target.value;
+  const regex = /^\d+$/;
+  const errorMessage = document.getElementById("codigo-id-error");
+
+  if (!regex.test(codigoInput)) {
+    errorMessage.style.display = "block";
+  } else {
+    errorMessage.style.display = "none";
+  }
+});
+
+document.querySelector(".manual-option a").addEventListener("click", function (event) {
+  event.preventDefault();
+  limpiarCampo();
+});
+
+document.getElementById("id-boton-escanear").addEventListener("click", function () {
+  limpiarCampo();
+});
+
+window.addEventListener("beforeunload", function () {
+  limpiarCampo();
+});
+///Manda pedido
+async function ConfirmarPedido(pedido) {
+
+
+
+  fetch(`https://aaaaa-deploy-back.vercel.app/users/simularLlegadaPedido/${pedido.id_pedido}`, {
+    method: "PATCH",
+
+
+
+
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      alert("Pedido confirmado con éxito");
+
+      window.location.href = "./pedidos-admin.html";
+
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Hubo un problema al confirmar el pedido.");
+      location.reload(true);
+    });
+
+
+}
+
+
+///Carga manual
+async function cargaManual() {
+  document.getElementById("id-boton-confimar").addEventListener("click", async function () {
+    let codigo = document.getElementById("codigo-id").value;
+    let pedidos = JSON.parse(localStorage.getItem("pedidos"));
+    let pedidoEncontrado = pedidos.find(pedido => pedido.id_pedido === parseInt(codigo, 10));
+    if (pedidoEncontrado) {
+      await ConfirmarPedido(pedidoEncontrado);
+    } else {
+      alert("No se encontro un pedido con este id")
+    }
+  });
+}
+
+
+////Inicio de todo
 async function main() {
   await obtenerPedidos();
   await obtenerEntregados();
+  await cargaManual();
   ocultarPreloader();
 }
 main()

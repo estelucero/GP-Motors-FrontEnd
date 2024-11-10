@@ -175,6 +175,37 @@ p {
   text-decoration: underline;
 }
 
+/* Cargar Pedido Manualmente */
+
+.qr-steps label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.qr-steps input {
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.qr-steps input:focus {
+  border-color: #007bff;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: block;
+}
+
 /* Responsive */
 
 @media (max-width: 700px) {
@@ -195,7 +226,58 @@ p {
   }
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+  .qr-steps label {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .qr-steps input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .qr-wrapper {
+    padding: 15px;
+    width: 450px;
+  }
+
+  .qr-title {
+    font-size: 20px;
+  }
+
+  .qr-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .qr-steps ul {
+    padding-left: 15px;
+  }
+
+  .qr-steps li {
+    font-size: 12px;
+  }
+
+  .qr-container {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+  }
+
+  .qr-icon {
+    font-size: 45px;
+  }
+
+  .boton-escanear {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .manual-option a {
+    font-size: 14px;
+  }
+}
 
 @media (max-width: 576px) {
   .auto-text {
@@ -203,6 +285,101 @@ p {
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
+  }
 
+  .qr-steps label {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+
+  .qr-steps input {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  .qr-wrapper {
+    padding: 10px;
+    max-width: 350px;
+  }
+
+  .qr-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .qr-description {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .qr-steps ul {
+    padding-left: 10px;
+  }
+
+  .qr-steps li {
+    font-size: 11px;
+  }
+
+  .qr-container {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .qr-icon {
+    font-size: 35px;
+  }
+
+  .boton-escanear {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .manual-option a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .qr-wrapper {
+    padding: 5px;
+    max-width: 250px;
+  }
+
+  .qr-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .qr-description {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .qr-steps ul {
+    padding-left: 5px;
+  }
+
+  .qr-steps li {
+    font-size: 9px;
+  }
+
+  .qr-container {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 8px;
+  }
+
+  .qr-icon {
+    font-size: 30px;
+  }
+
+  .boton-escanear {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .manual-option a {
+    font-size: 10px;
   }
 }

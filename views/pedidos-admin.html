@@ -147,7 +147,7 @@
   </section>
 
   <!-- Sección de QR -->
-  <section class="qr-section">
+  <section class="qr-section" id="qr-section">
     <div class="qr-wrapper">
       <h2 class="qr-title">Cargar QR del Pedido</h2>
 
@@ -179,7 +179,36 @@
 
       <!-- Botón alternativo -->
       <div class="manual-option">
-        <a href="#">Cargar manualmente</a>
+        <a href="#" id="cargar-manualmente">Cargar manualmente</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sección Cargar Pedido Manualmente -->
+  <section class="qr-section" id="manual-section" style="display: none;">
+    <div class="qr-wrapper">
+      <h2 class="qr-title">Cargar Pedido Manualmente</h2>
+
+      <!-- Descripción breve -->
+      <p class="qr-description">Cargar el código del pedido para verificar y actualizar el stock de piezas en nuestro
+        sistema de concesionaria.</p>
+
+      <!-- Indicador de pasos -->
+      <div class="qr-steps">
+        <label for="codigo-id">Ingresar código (id):</label>
+        <input type="text" id="codigo-id" name="codigo-id" placeholder="Ingrese el código aquí" required>
+        <span id="codigo-id-error" class="error-message" style="display:none;">Por favor ingrese solo números.</span>
+      </div>
+
+      <!-- Botón de Confirmar -->
+      <div class="boton-qr">
+        <button id="id-boton-confimar" class="boton-escanear">Confirmar</button>
+      </div>
+
+      <!-- Botón alternativo -->
+      <div class="manual-option">
+        <a href="#" id="volver-qr">Escanear Pedido</a>
       </div>
 
     </div>
