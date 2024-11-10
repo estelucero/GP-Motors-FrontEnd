@@ -1,0 +1,120 @@
+:root {
+  --celeste: rgba(214, 233, 255, 1);
+  --azul-oscuro: rgb(19, 47, 61);
+  --blanco: white;
+  --azul-claro: rgb(5, 68, 97);
+  --gris: rgb(218, 218, 218);
+  --azul: rgb(121, 161, 213);
+}
+
+/* .popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+} */
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-element p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Botones */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-form {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-trasladar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-trasladar:hover {
+  background-color: #45a049;
+}
+
+.btn-eliminar {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #e41e2d;
+}
+
+.btn-cancelar {
+  background-color: #777;
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background-color: #555;
+}
+
+.select-concesionaria {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Ocultar el popup inicialmente */
+.popup-container {
+  display: none;
+}
+
+/* Mostrar el popup cuando esté activo */
+.popup-container.active {
+  display: flex;
+}

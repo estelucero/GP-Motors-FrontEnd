@@ -1,10 +1,10 @@
 ///////// Exportar en PDF
-const pdf_btn = document.getElementById('toPDF');
-const section_control = document.getElementById('section-control');
-const section_titulo = document.getElementById('titulo-controles');
+const pdf_btn_finalizado = document.getElementById('toPDF-finalizado');
+const section_control_finalizado = document.getElementById('section-pedido-finalizado');
+const section_titulo_finalizado = document.getElementById('titulo-pedido-finalizado');
 
-const toPDF = function (section_control, section_titulo) {
-  if (!section_control || !section_titulo) {
+const toPDF_finalizado = function (section_control_finalizado, section_titulo_finalizado) {
+  if (!section_control_finalizado || !section_titulo_finalizado) {
     console.error("No se encontraron todas las secciones necesarias.");
     return;
   }
@@ -13,6 +13,7 @@ const toPDF = function (section_control, section_titulo) {
     <html>
       <head>
         <link rel="stylesheet" href="../styles/supervisor/controles-supervisor.css" />
+        <link rel="stylesheet" href="../styles/administrador/tabla-pedidos.css" />
         <style>
           @media print {
             @page {
@@ -36,8 +37,8 @@ const toPDF = function (section_control, section_titulo) {
         <title>Document</title>
       </head>
       <body>
-        <section class="seccion-titulo">${section_titulo.innerHTML}</section>
-        <section class="seccion-control">${section_control.innerHTML}</section>
+        <section class="seccion-titulo">${section_titulo_finalizado.innerHTML}</section>
+        <section class="seccion-control">${section_control_finalizado.innerHTML}</section>
       </body>
     </html>
   `;
@@ -54,13 +55,13 @@ const toPDF = function (section_control, section_titulo) {
   };
 }
 
-pdf_btn.onclick = () => {
-  toPDF(section_control, section_titulo);
+pdf_btn_finalizado.onclick = () => {
+  toPDF_finalizado(section_control_finalizado, section_titulo_finalizado);
 }
 
 
 /////// Exportar en CSV
-const downloadCSV = function (data, fileName = '') {
+const downloadCSV_finalizado = function (data, fileName = '') {
   const a = document.createElement('a');
   a.download = fileName || 'archivo.csv'; // Nombre del archivo por defecto
   a.href = `data:text/csv;charset=utf-8,${encodeURIComponent(data)}`;
@@ -69,7 +70,7 @@ const downloadCSV = function (data, fileName = '') {
   document.body.removeChild(a);
 }
 
-const toCSV = function (table) {
+const toCSV_finalizado = function (table) {
   const t_heads = table.querySelectorAll('th');
   const tbody_rows = table.querySelectorAll('tbody tr');
 
@@ -87,52 +88,15 @@ const toCSV = function (table) {
   return headings + '\n' + table_data;
 }
 
-const csv_btn = document.getElementById('toCSV');
-csv_btn.onclick = () => {
-  const csv = toCSV(document.getElementById('controlTable'));
-  downloadCSV(csv, 'exported_data.csv');
+const csv_btn_finalizado = document.getElementById('toCSV-finalizado');
+csv_btn_finalizado.onclick = () => {
+  const csv = toCSV_finalizado(document.getElementById('pedidoFinalizadoTable'));
+  downloadCSV_finalizado(csv, 'exported_data.csv');
 }
 
 
-// /////// Exportar en EXCEL
-// const toExcel = function(table) {
-//   const t_heads = table.querySelectorAll('th');
-//   const tbody_rows = table.querySelectorAll('tbody tr');
-
-//   const headings = [...t_heads].map(head => head.textContent.trim());
-//   const data = [];
-
-//   data.push([...headings, 'image name']);
-
-//   tbody_rows.forEach(row => {
-//     const cells = row.querySelectorAll('td');
-//     const imgElement = row.querySelector('img');
-//     const img = imgElement ? decodeURIComponent(imgElement.src) : ''; 
-
-//     const rowData = [...cells].map(cell => cell.textContent.trim());
-//     rowData.push(img); 
-
-//     data.push(rowData);
-//   });
-
-//   const ws = XLSX.utils.aoa_to_sheet(data);
-//   const wb = XLSX.utils.book_new();
-//   XLSX.utils.book_append_sheet(wb, ws, 'Datos');
-
-//   XLSX.writeFile(wb, 'exported_data.xlsx');
-// }
-
-// const excel_btn = document.getElementById('toEXCEL'); 
-// excel_btn.onclick = () => {
-//   const section_control = document.getElementById('section-control');
-//   toExcel(section_control); 
-// }
-
-
-
-
-
-const toExcel = function (table) {
+///////////// Exportar EXCEL
+const toExcel_finalizado = function (table) {
   const t_heads = table.querySelectorAll('th');
   const tbody_rows = table.querySelectorAll('tbody tr');
 
@@ -168,8 +132,8 @@ const toExcel = function (table) {
 }
 
 // Asignar el evento click al botón
-const excel_btn = document.getElementById('toEXCEL');
-excel_btn.onclick = () => {
-  const section_control = document.getElementById('section-control'); // Asegúrate de que este ID sea correcto
-  toExcel(section_control);
+const excel_btn_finalizado = document.getElementById('toEXCEL-finalizado');
+excel_btn_finalizado.onclick = () => {
+  const section_control_finalizado = document.getElementById('section-pedido-finalizado'); // Asegúrate de que este ID sea correcto
+  toExcel_finalizado(section_control_finalizado);
 };

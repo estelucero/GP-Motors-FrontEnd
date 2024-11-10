@@ -164,6 +164,56 @@ p {
   height: 500px;
 }
 
+.seccion-traslado-auto {
+  padding: 2rem;
+  margin: 20px;
+}
+
+.tarjeta-traslado {
+  border: 1px solid #ccc;
+  padding: 2rem;
+  margin-top: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.tarjeta-traslado label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.tarjeta-traslado input,
+.tarjeta-traslado select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.tarjeta-traslado button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tarjeta-traslado button:hover {
+  background-color: #0056b3;
+}
+
+.subtitulo-traslado {
+  font-size: 1.5rem;
+  color: var(--azul-oscuro);
+  margin-bottom: 1rem;
+  /* text-align: center; */
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .container-vtv {
@@ -230,6 +280,36 @@ p {
   .auto-text {
     font-size: 2rem;
   }
+
+  .seccion-traslado-auto {
+    padding: 1rem;
+    margin: 0 40px 0 40px;
+  }
+
+  .tarjeta-traslado {
+    padding: 1.5rem;
+    margin-top: 15px;
+  }
+
+  .tarjeta-traslado label {
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-traslado input,
+  .tarjeta-traslado select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-traslado button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .subtitulo-traslado {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -263,5 +343,36 @@ p {
   .info-mapa {
     height: auto;
     min-height: 300px;
+  }
+
+  .seccion-traslado-auto {
+    padding: 0.5rem;
+    margin: 0 50px 0 50px;
+  }
+
+  .tarjeta-traslado {
+    padding: 1rem;
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+
+  .tarjeta-traslado label {
+    font-size: 0.8rem;
+  }
+
+  .tarjeta-traslado input,
+  .tarjeta-traslado select {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .tarjeta-traslado button {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .subtitulo-traslado {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
   }
 }

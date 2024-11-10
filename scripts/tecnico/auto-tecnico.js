@@ -92,9 +92,13 @@ function guardarControlesVehiculo() {
       //   año: vehiculoEncontrado.año,
       //   km: vehiculoEncontrado.km,
       // };
-
       localStorage.setItem("controlGuardado", JSON.stringify(controlEncontrado));
-      window.location.href = "./formulario-control.html";
+      if (controlEncontrado.control === "Verificación Técnica Vehicular") {
+        window.location.href = "./control-vtv-tecnico.html";
+      } else {
+
+        window.location.href = "./formulario-control.html";
+      }
     });
   });
 }

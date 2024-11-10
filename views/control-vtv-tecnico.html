@@ -41,15 +41,16 @@
       <h3>VTV - Control de Viaje</h3>
       <p class="texto-control">¿Está listo para iniciar el viaje?</p>
 
+      <!-- Solo botón de Iniciar Viaje -->
       <button id="inicio-viaje" class="btn">Iniciar Viaje</button>
-      <button id="detener-viaje" class="btn" disabled>Detener Viaje</button>
 
-      <textarea id="comentario" placeholder="Escribe un comentario..."></textarea>
+      <!-- Área de observaciones y botones de control ocultos inicialmente -->
+      <textarea id="comentario" placeholder="Escribe un comentario..." style="display: none;"></textarea>
 
       <div id="botones-finalizar" style="display: none;">
         <div class="botones-control">
           <button id="guardar-control" class="boton-form">Guardar</button>
-          <a href="./auto-tecnico.html"><button id="cancelar-control" class="boton-form">Cancelar</button></a>
+          <button id="cancelar-control" class="boton-form">Cancelar</button>
         </div>
       </div>
     </div>

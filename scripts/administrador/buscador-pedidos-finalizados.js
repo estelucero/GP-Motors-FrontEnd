@@ -1,23 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const inputs = {
-    nombre: document.getElementById('filter-nombre'),
-    repuesto: document.getElementById('filter-repuesto')
+    nombre: document.getElementById('filter-nombre-finalizado'),
+    repuesto: document.getElementById('filter-repuesto-finalizado')
   };
 
-  const noResultsMessage = document.getElementById('no-results-message');
-
-  const updateStatusClasses = () => {
-    const statusElements = document.querySelectorAll('.table-body tbody tr .status');
-    statusElements.forEach(statusElement => {
-      const text = statusElement.textContent.trim().toLowerCase();
-      statusElement.classList.remove('pendiente', 'terminado');
-      if (text === 'pendiente') {
-        statusElement.classList.add('pendiente');
-      } else if (text === 'terminado') {
-        statusElement.classList.add('terminado');
-      }
-    });
-  };
+  const noResultsMessage = document.getElementById('no-results-message-finalizado');
 
   const wrapDateInStrong = () => {
     const dateCells = document.querySelectorAll('.table-body tbody tr td:nth-child(6)');
@@ -55,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     noResultsMessage.style.display = hasResults ? 'none' : 'block';
   };
 
-  updateStatusClasses();
   wrapDateInStrong();
 
   // Aplica los filtros cada vez que cambian los inputs
@@ -64,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.getElementById('toggleButton').addEventListener('click', function () {
-  const options = document.getElementById('id_export_file-options');
+document.getElementById('toggleButtonFinalizado').addEventListener('click', function () {
+  const options = document.getElementById('id_export_file-options_finalizado');
   options.classList.add('active');
 });

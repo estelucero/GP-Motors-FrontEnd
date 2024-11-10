@@ -176,38 +176,38 @@ function enlistarAutos() {
 //Eliminar el auto
 function eliminarVehiculo() {
   const botonesEliminar = document.querySelectorAll(".eliminar-vehiculo");
-
+  const popupContainer = document.getElementById('popup-container');
   botonesEliminar.forEach((boton) => {
     boton.addEventListener("click", async function () {
       const vehiculoBox = this.closest(".single-box");
 
       const patente = vehiculoBox.querySelector(".patente-p").textContent;
-
+      popupContainer.classList.add('active');
       // URL del endpoint para eliminar el vehículo
-      const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarVehiculo?patente=${patente}`;
+      // const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarVehiculo?patente=${patente}`;
 
-      try {
-        // Hacer la solicitud DELETE al endpoint
-        const response = await fetch(urlDeleteVehiculo, {
-          method: "DELETE",
-        });
+      // try {
+      //   // Hacer la solicitud DELETE al endpoint
+      //   const response = await fetch(urlDeleteVehiculo, {
+      //     method: "DELETE",
+      //   });
 
-        if (response.ok) {
-          // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
-          vehiculoBox.remove();
-          console.log(`Vehículo con patente ${patente} eliminado del sistema`);
-          location.reload(true);
-        } else {
-          // Si hay un error, mostrar un mensaje
-          console.error(
-            `Error al eliminar el vehículo con patente ${patente}: ${response.statusText}`
-          );
-          alert("No se pudo eliminar el vehículo, intente nuevamente.");
-        }
-      } catch (error) {
-        console.error("Error en la solicitud de eliminación:", error);
-        alert("Ocurrió un error al intentar eliminar el vehículo.");
-      }
+      //   if (response.ok) {
+      //     // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
+      //     vehiculoBox.remove();
+      //     console.log(`Vehículo con patente ${patente} eliminado del sistema`);
+      //     location.reload(true);
+      //   } else {
+      //     // Si hay un error, mostrar un mensaje
+      //     console.error(
+      //       `Error al eliminar el vehículo con patente ${patente}: ${response.statusText}`
+      //     );
+      //     alert("No se pudo eliminar el vehículo, intente nuevamente.");
+      //   }
+      // } catch (error) {
+      //   console.error("Error en la solicitud de eliminación:", error);
+      //   alert("Ocurrió un error al intentar eliminar el vehículo.");
+      // }
     });
   });
 }

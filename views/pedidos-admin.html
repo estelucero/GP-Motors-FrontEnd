@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
   <link rel="stylesheet" href="../styles/administrador/pedidos-admin.css">
-  <link rel="stylesheet" href="../styles/administrador/tabla-stock-admin.css">
-  <link rel="stylesheet" href="../styles/administrador/tabla-proveedores.css" />
+  <link rel="stylesheet" href="../styles/administrador/tabla-proveedores.css">
+  <link rel="stylesheet" href="../styles/administrador/tabla-pedidos.css">
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <!-- Box Icons -->
@@ -139,7 +139,7 @@
   </section>
   <hr class="linea-hr">
 
-  <!-- Seccion Tabla de Controles -->
+  <!-- Seccion Titulo Pedidos -->
   <section id="titulo-controles">
     <div class="auto-text">
       <h3 class="control-titulo">Pedidos de <span>Repuestos</span></h3>
@@ -185,6 +185,7 @@
     </div>
   </section>
 
+  <hr class="linea-hr">
   <!-- Seccion Pedidos Pendientes -->
   <section id="titulo-controles">
     <div class="auto-text">
@@ -192,7 +193,7 @@
     </div>
   </section>
 
-  <!-- Seccion Filtro -->
+  <!-- Seccion Filtro Pedidos Pendientes -->
   <section class="seccion-filtro" id="id-filtro">
     <div class="table-header">
       <h1>Filtros</h1>
@@ -240,8 +241,9 @@
     </div>
   </section>
 
+  <hr class="linea-hr">
   <!-- Seccion Pedidos Finalizados -->
-  <section id="titulo-controles">
+  <section id="titulo-pedido-finalizado">
     <div class="auto-text">
       <h3 class="control-titulo">Tabla de Pedidos <span>Finalizados</span></h3>
     </div>
@@ -252,8 +254,8 @@
     <div class="table-header">
       <h1>Filtros</h1>
       <div class="filtros-controles">
-        <input type="text" id="filter-nombre" placeholder="Buscar nombre Proveedor">
-        <input type="text" id="filter-repuesto" placeholder="Buscar por Repuesto">
+        <input type="text" id="filter-nombre-finalizado" placeholder="Buscar nombre Proveedor">
+        <input type="text" id="filter-repuesto-finalizado" placeholder="Buscar por Repuesto">
       </div>
     </div>
   </section>
@@ -261,18 +263,21 @@
   <!-- Seccion Tabla de Pedidos Finalizados -->
   <section class="seccion-control" id="section-pedido-finalizado">
     <div class="table-control">
-      <div class="export_file">
-        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
-        <input type="checkbox" id="export-file">
-        <div class="export_file-options" id="id_export_file-options">
+      <div class="export_file_finalizado">
+        <label for="export-file_finalizado" class="export-file-btn_finalizado" title="Exportar Archivo"
+          id="toggleButtonFinalizado"></label>
+        <input type="checkbox" id="export-file_finalizado">
+        <div class="export_file-options_finalizado" id="id_export_file-options_finalizado">
           <label>Exportar como &nbsp; &#10140;</label>
-          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+          <label for="export-file_finalizado" id="toPDF-finalizado" onclick="window.print()">PDF <img
+              src="../assets/logos/PDF.png" alt=""></label>
+          <label for="export-file_finalizado" id="toCSV-finalizado">CSV <img src="../assets/logos/csv.png"
               alt=""></label>
-          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
-          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
+          <label for="export-file_finalizado" id="toEXCEL-finalizado">EXCEL <img src="../assets/logos/excel.png"
+              alt=""></label>
         </div>
       </div>
-      <div class="table-body-finalizados">
+      <div class="table-body-finalizados table-body">
         <table id="pedidoFinalizadoTable">
           <thead>
             <tr>
@@ -325,8 +330,10 @@
   <script src="../scripts/administrador/carrusel-admin.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/administrador/buscador-pedidos.js"></script>
+  <script src="../scripts/administrador/buscador-pedidos-finalizados.js"></script>
   <script src="../scripts/administrador/pedidos-admin.js"></script>
   <script src="../scripts/general/exportar-tabla.js"></script>
+  <script src="../scripts/administrador/exportar-tabla-admin.js"></script>
 
 </body>
 
