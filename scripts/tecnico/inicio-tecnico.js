@@ -1,6 +1,7 @@
 //Get de los vehiculos registrados
+var usuario = JSON.parse(localStorage.getItem("usuario"));
 async function obtenerVehiculosRegistrados() {
-  const url = `https://aaaaa-deploy-back.vercel.app/users/obtenerControlesPendientesPorConcesionario?id_concesionario=1`;
+  const url = `https://aaaaa-deploy-back.vercel.app/users/obtenerControlesPendientesPorConcesionario?id_concesionario=${usuario[5]}`;
 
   try {
     // Realiza la solicitud GET

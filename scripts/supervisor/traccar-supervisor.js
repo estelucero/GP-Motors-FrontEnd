@@ -103,7 +103,7 @@ async function agregoMapa(id_vehiculo) {
 
   data = await obtenerPosicionesHorario(id_vehiculo);
   console.log(data)
-  if (!data != 0) {
+  if (data != 0) {
     position = data[0]
     const latitude = position.latitude;
     const longitude = position.longitude;

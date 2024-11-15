@@ -2,14 +2,14 @@ var usuario = JSON.parse(localStorage.getItem("usuario"));
 var vehiculosRegistrados = JSON.parse(localStorage.getItem("vehiculosRegistrados"));
 
 
-function enlistarPatentesTraslado(vehiculosTraslado){
+function enlistarPatentesTraslado(vehiculosTraslado) {
   const selectPatente = document.getElementById('seleccionarPatente');
   vehiculosTraslado.forEach(vehiculo => {
     const option = document.createElement('option');
     option.value = vehiculo.patente_vehiculo;
     option.textContent = vehiculo.patente_vehiculo;
     selectPatente.appendChild(option);
-});
+  });
 }
 
 async function obtenerVehiculosTraslado() {
@@ -27,6 +27,7 @@ async function obtenerVehiculosTraslado() {
     // Verifica si la respuesta es exitosa
     if (!response.ok) {
       throw new Error("Error al obtener los datos de los vehículos");
+
     }
 
     // Convierte la respuesta a JSON
@@ -146,49 +147,51 @@ async function inciarTraslado() {
   const selectConcesionaria = document.getElementById('opcionesTraslado');
   const botonTraslado = document.getElementById('guardarTraslado');
   // Verificar que ambos campos estén completados
-  
-  
-  
+
+
+
   botonTraslado.addEventListener('click', () => {
     patenteValue = selectPatente.value;
-    concesionariaValue=selectConcesionaria.value;
-    
-      if (!patenteValue || !concesionariaValue) {
-        alert("Por favor, complete todos los campos.");
-        return;
-      }
-    
-      // Crear el objeto de traslado
-      const traslado = {
-        patente_vehiculo: patenteValue,
-        concesionario_destino: concesionariaValue,
-        
-      };
-      fetch("https://aaaaa-deploy-back.vercel.app/users/iniciarTraslado", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(traslado)
+    concesionariaValue = selectConcesionaria.value;
+
+    if (!patenteValue || !concesionariaValue) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
+    // Crear el objeto de traslado
+    const traslado = {
+      patente_vehiculo: patenteValue,
+      concesionario_destino: concesionariaValue,
+
+    };
+    fetch("https://aaaaa-deploy-back.vercel.app/users/iniciarTraslado", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(traslado)
+    })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(error => {
+            throw new Error(error.detail);
+          });
+        }
+        return response.json();
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Success:', data);
-          alert('Traslado guardado exitosamente.');
-          location.reload();
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          alert('Hubo un error al guardar el traslado.');
-        });
-    
-    
-});
+      .then(data => {
+        console.log('Success:', data);
+        alert('Traslado guardado exitosamente.');
+        location.reload();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert(`Hubo un error al guardar el traslado:${error}.`);
+      });
+
+
+  });
 }
 
 //////////////////
@@ -196,62 +199,64 @@ async function inciarTraslado() {
 async function recibirTraslado() {
   // Obtener valores de los campos
   const selectPatente = document.getElementById('seleccionarPatente');
-  
+
   const botonTraslado = document.getElementById('confirmar-traslado');
   // Verificar que ambos campos estén completados
-  
-  
-  
+
+
+
   botonTraslado.addEventListener('click', () => {
     patenteValue = selectPatente.value;
-    
-    
-      if (!patenteValue) {
-        alert("Por favor, complete todos los campos.");
-        return;
-      }
-    
-      // Crear el objeto de traslado
-      
-      fetch(`https://aaaaa-deploy-back.vercel.app/users/finalizarTraslado?patente=${patenteValue}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        
+
+
+    if (!patenteValue) {
+      alert("Por favor, complete todos los campos.");
+      return;
+    }
+
+    // Crear el objeto de traslado
+
+    fetch(`https://aaaaa-deploy-back.vercel.app/users/finalizarTraslado?patente=${patenteValue}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+    })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(error => {
+            throw new Error(error.detail);
+          });
+        }
+        return response.json();
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Success:', data);
-          alert('Confirmacion de traslado guardado exitosamente.');
-          location.reload();
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          alert('Hubo un error al confirmar el traslado.');
-        });
-    
-    
-});
+      .then(data => {
+        console.log('Success:', data);
+        alert('Confirmacion de traslado guardado exitosamente.');
+        location.reload();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Hubo un error al confirmar el traslado.');
+      });
+
+
+  });
 }
 
 ///////////Cargar patentes vehiculos registrados en select
-function enlistarSelectAutosTrasladar(){
+function enlistarSelectAutosTrasladar() {
   const selectPatente = document.getElementById('patente-traslado');
   vehiculosRegistrados.forEach(vehiculo => {
     const option = document.createElement('option');
     option.value = vehiculo.patente;
     option.textContent = vehiculo.patente;
     selectPatente.appendChild(option);
-});
+  });
 }
 /////////////Obtener concesionarias
-async function obtenerConcesionarias(){
+async function obtenerConcesionarias() {
   const url = `https://aaaaa-deploy-back.vercel.app/users/verSedesConcesionarioRegistradas`;
 
   try {
@@ -283,15 +288,15 @@ async function obtenerConcesionarias(){
 }
 
 //////Carga concesionarias en el select todas menos la misma
-async function enlistarConcesionarias(){
+async function enlistarConcesionarias() {
   const selectConcesionaria = document.getElementById('opcionesTraslado');
-  concesionarias=await obtenerConcesionarias()
+  concesionarias = await obtenerConcesionarias()
   concesionarias.forEach(concesionaria => {
     const option = document.createElement('option');
     option.value = concesionaria.id_concesionario;
     option.textContent = concesionaria.nombre;
     selectConcesionaria.appendChild(option);
-});
+  });
 
 }
 // Cargar los vehículos cuando se cargue la página
