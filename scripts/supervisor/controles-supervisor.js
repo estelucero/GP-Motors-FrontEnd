@@ -1,3 +1,4 @@
+var usuario = JSON.parse(localStorage.getItem("usuario"));
 //Enlistar controles pendientes//
 // async function enlistarControlesPendientes(controlesPendientes) {
 //     const tbody = document.querySelector('.table-body table tbody'); // seleccionamos el tbody
@@ -143,7 +144,7 @@ async function obtenerControles() {
 
     // Convierte la respuesta a JSON
     controlesTerminados = await response.json();
-    controlesTerminados = controlesTerminados.filter(control => control.concesionario === 1)
+    controlesTerminados = controlesTerminados.filter(control => control.concesionario === usuario[5])
     await enlistarTodosControles(controlesTerminados)
 
     console.log(controlesTerminados);
