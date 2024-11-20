@@ -10,6 +10,7 @@
   <!-- Style-->
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <link rel="stylesheet" href="../styles/tecnico/formulario-control.css" />
+  <link rel="stylesheet" href="../styles/general/reconocimiento-de-voz.css">
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <title>autos</title>
@@ -47,18 +48,16 @@
             Producto</button></a>
       </div>
       <div class="lista-repuestos" id="lista-repuestos">
-        <!-- <div class="repuesto-control">
-          <label for="nombre-repuesto">Tornillo</label>
-          <div>
-            <button id="decrementar" class="boton-cant-repuesto"><i class='bx bx-minus'></i></button>
-            <label id="cantidad-label" class="cant-repuesto" for="cantidad">1</label>
-            <button id="incrementar" class="boton-cant-repuesto"><i class='bx bx-plus'></i></button>
-          </div>
-        </div> -->
+        
       </div>
       <div class="observaciones">
         <label for="observaciones">Observaciones</label>
         <textarea id="observaciones" rows="4" cols="30" placeholder="Escribe tus observaciones aquí..."></textarea>
+      </div>
+      <div class="botones-audio">
+        <button class="boton-audio" id="btnStart">COMENZAR</button>
+        <button class="boton-audio" id="btnStop">DETENER</button>
+        <button class="boton-audio" id="btnReset">REINICIAR</button>
       </div>
       <div class="boton-element">
         <button class="boton-form" id="guardar-btn">Guardar</button>
@@ -71,6 +70,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/tecnico/formulario-control.js"></script>
+  <script src="../scripts/general/reconocimiento-de-voz.js"></script>
 </body>
 
 </html>
