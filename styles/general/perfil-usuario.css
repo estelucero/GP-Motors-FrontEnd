@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --celeste: rgba(214, 233, 255, 1);
+  --azul-oscuro: rgb(19, 47, 61);
+  --blanco: white;
+  --azul-claro: rgb(5, 68, 97);
+  --gris: rgb(218, 218, 218);
+  --azul: rgb(121, 161, 213);
+}
+
+* {
+  font-family: "Poppinms", sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 1rem;
+  scroll-behavior: smooth;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* p {
+    font-family: "Barlow", sans-serif;
+} */
+
+/* Seccion Titulo */
+.seccion-titulo {
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0;
+}
+
+.auto-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  padding: 20px;
+  text-align: center;
+}
+
+.auto-text .home-titulo {
+  color: black;
+}
+
+.auto-text span {
+  color: var(--azul);
+}
+
+/* Sección Perfil Usuario */
+.section-perfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+}
+
+.profil-container {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+}
+
+.profil-container h1 {
+  font-size: 28px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  gap: 20px;
+}
+
+.wrapper:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); /* Sombra más intensa al pasar el cursor */
+}
+
+a {
+  text-decoration: none;
+}
+
+.foto-perfil {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 3px solid #007bff;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  color: #333;
+  font-weight: bold;
+}
+
+.profile-details p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.profile-details .role {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .auto-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 10px 0px 0px 25px;
+  }
+
+  body {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .wrapper {
+    margin: 10px;
+    padding: 25px 15px;
+  }
+
+  a.read {
+    font-size: 1rem;
+  }
+
+  .auto-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-perfil {
+    padding: 50px;
+  }
+
+  .wrapper {
+    flex-direction: column; /* Cambia a disposición vertical */
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .foto-perfil {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+
+  .profile-details h2 {
+    font-size: 22px;
+  }
+
+  .profile-details p {
+    font-size: 16px;
+  }
+
+  #logo-alerta {
+    display: none;
+  }
+
+  #logo-user {
+    display: none;
+  }
+
+  #alerta {
+    display: block;
+  }
+
+  #logout {
+    display: block;
+  }
+
+  .user-info-menu {
+    display: flex;
+  }
+
+  .no-vehiculos {
+    font-size: 1.2rem;
+  }
+
+  .no-vehiculos i {
+    font-size: 2.5rem;
+  }
+
+  .mensaje-no-vehiculos {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .foto-perfil {
+    margin-bottom: 15px;
+  }
+
+  .profile-details h2 {
+    font-size: 24px;
+  }
+
+  .profile-details p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .foto-perfil {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+  }
+
+  .profile-details h2 {
+    font-size: 20px;
+  }
+
+  .profile-details p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrapper {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .foto-perfil {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .profile-details h2 {
+    font-size: 18px;
+  }
+
+  .profile-details p {
+    font-size: 12px;
+  }
+}
+

@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+}
+
 .nav-span {
   color: var(--azul);
 }
@@ -78,12 +82,37 @@ header {
   font-size: 20px;
   padding: 10px 25px;
   border-radius: 50px;
-  transition: 0.2s;
+  transition: 0.4s;
   margin: 0 5px;
 }
 
 .nav-bar ul li a:hover {
   color: #11101b;
+  background: #fefefe;
+}
+
+#user-info-nav a {
+  display: block;
+  color: #fefefe;
+  font-size: 20px;
+  padding: 10px 55px 10px 9px;
+  border-radius: 50px;
+
+  margin: 0 0px;
+}
+
+#user-info-nav {
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+#user-info-nav:hover h3 {
+  color: #11101b;
+
+}
+
+#user-info-nav:hover {
+
   background: #fefefe;
 }
 
@@ -108,6 +137,17 @@ header {
 .sub-menu-wrap.open-menu {
   max-height: 400px;
 }
+
+.sub-menu-wrap .user-info a {
+  width: 100%;
+}
+
+.sub-menu-wrap .user-info span {
+  font-size: 22px;
+  transition: transform 0.5s;
+}
+
+
 
 .sub-menu {
   background: #fff;
@@ -169,6 +209,24 @@ header {
 
 .sub-menu-link:hover p {
   font-weight: 600;
+}
+
+#user-info-wrap h3,
+#user-info-wrap img {
+  transition: all 0.3s ease;
+
+}
+
+#user-info-wrap:hover h3 {
+  font-weight: 600;
+}
+
+#user-info-wrap:hover img {
+  transform: translateY(-5px);
+}
+
+#user-info-wrap:hover span {
+  transform: translateX(5px);
 }
 
 .user-info-menu {

@@ -4,11 +4,11 @@ console.log(usuario);
 function agregarReporte() {
   let url = "";
   if (usuario === 1) {
-    url = "https://helping-officially-locust.ngrok-free.app/public/dashboard/a3a2e038-1cd9-4c97-bb2b-b549f8d75472"
+    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/61b2a9d5-9bf8-4f21-9a10-cafbe5d189b5";
   } else if (usuario === 2) {
-    url = "https://helping-officially-locust.ngrok-free.app/public/dashboard/158e2542-bd5c-4e84-9ce6-eea73c4bc18f"
+    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/229741ad-7016-4070-b271-573d2bb99ab1"
   } else if (usuario === 29) {
-    url = "https://helping-officially-locust.ngrok-free.app/public/dashboard/e6a42a34-4d25-4105-8085-35d228dee385"
+    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/d4717135-e344-4bd9-9b78-4e9b731557d5"
   }
 
 
@@ -29,6 +29,8 @@ function agregarReporte() {
 }
 
 document.addEventListener("DOMContentLoaded", agregarReporte);
+
+
 
 
 
