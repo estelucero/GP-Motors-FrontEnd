@@ -91,6 +91,10 @@ p {
   cursor: not-allowed;
 }
 
+#observaciones-vtv {
+  display: none;
+}
+
 /* Estilo para el área de texto que se desliza */
 #comentario {
   display: none;
@@ -106,9 +110,12 @@ p {
   box-sizing: border-box;
 }
 
+#botones-audio-vtv {
+  display: none;
+}
+
 #botones-finalizar {
   display: none;
-  /* Los botones de "Guardar control" y "Cancelar" estarán ocultos por defecto */
 }
 
 .botones-control {

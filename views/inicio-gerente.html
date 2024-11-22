@@ -19,9 +19,9 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="hidden-carga" id="contenido">
   <!-- Pre-load -->
-  <!-- <div class="centrado" id="preloader">
+  <div class="centrado" id="preloader">
     <div class="lds-spinner">
       <div></div>
       <div></div>
@@ -37,7 +37,7 @@
       <div></div>
     </div>
     <p class="text-carga">Cargando...</p>
-  </div> -->
+  </div>
 
   <!-- Navbar-->
   <header>
@@ -133,8 +133,10 @@
   </div>
 
   <!-- Scripts -->
-  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8.5.1/index.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/navbar.js"></script>
+  <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/gerente/inicio-gerente.js"></script>
 
 

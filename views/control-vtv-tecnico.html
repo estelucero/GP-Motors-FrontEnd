@@ -10,6 +10,7 @@
   <!-- Style-->
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
   <link rel="stylesheet" href="../styles/tecnico/control-vtv-tecnico.css" />
+  <link rel="stylesheet" href="../styles/general/reconocimiento-de-voz.css">
   <!-- Box Icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <title>autos</title>
@@ -45,7 +46,13 @@
       <button id="inicio-viaje" class="btn">Iniciar Viaje</button>
 
       <!-- Área de observaciones y botones de control ocultos inicialmente -->
+      <label id="observaciones-vtv" for="observaciones">Observaciones</label>
       <textarea id="comentario" placeholder="Escribe un comentario..." style="display: none;"></textarea>
+      <div id="botones-audio-vtv" class="botones-audio">
+        <button class="boton-audio" id="btnStart">COMENZAR</button>
+        <button class="boton-audio" id="btnStop">DETENER</button>
+        <button class="boton-audio" id="btnReset">REINICIAR</button>
+      </div>
 
       <div id="botones-finalizar" style="display: none;">
         <div class="botones-control">
@@ -60,6 +67,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/tecnico/control-vtv-tecnico.js"></script>
+  <script src="../scripts/general/reconocimiento-de-voz.js"></script>
 </body>
 
 </html>

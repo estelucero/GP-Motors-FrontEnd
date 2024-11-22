@@ -1,15 +1,39 @@
-var usuario = JSON.parse(localStorage.getItem("usuario"))[5];
-console.log(usuario);
+var usuario = JSON.parse(localStorage.getItem("usuario"));
 
-function agregarReporte() {
-  let url = "";
-  if (usuario === 1) {
-    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/61b2a9d5-9bf8-4f21-9a10-cafbe5d189b5";
-  } else if (usuario === 2) {
-    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/229741ad-7016-4070-b271-573d2bb99ab1"
-  } else if (usuario === 29) {
-    url = "http://metabase-g3-ext.g4.potus.ar/public/dashboard/d4717135-e344-4bd9-9b78-4e9b731557d5"
+
+
+async function obtenerLinkReport() {
+  const url = `https://aaaaa-deploy-back.vercel.app/users/generarLink?id_concesionario=${usuario[5]}`;
+
+  try {
+    // Realiza la solicitud GET
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Verifica si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error("Error al obtener los reportes");
+    }
+
+    // Convierte la respuesta a JSON
+    const reportesData = await response.json();
+
+
+    return reportesData.link;
+
+
+  } catch (error) {
+    console.error("Hubo un problema con la solicitud:", error);
   }
+
+}
+async function agregarReporte() {
+  let url = "";
+  url = await obtenerLinkReport();
 
 
 
@@ -22,13 +46,17 @@ function agregarReporte() {
   iframe.classList.add("dashboard-iframe");
 
 
+
   const container = document.getElementById("iframe-container");
   console.log(container)
   container.appendChild(iframe);
 
+  ocultarPreloader();
+
 }
 
 document.addEventListener("DOMContentLoaded", agregarReporte);
+
 
 
 

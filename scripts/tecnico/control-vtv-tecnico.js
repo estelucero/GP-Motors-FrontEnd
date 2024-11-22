@@ -28,7 +28,9 @@ document.getElementById('inicio-viaje').addEventListener('click', function () {
       alert('Viaje iniciado exitosamente.');
 
 
+      document.getElementById('observaciones-vtv').style.display = 'flex';
       document.getElementById('comentario').style.display = 'block';
+      document.getElementById('botones-audio-vtv').style.display = 'block';
       document.getElementById('botones-finalizar').style.display = 'block';
     })
     .catch((error) => {
@@ -73,7 +75,9 @@ document.getElementById('guardar-control').addEventListener('click', function ()
 
   alert('Control guardado');
   document.getElementById('botones-finalizar').style.display = 'none'; // Ocultar botones de finalizar
+  document.getElementById('observaciones-vtv').style.display = 'none';
   document.getElementById('comentario').style.display = 'none'; // Ocultar textarea
+  document.getElementById('botones-audio-vtv').style.display = 'none';
   document.getElementById('inicio-viaje').disabled = false; // Habilitar el botón de inicio
   let usuario = JSON.parse(localStorage.getItem("usuario"));
   const data = {
@@ -113,7 +117,9 @@ document.getElementById('guardar-control').addEventListener('click', function ()
 document.getElementById('cancelar-control').addEventListener('click', function () {
   // Lógica para cancelar el control
   document.getElementById('botones-finalizar').style.display = 'none'; // Ocultar botones de finalizar
+  document.getElementById('observaciones-vtv').style.display = 'none';
   document.getElementById('comentario').style.display = 'none'; // Ocultar textarea
+  document.getElementById('botones-audio-vtv').style.display = 'none';
   document.getElementById('inicio-viaje').disabled = false; // Habilitar el botón de inicio
   let usuario = JSON.parse(localStorage.getItem("usuario"));
   const data = {

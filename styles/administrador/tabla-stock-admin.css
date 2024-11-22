@@ -274,19 +274,11 @@ tbody tr:hover {
   padding: 20px;
 }
 
-/* Exportar Tabla */
-/* .export_file {
-  position: relative;
-} */
-
 .export_file {
   display: flex;
   flex-direction: column;
-  /* Coloca los elementos en columna */
   align-items: flex-end;
-  /* Alinea el contenido a la derecha */
   gap: 0.5rem;
-  /* Espacio entre el label y el botón */
   padding: 15px;
 }
 
@@ -445,6 +437,4 @@ tbody tr:hover {
     margin: 0;
     padding: 0;
   }
-
-  /* Otros estilos que necesites para la impresión */
 }

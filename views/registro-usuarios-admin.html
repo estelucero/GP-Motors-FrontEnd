@@ -4,14 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GP Motors - Inicio</title>
+  <title>GP Motors - Registro Usuarios</title>
   <!-- Favicon -->
   <link rel="icon" href="" type="image/x-icon" />
   <!-- Style-->
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/administrador/adminInicio.css" />
-  <link rel="stylesheet" href="../styles/administrador/popup-cargar-auto.css" />
-  <link rel="stylesheet" href="../styles/administrador/popup-opciones-traslado.css">
+  <link rel="stylesheet" href="../styles/administrador/registro-usuarios-admin.css">
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
@@ -139,82 +138,53 @@
   </section>
   <hr class="linea-hr">
 
-  <!-- Seccion Autos -->
-  <section class="section-autos">
-    <div class="auto-text">
-      <h3 class="home-titulo">Vehículos <span>Registrados</span></h3>
-    </div>
-    <div class="section-buscador">
-      <input type="text" id="patenteInput" placeholder="Buscar por patente..." />
-      <button class="button-search" id="searchButton"><i class="bx bx-search"></i></button>
-    </div>
-    <!-- Cards -->
-    <div class="section-card">
-      <div class="wrapper">
-        <div class="notifications" id="notifications">
-          <!-- Agregar Auto -->
-          <button class="button-add-car" id="show-car">
-            <div class="centrar-div">
-              <div class="agregar-auto">
-                <img src="../assets/logos/mas.png" alt="" class="user-pic-pic" />
-                <p>Agregar auto</p>
-              </div>
-            </div>
-          </button>
-          <p id="no-vehicles-message" class="mensaje-no-vehiculos">No hay vehículos registrados</p>
-          <!-- PopUp -->
-          <div class="popup-container">
-            <div class="popup">
-              <div class="close-btn">&times;</div>
-              <div class="form">
-                <h2>Cargar Vehículo</h2>
-                <div class="form-element">
-                  <label for="patente">Patente</label>
-                  <input type="patente" id="patente" placeholder="Escribir patente" required />
-                  <div class="invalid-feedback" id="patente-feedback">
-                    Formato permitido: AAA111 o AA111AA
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="modelo">Modelo</label>
-                  <input type="modelo" id="modelo" placeholder="Escribir modelo" required />
-                  <div class="invalid-feedback" id="modelo-feedback">
-                    El modelo solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="marca">Marca</label>
-                  <input type="marca" id="marca" placeholder="Escribir marca" required />
-                  <div class="invalid-feedback" id="marca-feedback">
-                    La marca solo puede contener letras.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="anio-fab">Año de Fabricación</label>
-                  <input type="anio-fab" id="anio-fab" placeholder="Escribir año de fabricación" required />
-                  <div class="invalid-feedback" id="anio-fab-feedback">
-                    El formato debe ser YYYY-MM-DD.
-                  </div>
-                </div>
-                <div class="form-element">
-                  <label for="km">Cantidad de Kilómetros</label>
-                  <input type="km" id="km" placeholder="Escribir cantidad de km" required />
-                  <div class="invalid-feedback" id="km-feedback">
-                    El kilometraje debe estar entre 0 y 450000.
-                  </div>
-                </div>
-                <div class="form-element form-div">
-                  <button id="guardar-btn" class="btn-form">Guardar</button>
-                  <button id="guardar-btn2" class="btn-form">Guardar</button>
-                  <button id="cancelar-btn" class="btn-form">Cancelar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Agregado de Autos-->
+  <!-- Sección Título Registro -->
+  <div class="auto-text">
+    <h3 class="home-titulo">Registro de <span>Usuarios</span></h3>
+  </div>
 
+  <!-- Sección Registro Usuarios -->
+  <section class="registro-section">
+    <div class="registro-usuarios">
+      <h2>Completa el formulario</h2>
+      <form id="form-registro">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Escribir nombre" required>
+          <div id="feedback-nombre" class="invalid-feedback">El nombre solo puede contener letras.</div>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" placeholder="Escribir apellido" required>
+          <div id="feedback-apellido" class="invalid-feedback">El apellido solo puede contener letras.</div>
+        </div>
+        <div class="form-group">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" name="dni" placeholder="Escribir DNI" required>
+        </div>
+        <div class="form-group">
+          <label for="sueldo">Sueldo</label>
+          <input type="number" id="sueldo" name="sueldo" placeholder="Ingrese sueldo" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="rol">Seleccione su rol dentro del sistema</label>
+          <select id="rol" name="rol" required>
+            <option value="" disabled selected>Elige una opción</option>
+            <option value="tecnico">Técnico</option>
+            <option value="supervisor">Supervisor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Escribir email" required>
+          <div id="feedback-email" class="invalid-feedback">Por favor, ingresa un correo válido.</div>
+        </div>
+        <div class="form-group">
+          <label for="contraseña">Contraseña</label>
+          <input type="password" id="contraseña" name="contraseña" placeholder="Escribir contraseña" required>
+        </div>
+        <button class="boton-registro-admin" type="submit">Registrar</button>
+      </form>
     </div>
   </section>
 
@@ -243,14 +213,10 @@
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="../scripts/general/navbar.js"></script>
-  <script src="../scripts/administrador/adminInicio.js"></script>
-  <script src="../scripts/administrador/carrusel-admin.js"></script>
-  <script src="../scripts/administrador/popup-admin.js"></script>
-  <script src="../scripts/administrador/popup-opciones-traslado.js"></script>
-  <script src="../scripts/expresion-regular-popup.js"></script>
-  <script src="../scripts/buscardor.js"></script>
   <script src="../scripts/general/pre-load.js"></script>
+  <script src="../scripts/general/navbar.js"></script>
+  <script src="../scripts/administrador/expresion-regular-registro.js"></script>
+  <script src="../scripts/administrador/carrusel-admin.js"></script>
 </body>
 
 </html>
