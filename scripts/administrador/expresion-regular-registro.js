@@ -164,7 +164,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       await registrarUsuario();
 
     } else {
-      alert("Por favor, completa todos los campos correctamente.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Completar los campos correctamente",
+      });
     }
   });
 });
@@ -203,15 +207,25 @@ async function registrarUsuario() {
       return response.json();
     })
     .then(data => {
+      Swal.fire({
+        icon: "success",
+        title: "Perfecto..",
+        text: "Usuario registrado exitosamente.",
+      })
 
-      alert('Usuario registrado exitosamente');
+
       form.reset();
       document.querySelectorAll(".is-valid").forEach((input) => input.classList.remove("is-valid"));
 
     })
     .catch((error) => {
 
-      alert('Hubo un error al registrar el usuario.');
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Hubo un error al registrar el usuario.",
+      });
     });
 
 

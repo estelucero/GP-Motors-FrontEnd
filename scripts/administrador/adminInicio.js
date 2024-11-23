@@ -103,16 +103,31 @@ document
           return response.json();
         })
         .then((data) => {
-          alert("Vehículo guardado con éxito");
-          location.reload(true);
-          // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+
+          Swal.fire({
+            icon: "success",
+            title: "Perfecto..",
+            text: "Vehículo guardado con éxito.",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload(); // Recarga la página al confirmar
+            }
+          });
         })
         .catch((error) => {
           console.error("Error:", error);
-          alert("Hubo un problema al guardar el vehículo.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Error al guardar el vehículo",
+          });
         });
     } else {
-      alert("Completar los campos con datos validos")
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Completar los campos correctamente",
+      });
     }
   });
 
@@ -183,7 +198,22 @@ function eliminarVehiculo() {
       const vehiculoBox = this.closest(".single-box");
 
       const patente = vehiculoBox.querySelector(".patente-p").textContent;
-      popupContainer.classList.add('active');
+      //popupContainer.classList.add('active');
+      Swal.fire({
+        title: "Estas seguro de eliminar el vehículo?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await eliminarVehiculoEndpoint(patente);
+        }
+      });
+
+
       // URL del endpoint para eliminar el vehículo
       // const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarVehiculo?patente=${patente}`;
 
@@ -211,5 +241,50 @@ function eliminarVehiculo() {
       // }
     });
   });
+}
+
+async function eliminarVehiculoEndpoint(patente) {
+  const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarVehiculo?patente=${patente}`;
+
+  try {
+    // Hacer la solicitud DELETE al endpoint
+    const response = await fetch(urlDeleteVehiculo, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
+      //vehiculoBox.remove();
+      console.log(`Vehículo con patente ${patente} eliminado del sistema`);
+      Swal.fire({
+        icon: "success",
+        title: "Vehículo Eliminado con exito"
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload(); // Recarga la página al confirmar
+        }
+      });
+    } else {
+      // Si hay un error, mostrar un mensaje
+      console.error(
+        `Error al eliminar el vehículo con patente ${patente}: ${response.statusText}`
+      );
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se pudo eliminar el vehículo, intente nuevamente.",
+      });
+    }
+  } catch (error) {
+    console.error("Error en la solicitud de eliminación:", error);
+    alert("");
+    Swal.fire({
+      icon: "error",
+      title: "Ocurrió un error al intentar eliminar el vehículo.",
+
+    });
+  }
 }
 

@@ -225,16 +225,32 @@ document
           return response.json();
         })
         .then((data) => {
-          alert("Proveedor guardado con éxito");
+          // alert("Proveedor guardado con éxito");
 
-          location.reload(true);
-          // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
+          // location.reload(true);
+          Swal.fire({
+            icon: "success",
+            title: "Perfecto..",
+            text: "Proveedor modificado con éxito.",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload(); // Recarga la página al confirmar
+            }
+          });
+
         })
         .catch((error) => {
-          console.error("Error:", error);
-          alert("Hubo un problema al guardar el vehículo.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Error al modificar el vehículo",
+          });
         });
     } else {
-      alert("Completar los campos con datos validos");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Completar los campos correctamente",
+      });
     }
   });

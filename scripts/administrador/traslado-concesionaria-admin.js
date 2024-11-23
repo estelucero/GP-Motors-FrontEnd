@@ -181,13 +181,27 @@ async function inciarTraslado() {
         return response.json();
       })
       .then(data => {
-        console.log('Success:', data);
-        alert('Traslado guardado exitosamente.');
-        location.reload();
+        // console.log('Success:', data);
+        // alert('Traslado guardado exitosamente.');
+        // location.reload();
+        Swal.fire({
+          icon: "success",
+          title: "Perfecto..",
+          text: "Traslado guardado exitosamente.",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload(); // Recarga la página al confirmar
+          }
+        });
       })
       .catch((error) => {
-        console.error('Error:', error);
-        alert(`Hubo un error al guardar el traslado:${error}.`);
+        // console.error('Error:', error);
+        // alert(`Hubo un error al guardar el traslado:${error}.`);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Hubo un error al guardar el traslado:${error}.`,
+        });
       });
 
 
@@ -233,12 +247,25 @@ async function recibirTraslado() {
       })
       .then(data => {
         console.log('Success:', data);
-        alert('Confirmacion de traslado guardado exitosamente.');
-        location.reload();
+
+        Swal.fire({
+          icon: "success",
+          title: "Confirmacion de traslado guardado exitosamente."
+
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload(); // Recarga la página al confirmar
+          }
+        });
       })
       .catch((error) => {
         console.error('Error:', error);
-        alert('Hubo un error al confirmar el traslado.');
+
+        Swal.fire({
+          icon: "error",
+          title: "Hubo un error al confirmar el traslado.",
+
+        });
       });
 
 

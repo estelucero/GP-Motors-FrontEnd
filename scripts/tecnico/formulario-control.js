@@ -61,13 +61,30 @@ document.getElementById('guardar-btn').addEventListener('click', function () {
     })
     .then(data => {
       console.log('Success:', data);
-      alert('Control guardado exitosamente.');
+      //alert('Control guardado exitosamente.');
       eliminarcControl();
-      window.location.href = "./auto-tecnico.html";
+      Swal.fire({
+        icon: "success",
+        title: "Control guardado exitosamente."
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "./auto-tecnico.html";
+        }
+      });
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('Hubo un error al guardar el control.');
+      //alert('Hubo un error al guardar el control.');
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al guardar el control.",
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload(true);
+        }
+      });
     });
 });
 

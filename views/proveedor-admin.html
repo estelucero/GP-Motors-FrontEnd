@@ -44,7 +44,7 @@
   <!-- Navbar-->
   <header>
     <div class="logo">
-      <a href="./inicio-supervisor.html">
+      <a href="./adminInicio.html">
         <img class="navbar-logo" src="../assets/logos/logo.png" alt="">
         GP <span class="nav-span">Motors</span></a>
     </div>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <li class="inicio-nav navbar-padding">
-          <a href="./inicio-supervisor.html">Inicio</a>
+          <a href="./adminInicio.html">Inicio</a>
         </li>
         <li class="sesion-nav navbar-padding" id="logout">
           <a href="../index.html">Cerrar Sesión</a>
@@ -131,10 +131,12 @@
             <h2>Traslado Concesionaria</h2>
           </li>
         </a>
-        <li class="card-carrusel">
-          <div class="img"><i class='bx bx-user' draggable="false"></i></div>
-          <h2>Registro</h2>
-        </li>
+        <a href="./registro-usuarios-admin.html" class="sin-decoracion">
+          <li class=" card-carrusel">
+            <div class="img"><i class='bx bx-user' draggable="false"></i></div>
+            <h2>Registro</h2>
+          </li>
+        </a>
       </ul>
       <i id="right" class='icon-flecha bx bx-chevron-right'></i>
     </div>
@@ -301,6 +303,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>

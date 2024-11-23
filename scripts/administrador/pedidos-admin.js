@@ -93,7 +93,7 @@ async function obtenerPedidos() {
   }
 }
 
-//Eliminar el auto
+//Eliminar el pedido
 async function eliminarPedido() {
   const botonesEliminar = document.querySelectorAll(".eliminar");
 
@@ -301,15 +301,29 @@ async function ConfirmarPedido(pedido) {
       return response.json();
     })
     .then((data) => {
-      alert("Pedido confirmado con éxito");
+      // alert("Pedido confirmado con éxito");
 
-      window.location.href = "./pedidos-admin.html";
+
+      Swal.fire({
+        icon: "success",
+        title: "Pedido confirmado con éxito."
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "./pedidos-admin.html";
+        }
+      });
 
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("Hubo un problema al confirmar el pedido.");
-      location.reload(true);
+      // alert("Hubo un problema al confirmar el pedido.");
+      // location.reload(true);
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un problema al confirmar el pedido.",
+
+      });
     });
 
 
@@ -325,7 +339,12 @@ async function cargaManual() {
     if (pedidoEncontrado) {
       await ConfirmarPedido(pedidoEncontrado);
     } else {
-      alert("No se encontro un pedido con este id")
+      // alert("No se encontro un pedido con este id")
+      Swal.fire({
+        icon: "error",
+        title: "No se encontro un pedido con este id.",
+
+      });
     }
   });
 }

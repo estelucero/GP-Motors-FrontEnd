@@ -25,7 +25,7 @@ document.getElementById('inicio-viaje').addEventListener('click', function () {
     })
     .then(data => {
       console.log('Success:', data);
-      alert('Viaje iniciado exitosamente.');
+      //alert('Viaje iniciado exitosamente.');
 
 
       document.getElementById('observaciones-vtv').style.display = 'flex';
@@ -35,7 +35,12 @@ document.getElementById('inicio-viaje').addEventListener('click', function () {
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('Hubo un error al inciar el viaje.');
+
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al inciar el viaje.",
+
+      });
     });
 
 });
@@ -73,7 +78,7 @@ document.getElementById('inicio-viaje').addEventListener('click', function () {
 
 document.getElementById('guardar-control').addEventListener('click', function () {
 
-  alert('Control guardado');
+  //alert('Control guardado');
   document.getElementById('botones-finalizar').style.display = 'none'; // Ocultar botones de finalizar
   document.getElementById('observaciones-vtv').style.display = 'none';
   document.getElementById('comentario').style.display = 'none'; // Ocultar textarea
@@ -102,13 +107,31 @@ document.getElementById('guardar-control').addEventListener('click', function ()
     })
     .then(data => {
       console.log('Success:', data);
-      alert('Control guardado exitosamente.');
       eliminarcControl();
-      window.location.href = "./auto-tecnico.html";
+      //alert('Control guardado exitosamente.');
+
+      Swal.fire({
+        icon: "success",
+        title: "Control guardado exitosamente."
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "./auto-tecnico.html";
+        }
+      });
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('Hubo un error al guardar el control.');
+      //alert('Hubo un error al guardar el control.');
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al guardar el control.",
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload(true);
+        }
+      });
     });
 
 
@@ -145,13 +168,31 @@ document.getElementById('cancelar-control').addEventListener('click', function (
     .then(data => {
 
       console.log('Success:', data);
-      alert('Control Cancelado exitosamente.');
+      //alert('Control Cancelado exitosamente.');
       //eliminarcControl();
-      window.location.href = "./auto-tecnico.html";
+
+      Swal.fire({
+        icon: "success",
+        title: "Control Cancelado exitosamente."
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "./auto-tecnico.html";
+        }
+      });
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('Hubo un error al cancelar el control.');
+      //alert('Hubo un error al cancelar el control.');
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error al cancelar el control.",
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.reload(true);
+        }
+      });
     });
 
 

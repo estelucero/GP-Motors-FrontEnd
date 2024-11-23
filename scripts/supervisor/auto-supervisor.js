@@ -142,11 +142,27 @@ guardarBtn.addEventListener("click", async function (event) {
     // Manejo de la respuesta
     const resultado = await response.json();
     console.log("Control pendiente registrado:", resultado);
-    alert("El control pendiente se ha registrado correctamente.");
-    location.reload(true);
+    // alert("El control pendiente se ha registrado correctamente.");
+    Swal.fire({
+      icon: "success",
+      title: "Perfecto..",
+      text: "El control pendiente se ha registrado correctamente.",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.reload(); // Recarga la página al confirmar
+      }
+    });
+    // setTimeout(function () {
+    //   location.reload(true);
+    // }, 2000);
   } catch (error) {
     console.error("Error al registrar el control:", error);
-    alert("Ocurrió un error al registrar el control.");
+    // alert("Ocurrió un error al registrar el control.");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Error al registrar el control",
+    });
   }
 });
 
@@ -228,46 +244,80 @@ async function manejarControles() {
 manejarControles();
 
 // Eliminar control
-function eliminarControl() {
+async function eliminarControl() {
   const botonesEliminar = document.querySelectorAll(".eliminar-control");
   const controles = JSON.parse(localStorage.getItem("controles-pendientes"));
   botonesEliminar.forEach((boton) => {
     boton.addEventListener("click", async function () {
       event.preventDefault(); // Prevenir el comportamiento predeterminado
-      const alerta = this.closest(".alerta");
-      console.log("ELIMINO LOS CONTROLES");
-      const control = alerta.querySelector(".control-p").textContent;
-      console.log(autoGuardado.patente);
-
-      // URL del endpoint para eliminar el vehículo
-      const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarControlesPendientes?patente=${autoGuardado.patente}&control=${control}`;
-
-      try {
-        // Hacer la solicitud DELETE al endpoint
-        const response = await fetch(urlDeleteVehiculo, {
-          method: "DELETE",
-        });
-
-        if (response.ok) {
-          // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
-          alerta.remove();
-          console.log(controles.controles_pendientes)
-          nuevosControles = controles.controles_pendientes.filter(eliminar => eliminar.control !== control)
-          localStorage.setItem("controles-pendientes", JSON.stringify(nuevosControles));
-          console.log(`Control con patente ${control} eliminado del sistema`);
-          //location.reload(true);
-        } else {
-          // Si hay un error, mostrar un mensaje
-          console.error(`Error al eliminar el control con patente ${control}: ${response.statusText}`);
-          alert("No se pudo eliminar el control, intente nuevamente.");
+      Swal.fire({
+        title: "Estas seguro de eliminar el control?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await EliminarControlEndpoint(boton);
         }
-      } catch (error) {
-        console.error("Error en la solicitud de eliminación:", error);
-        //alert("Ocurrió un error al intentar eliminar el vehículo.");
-      }
+      });
     });
   });
 }
+
+//EliminarControlEndpoint
+
+async function EliminarControlEndpoint(boton) {
+  const controles = JSON.parse(localStorage.getItem("controles-pendientes"));
+  const alerta = boton.closest(".alerta");
+  console.log("ELIMINO LOS CONTROLES");
+  const control = alerta.querySelector(".control-p").textContent;
+  console.log(autoGuardado.patente);
+
+  // URL del endpoint para eliminar el vehículo
+  const urlDeleteVehiculo = `https://aaaaa-deploy-back.vercel.app/users/eliminarControlesPendientes?patente=${autoGuardado.patente}&control=${control}`;
+
+  try {
+    // Hacer la solicitud DELETE al endpoint
+    const response = await fetch(urlDeleteVehiculo, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      // Si la solicitud es exitosa, eliminar el elemento visualmente del DOM
+      alerta.remove();
+      console.log(controles.controles_pendientes)
+      nuevosControles = controles.controles_pendientes.filter(eliminar => eliminar.control !== control)
+      localStorage.setItem("controles-pendientes", JSON.stringify(nuevosControles));
+      console.log(`Control con patente ${control} eliminado del sistema`);
+      Swal.fire({
+        title: "Eliminado con Exito!",
+        icon: "success"
+      });
+      //location.reload(true);
+    } else {
+      // Si hay un error, mostrar un mensaje
+      console.error(`Error al eliminar el control con patente ${control}: ${response.statusText}`);
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se pudo eliminar el control",
+      });
+    }
+  } catch (error) {
+    console.error("Error en la solicitud de eliminación:", error);
+    //alert("Ocurrió un error al intentar eliminar el vehículo.");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Error en la solicitud de eliminación.",
+    });
+  }
+}
+
 //Obtener controles terminados//
 async function obtenerControlesTerminados() {
   const url = `https://aaaaa-deploy-back.vercel.app/users/verControlesVehiculosPorConcesionario?id_concesionario=1`;
