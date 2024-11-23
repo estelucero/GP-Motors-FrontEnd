@@ -3,6 +3,21 @@ nombre_usuario = document.getElementById('usuario');
 nombre_usuario.innerHTML += `${usuario[1]} ${usuario[2]}`;
 
 
+const linkInicio = document.getElementById("link-inicio");
+
+if (usuario[3] == 'gerente') {
+    linkInicio.setAttribute("href", "./inicio-gerente.html");
+}
+else if (usuario[3] == 'admin') {
+    linkInicio.setAttribute("href", "./adminInicio.html");
+}
+else if (usuario[3] == 'supervisor') {
+    linkInicio.setAttribute("href", "./inicio-supervisor.html");
+}
+else if (usuario[3] == 'técnico') {
+    linkInicio.setAttribute("href", "./inicio-tecnico.html");
+}
+
 async function obtenerConcesionariaUsuario() {
     const url = 'https://aaaaa-deploy-back.vercel.app/users/verSedesConcesionarioRegistradas';
 
