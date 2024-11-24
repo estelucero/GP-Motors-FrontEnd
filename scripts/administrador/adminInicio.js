@@ -83,7 +83,7 @@ document
         modelo,
         año: anioFab,
         km: parseInt(km, 10),
-        concesionario_ubicado: 1, // Asume que usuarioJSON es un objeto global con el cuilDueño
+        concesionario_ubicado: usuario[5], // Asume que usuarioJSON es un objeto global con el cuilDueño
       };
       console.log(data);
       // Enviar el JSON a la API usando fetch
