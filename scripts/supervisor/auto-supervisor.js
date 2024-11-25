@@ -1,5 +1,6 @@
 const autoGuardado = JSON.parse(localStorage.getItem("vehiculoEditar"));
 console.log(autoGuardado);
+var usuario = JSON.parse(localStorage.getItem("usuario"));
 
 
 
@@ -118,7 +119,7 @@ guardarBtn.addEventListener("click", async function (event) {
   const datos = {
     patente: autoGuardado.patente,
     control: valorSeleccionado,
-    concesionario: 1,
+    concesionario: usuario[5],
   };
 
   // Realizar la solicitud POST al endpoint
