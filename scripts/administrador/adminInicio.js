@@ -258,7 +258,7 @@ async function eliminarVehiculoEndpoint(patente) {
       console.log(`Vehículo con patente ${patente} eliminado del sistema`);
       Swal.fire({
         icon: "success",
-        title: "Vehículo Eliminado con exito"
+        title: "Vehículo eliminado con exito"
 
       }).then((result) => {
         if (result.isConfirmed) {
@@ -279,7 +279,7 @@ async function eliminarVehiculoEndpoint(patente) {
     }
   } catch (error) {
     console.error("Error en la solicitud de eliminación:", error);
-    alert("");
+    //alert("");
     Swal.fire({
       icon: "error",
       title: "Ocurrió un error al intentar eliminar el vehículo.",

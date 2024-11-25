@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../styles/general/navbar.css" />
   <link rel="stylesheet" href="../styles/administrador/adminInicio.css" />
   <link rel="stylesheet" href="../styles/administrador/registro-usuarios-admin.css">
+  <link rel="stylesheet" href="../styles/administrador/tabla-usuarios.css">
   <link rel="stylesheet" href="../styles/administrador/carrusel-admin.css" />
   <link rel="stylesheet" href="../styles/general/footer.css" />
   <link rel="stylesheet" href="../styles/general/pre-load.css" />
@@ -188,6 +189,80 @@
     </div>
   </section>
 
+  <!-- Seccion Tabla de Controles -->
+  <section id="titulo-controles">
+    <div class="auto-text">
+      <h3 class="control-titulo">Tabla de <span>Usuarios</span></h3>
+    </div>
+  </section>
+
+  <!-- Seccion Filtro -->
+  <section class="seccion-filtro" id="id-filtro">
+    <div class="table-header">
+      <h1>Filtros</h1>
+      <div class="filtros-controles">
+        <input type="text" id="filter-nombre" placeholder="Buscar por Nombre">
+        <input type="text" id="filter-apellido" placeholder="Buscar por Apellido">
+      </div>
+      <div class="filtros-column">
+        <div class="filter-control">
+          <label for="estado-select">Rol:</label>
+          <select id="estado-select" class="custom-select">
+            <option value="">Todos</option>
+            <option value="técnico">Técnico</option>
+            <option value="supervisor">Supervisor</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seccion de Controles -->
+  <section class="seccion-control" id="section-control">
+    <div class="table-control">
+      <div class="export_file">
+        <label for="export-file" class="export-file-btn" title="Exportar Archivo" id="toggleButton"></label>
+        <input type="checkbox" id="export-file">
+        <div class="export_file-options" id="id_export_file-options">
+          <label>Exportar como &nbsp; &#10140;</label>
+          <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="../assets/logos/PDF.png"
+              alt=""></label>
+          <label for="export-file" id="toCSV">CSV <img src="../assets/logos/csv.png" alt=""></label>
+          <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/logos/excel.png" alt=""></label>
+        </div>
+      </div>
+      <div class="table-body">
+        <table id="controlTable">
+          <thead>
+            <tr>
+              <th class="ocultar-columna"> ID </th>
+              <th>
+                <p>Nombre</p>
+              </th>
+              <th>
+                <p>Apellido</p>
+              </th>
+              <th>
+                <p>Mail</p>
+              </th>
+              <th>
+                <p>Rol</p>
+              </th>
+              <th>
+                <p>Eliminar</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+          </tbody>
+        </table>
+        <p id="no-results-message" class="mensaje-no-resultados">No hay resultados</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <section class="footer">
     <div class="footer-logo">
@@ -213,10 +288,14 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
   <script src="../scripts/general/pre-load.js"></script>
   <script src="../scripts/general/navbar.js"></script>
-  <script src="../scripts/administrador/expresion-regular-registro.js"></script>
+  <script src="../scripts/administrador/registro-usuarios-admin.js"></script>
+  <script src="../scripts/administrador/buscador-usuario.js"></script>
+  <script src="../scripts/general/exportar-tabla.js"></script>
   <script src="../scripts/administrador/carrusel-admin.js"></script>
 </body>
 

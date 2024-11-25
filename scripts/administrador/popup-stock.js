@@ -216,14 +216,15 @@ async function modificarPrecio(datos) {
       return response.json();
     })
     .then((data) => {
-      alert("Precio guardado con éxito");
+      //alert("Precio guardado con éxito");
 
 
       // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("Hubo un problema al guardar el precio.");
+      // alert("Hubo un problema al guardar el precio.");
+
     });
 
 }
@@ -274,19 +275,41 @@ async function modificarUmbral(datos) {
       throw new Error(result.detail[0]); // Extrae el mensaje detallado del error si la respuesta no es OK
     }
 
-    alert("Umbral guardado con éxito");
+    //alert("Umbral guardado con éxito");
+
+
 
     // Aquí puedes hacer alguna acción tras el éxito, como redirigir o limpiar el formulario
   } catch (error) {
     console.error("Error:", error);
-    alert(error.message); // Muestra el mensaje de error
+    //alert(error.message); // Muestra el mensaje de error
+
   }
 }
 
 
 async function orquestaFormulario(datos) {
 
-  await modificarUmbral(datos);
-  await modificarPrecio(datos);
-  location.reload(true);
+  try {
+    await modificarUmbral(datos);
+    await modificarPrecio(datos);
+    Swal.fire({
+      icon: "success",
+      title: "Perfecto..",
+      text: "Cambios guardados con éxito.",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.reload(); // Recarga la página al confirmar
+      }
+    });
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `Hubo un problema al guardar.`,
+    });
+  }
+  // await modificarUmbral(datos);
+  // await modificarPrecio(datos);
+  //location.reload(true);
 }

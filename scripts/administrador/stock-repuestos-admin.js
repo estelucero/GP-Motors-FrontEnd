@@ -21,7 +21,7 @@ async function enlistarStock(stockConcesionario) {
     fila.appendChild(celdaNombre);
 
     const celdaDescipcion = document.createElement('td');
-    celdaDescipcion.innerHTML = `<p>${stock.descipcion}</p>`;
+    celdaDescipcion.innerHTML = `<p>${stock.descripcion}</p>`;
     fila.appendChild(celdaDescipcion);
 
     const celdaStockActual = document.createElement('td');
