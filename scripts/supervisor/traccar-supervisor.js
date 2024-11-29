@@ -1,7 +1,7 @@
 // Ejemplo de cómo almacenar el token después de iniciar sesión
 async function iniciarSesion() {
 
-  await fetch('https://traccarargentinagpmotors.jumpingcrab.com/api/session', {
+  await fetch('https://gp-motors.loge.ar/api/session', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,7 +23,7 @@ async function iniciarSesion() {
 ///Obtiene los dispositivos
 async function obtenerDispositivo(id_vehiculo) {
 
-  await fetch('https://traccarargentinagpmotors.jumpingcrab.com/api/devices', {
+  await fetch('https://gp-motors.loge.ar/api/devices', {
     method: 'GET',
     credentials: 'include' // Se envía la cookie de sesión
   })
@@ -52,7 +52,7 @@ async function obtenerPosicionesHorario(id_vehiculo) {
   // to = new Date(Date.now() - 10 * 60 * 1000).toISOString();
   console.log(from + to)
   try {
-    const response = await fetch(`https://traccarargentinagpmotors.jumpingcrab.com/api/positions?deviceId=${dispositivo.id}&from=${from}&to=${to}`, {
+    const response = await fetch(`https://gp-motors.loge.ar/api/positions?deviceId=${dispositivo.id}&from=${from}&to=${to}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
