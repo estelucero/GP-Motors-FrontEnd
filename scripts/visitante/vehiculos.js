@@ -1,0 +1,72 @@
+var vehiculos = [
+  {
+    marca: "Ford",
+    modelo: "Fiesta",
+    patente: "DEF456",
+    año: 2019,
+    imagen: "../assets/imagenes/ford-fiesta.png",
+  },
+  {
+    marca: "Toyota",
+    modelo: "Corolla",
+    patente: "ABC123",
+    año: 2020,
+    imagen: "../assets/imagenes/corolla.png",
+  },
+  {
+    marca: "Ford",
+    modelo: "Fiesta",
+    patente: "GHI789",
+    año: 2018,
+    imagen: "../assets/vehiculos/ford-fiesta-2.png",
+  },
+  {
+    marca: "Chevrolet",
+    modelo: "Cruze",
+    patente: "JKL012",
+    año: 2018,
+    imagen: "../assets/vehiculos/chevrolet-cruze.png",
+  },
+  {
+    marca: "Volkswagen",
+    modelo: "Golf",
+    patente: "MNO345",
+    año: 2022,
+    imagen: "../assets/vehiculos/volkswagen-golf.png",
+  },
+  {
+    marca: "Toyota",
+    modelo: "Corolla",
+    patente: "PQR678",
+    año: 2021,
+    imagen: "../assets/vehiculos/corolla-2.png",
+  },
+  {
+    marca: "Ford",
+    modelo: "Focus",
+    patente: "STU901",
+    año: 2017,
+    imagen: "../assets/vehiculos/ford-focus.png",
+  },
+  {
+    marca: "Hyundai",
+    modelo: "Tucson",
+    patente: "VWX234",
+    año: 2021,
+    imagen: "../assets/vehiculos/hyundai-tucson.png",
+  },
+  {
+    marca: "Chevrolet",
+    modelo: "Cruze",
+    patente: "YZA567",
+    año: 2019,
+    imagen: "../assets/vehiculos/chevrolet-cruze-2.png",
+  },
+  {
+    marca: "Ford",
+    modelo: "EcoSport",
+    patente: "BCD890",
+    año: 2020,
+    imagen: "../assets/vehiculos/ford-ecosport.png",
+  }
+];
