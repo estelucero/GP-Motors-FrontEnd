@@ -137,7 +137,7 @@ async function showContent(id, element) {
   await agregoMapa(id);
   updateInterval = setInterval(async () => {
     await agregoMapa(id);
-  }, 15000);
+  }, 5000);
 }
 
 ////////////////////////////////////777
